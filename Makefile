@@ -30,6 +30,6 @@ clean:
 
 fclean: clean
 	@$(MAKE) -C ./libft fclean
-	$(RM) $(LIBNAME) $(MLXNAME) $(NAME)
+	$(RM) $(LIBNAME) $(NAME)
 
 re: fclean all
