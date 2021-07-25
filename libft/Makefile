@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: taekang <taekang@student.42seoul.k>        +#+  +:+       +#+         #
+#    By: taesan <taesan@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020\10/18 12:49:44 by taekang           #+#    #+#              #
-#    Updated: 2020/10/18 19:14:24 by taekang          ###   ########.fr        #
+#    Created: Invalid date        by taekang           #+#    #+#              #
+#    Updated: 2021/07/25 22:23:57 by taesan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,7 @@ SRCS =			ft_atoi.c\
 	   		 	ft_substr.c\
 	   		 	ft_tolower.c\
 	   		 	ft_toupper.c\
+				ft_strcmp.c\
 
 BONUS_SRCS = 	ft_lstadd_back.c\
 				ft_lstadd_front.c\

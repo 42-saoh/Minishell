@@ -4,15 +4,17 @@ CC		= gcc #arch -x86_64
 #CFLAGS	= -Wall -Wextra -Werror
 
 SRCDIR		= ./srcs/
-LIBFT_DIR	= $(SRCDIR)libft
+LIBFT_DIR	= ./libft/
 INCDIR		= ./includes/
 
 LIBFT = libft.a
 
-SRC 	= main.c
+SRC 	=	main.c data_set.c error.c utils.c \
+			check.c readline.c
+		 
 
-SRCS		= $(addprefix $(SRCDIR), $(SRC))
-OBJS		= $(SRCS:.c=.o)
+SRCS	= $(addprefix $(SRCDIR), $(SRC))
+OBJS	= $(SRCS:.c=.o)
 
 LIBS	= -lreadline
 
