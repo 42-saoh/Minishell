@@ -26,11 +26,12 @@ char	*get_str(char **input);
 /*
 	check
 */
-int		check_input(char *input, t_info *info);
+void	check_input(char *input, t_info *info);
 int		check_builtin(char *cmd);
 /*
 	readline
 */
 void	wait_closing_quote(char start_q);
+
 
 #endif

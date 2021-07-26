@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 22:00:23 by taesan            #+#    #+#             */
-/*   Updated: 2021/07/25 23:51:00 by taesan           ###   ########.fr       */
+/*   Updated: 2021/07/26 15:41:38 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,7 @@ int	parse_instruction(char *input, char *envp[])
 	char	*str;
 	int		i;
 
-	if (!check_input(input, &info))
-		return (0);
-	printf("info.pipe_cnt : %d\n", info.pipe_cnt);
-
+	check_input(input, &info);
 	while (*input)
 	{
 		str = get_str(&input);

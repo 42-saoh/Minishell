@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 23:50:42 by taesan            #+#    #+#             */
-/*   Updated: 2021/07/25 23:55:20 by taesan           ###   ########.fr       */
+/*   Updated: 2021/07/26 15:41:43 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	check_builtin(char *cmd)
 	큰 따옴표나 작은 따옴표 존재하는지 && 홀 수 인경우 에러
 	큰 따옴표, 작은 따옴표 동시에 존재하면, 먼저 어떤걸로 적용할지.
 */
-int		check_input(char *input, t_info *info)
+void	check_input(char *input, t_info *info)
 {
 	info->single_q = 0;
 	info->double_q = 0;
@@ -56,7 +56,10 @@ int		check_input(char *input, t_info *info)
 			info->start_q = DOUBLE_Q;
 		input += 1;
 	}
+	/*
+		wait closing quote후에 , 최초 명령어가 수행되어야 한다.
+		반환형 변경 or wait closing 후에 처리되는 로직을 심어야 함.
+	*/
 	if (info->single_q % 2 != 0 || info->double_q % 2 != 0)
 		wait_closing_quote(info->start_q);
-	return (1);
 }
