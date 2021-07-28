@@ -26,12 +26,19 @@ char	*get_str(char **input);
 /*
 	check
 */
-void	check_input(char *input, t_info *info);
 int		check_builtin(char *cmd);
 /*
 	readline
 */
 void	wait_closing_quote(char start_q);
+/*
+	init
+*/
+int		init_info(t_info *info, char *input, char *envp[]);
+/*
+	using free
+*/
+void	split_free(char **data);
 
 
 #endif
