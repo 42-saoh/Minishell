@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 19:49:55 by taesan            #+#    #+#             */
-/*   Updated: 2021/07/28 20:09:18 by taesan           ###   ########.fr       */
+/*   Updated: 2021/07/28 20:56:47 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,21 @@
 
 int	set_command_info(t_info *info, char *input)
 {
+	char	**input_sp;
+	char	*cmd;
+
+	// 따옴표가 있는경우 따로처리 ??
+
+	input_sp = ft_split(input, ' ');
+	if (!input_sp)
+		return (error_occur_std(SPLIT_ERR));
+	cmd = check_command(info->paths, input_sp[0], ft_strlen(input_sp[0]));
+	if (cmd)
+	{
+		free(input_sp[0]);
+		input_sp[0] = cmd;
+	}
+	info->param = input_sp;
 	return (1);
 }
 

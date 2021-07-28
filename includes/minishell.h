@@ -27,6 +27,7 @@ char	*get_str(char **input);
 	check
 */
 int		check_builtin(char *cmd);
+char	*check_command(char **paths, char *cmd, int len);
 /*
 	readline
 */
@@ -39,6 +40,10 @@ int		init_info(t_info *info, char *input, char *envp[]);
 	using free
 */
 void	split_free(char **data);
+/*
+	input filter
+*/
+char	*input_space_filter(char *input);
 
 
 #endif

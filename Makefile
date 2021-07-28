@@ -10,7 +10,7 @@ INCDIR		= ./includes/
 LIBFT = libft.a
 
 SRC 	=	main.c data_set.c error.c utils.c \
-			check.c readline.c init.c
+			check.c readline.c init.c input_filter.c
 		 
 
 SRCS	= $(addprefix $(SRCDIR), $(SRC))
