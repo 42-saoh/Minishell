@@ -1,14 +1,15 @@
 
 #include "../includes/minishell.h"
 
-char	*input_space_filter(char *input)
+char	*input_space_filter(char *input, int len)
 {
 	int		s;
 	int		e;
 	int		idx;
 	char	*new_input;
 
-	new_input = (char *)malloc(sizeof(char) * ft_strlen(input));
+	new_input = (char *)malloc(sizeof(char) * len);
+	ft_bzero(new_input, len);
 	if (!new_input)
 		return (new_input);
 	s = 0;

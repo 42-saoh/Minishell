@@ -6,11 +6,17 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 19:56:59 by taesan            #+#    #+#             */
-/*   Updated: 2021/07/28 19:57:08 by taesan           ###   ########.fr       */
+/*   Updated: 2021/07/29 11:48:47 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+
+void	ft_free(void *data)
+{
+	free(data);
+	data = 0;
+}
 
 void	split_free(char **data)
 {
@@ -22,10 +28,7 @@ void	split_free(char **data)
 	while (data[i])
 	{
 		if (data[i])
-		{
-			free(data[i]);
-			data[i] = 0;
-		}
+			ft_free(data[i]);
 		i++;
 	}
 	free(data);

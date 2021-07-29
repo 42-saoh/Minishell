@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 19:49:55 by taesan            #+#    #+#             */
-/*   Updated: 2021/07/28 20:56:47 by taesan           ###   ########.fr       */
+/*   Updated: 2021/07/29 11:46:09 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,15 +67,9 @@ void	set_input_info(t_info *info, char *input)
 	}	
 }
 
-int	init_info(t_info *info, char *input, char *envp[])
+int	init_info(t_info *info, char *input)
 {
-	info->paths = set_path(envp);
-	if (!info->paths)
-		return (error_occur_std(SPLIT_ERR));
-	info->envp = envp;
 	set_input_info(info, input);
 	set_command_info(info, input);
-	
-
 	return (1);
 }

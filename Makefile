@@ -1,6 +1,6 @@
 NAME	= minishell
 
-CC		= gcc #arch -x86_64
+CC		= gcc -g #arch -x86_64
 #CFLAGS	= -Wall -Wextra -Werror
 
 SRCDIR		= ./srcs/
@@ -10,7 +10,8 @@ INCDIR		= ./includes/
 LIBFT = libft.a
 
 SRC 	=	main.c data_set.c error.c utils.c \
-			check.c readline.c init.c input_filter.c
+			check.c readline.c init.c input_filter.c \
+			exec_cmd.c using_free.c
 		 
 
 SRCS	= $(addprefix $(SRCDIR), $(SRC))
