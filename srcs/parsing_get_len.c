@@ -51,9 +51,9 @@ static char	*get_sg_quotes(char *line, int *str_len)
 
 	line++;
 	test_line = line;
-	while (*test_line != 39 && *test_line && *test_line != 124)
+	while (*test_line != 39 && *test_line)
 		test_line++;
-	if (*test_line == 0 || *test_line == 124)
+	if (!(*test_line))
 	{
 		(*str_len)++;
 		return (line);
@@ -73,14 +73,14 @@ static char	*get_db_quotes(t_minishell *ms, char *line, int *str_len)
 
 	line++;
 	test_line = line;
-	while (*test_line != 34 && *test_line && *test_line != 124)
+	while (*test_line != 34 && *test_line)
 		test_line++;
-	if (*test_line == 0 || *test_line == 124)
+	if (!(*test_line))
 	{
 		(*str_len)++;
 		return (line);
 	}
-	while (*line != 34 && *line)
+	while (*line != 34)
 	{
 		if (*line == '$')
 		{
