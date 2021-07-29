@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 19:49:55 by taesan            #+#    #+#             */
-/*   Updated: 2021/07/29 11:46:09 by taesan           ###   ########.fr       */
+/*   Updated: 2021/07/29 15:33:17 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,6 @@ int	set_command_info(t_info *info, char *input)
 */
 void	set_input_info(t_info *info, char *input)
 {
-	info->single_q = 0;
-	info->double_q = 0;
-	info->pipe_cnt = 0;
-	info->start_q = 0;
 	while (*input)
 	{
 		if (*input == SINGLE_Q)

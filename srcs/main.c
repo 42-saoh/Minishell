@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 22:00:23 by taesan            #+#    #+#             */
-/*   Updated: 2021/07/29 12:50:34 by taesan           ###   ########.fr       */
+/*   Updated: 2021/07/29 15:31:31 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int main(int argc, char *argv[], char *envp[])
 	prompt = "$";
 	// 종료 시그널 받으면 프로그램 끝내야 함.
 
+	ft_bzero(&info, sizeof(t_info));
 	info.paths = set_path(envp);
 	if (!info.paths)
 		return (error_occur_std(SPLIT_ERR));
@@ -45,7 +46,7 @@ int main(int argc, char *argv[], char *envp[])
 		input = readline(prompt);
 		if (ft_strcmp(input, "") == 0)
 		{
-			// free(input);
+			ft_free(input);
 			continue;
 		}
 		add_history(input);
