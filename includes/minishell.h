@@ -26,5 +26,6 @@ void			free_rlst(t_list *lst);
 void			minishell_roop(t_minishell *ms);
 void			start_sibling_process(t_minishell *ms);
 int				get_str_len(t_minishell *ms, char *line);
+char			*put_str(t_minishell *ms, char *line, char *str);
 
 #endif

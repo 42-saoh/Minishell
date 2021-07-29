@@ -3,7 +3,7 @@ NAME	= minishell
 CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror
 
-SRC 	= minishell_main.c minishell_roop.c minishell_sib.c lst_util.c parsing_get_len.c
+SRC 	= minishell_main.c minishell_roop.c minishell_sib.c lst_util.c parsing_get_len.c parsing_get_str.c
 
 SRCDIR	= ./srcs/
 SRCS	= $(addprefix $(SRCDIR), $(SRC))

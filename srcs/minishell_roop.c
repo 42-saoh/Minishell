@@ -11,9 +11,19 @@ int	get_readline(t_minishell *ms)
 void	parsing_line(t_minishell *ms)
 {
 	int	len;
+	char	*str;
 
 	len = get_str_len(ms, ms->read_line);
-	printf("%d\n", len);
+	str = (char *)malloc(sizeof(char) * len + 1);
+	if (!str)
+	{
+		printf("M ERROR\n");
+		return ;
+	}
+	ft_memset(str, 0, len + 1);
+	ms->read_line = put_str(ms, ms->read_line, str);
+	printf("%s\n", str);
+	free(str);
 }
 
 void	minishell_roop(t_minishell *ms)
