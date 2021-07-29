@@ -3,7 +3,7 @@ NAME	= minishell
 CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror
 
-SRC 	= 
+SRC 	= minishell_main.c minishell_roop.c minishell_sib.c lst_util.c parsing_get_len.c
 
 SRCDIR	= ./srcs/
 SRCS	= $(addprefix $(SRCDIR), $(SRC))
@@ -15,7 +15,7 @@ INCDIR	= ./includes/
 			$(CC) $(CFLAGS) -I$(INCDIR) -c $< -o $@
 
 $(NAME): $(LIBNAME) $(OBJS)
-	$(CC) $(CFLAGS) -I$(INCDIR) -L. -lmlx -o $(NAME) $(OBJS) $(LIBNAME)
+	$(CC) $(CFLAGS) -I$(INCDIR) -lreadline -o $(NAME) $(OBJS) $(LIBNAME)
 
 $(LIBNAME):
 	@$(MAKE) -C ./libft
