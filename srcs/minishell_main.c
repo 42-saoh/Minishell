@@ -3,13 +3,14 @@
 void	init_minishell(char **envp, t_minishell *ms)
 {
 	ms->envp = envp;
-	ms->rlst = rlst_new();
+	ms->cmdlst = cmdlst_new();
+	ms->cmdlst_head = ms->cmdlst;
 }
 
 void	free_all(t_minishell *ms)
 {
 	printf("%s\n", ms->envp[0]);
-	free_rlst(ms->rlst);
+	free_cmdlst(ms->cmdlst_head);
 }
 
 int main(int argc, char **argv, char **envp)

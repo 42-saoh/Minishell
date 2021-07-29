@@ -6,13 +6,13 @@
 /*   By: saoh <saoh@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/21 21:53:06 by saoh              #+#    #+#             */
-/*   Updated: 2021/07/26 12:40:26 by saoh             ###   ########.fr       */
+/*   Updated: 2021/07/29 15:50:33 by saoh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_list			*rlst_new(void)
+t_list			*cmdlst_new(void)
 {
 	t_list		*new_lst;
 
@@ -22,22 +22,22 @@ t_list			*rlst_new(void)
 	return (new_lst);
 }
 
-void			rlst_add(t_list *lst, void *content)
+void			cmdlst_add(t_list *lst, void *content)
 {
 	if (lst->content)
 	{
 		while (lst->next)
 			lst = lst->next;
-		lst->next = rlst_new();
+		lst->next = cmdlst_new();
 		lst = lst->next;
 	}
 	lst->content = content;
 }
 
-void			free_rlst(t_list *lst)
+void			free_cmdlst(t_list *lst)
 {
 	if (lst->next != NULL)
-		free_rlst(lst->next);
+		free_cmdlst(lst->next);
 	if (lst->content != NULL)
 		free(lst->content);
 	free(lst);

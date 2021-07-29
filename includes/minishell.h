@@ -17,12 +17,13 @@ typedef struct	s_minishell
 	char	*read_line;
 	char	**parsing_line;
 	char	**envp;
-	t_list	*rlst;
+	t_list	*cmdlst;
+	t_list	*cmdlst_head;
 }				t_minishell;
 
-t_list			*rlst_new(void);
-void			rlst_add(t_list *lst, void *content);
-void			free_rlst(t_list *lst);
+t_list			*cmdlst_new(void);
+void			cmdlst_add(t_list *lst, void *content);
+void			free_cmdlst(t_list *lst);
 void			minishell_roop(t_minishell *ms);
 void			start_sibling_process(t_minishell *ms);
 int				get_str_len(t_minishell *ms, char *line);
