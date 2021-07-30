@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 15:05:24 by taesan            #+#    #+#             */
-/*   Updated: 2021/07/30 13:01:12 by taesan           ###   ########.fr       */
+/*   Updated: 2021/07/31 03:07:36 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_pipe
 	int			result_fd;
 }				t_pipe;
 
+# define INPUT_CHANGED 1
 # define NOT_BUILTIN 0
 # define ECHO 1
 # define CD 2

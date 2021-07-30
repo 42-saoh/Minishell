@@ -10,7 +10,7 @@ INCDIR		= ./includes/
 LIBFT = libft.a
 
 SRC 	=	main.c data_set.c error.c utils.c \
-			check.c readline.c init.c \
+			check.c readline.c init.c command_filter.c \
 			exec_cmd.c using_free.c make_command_list.c \
 		 
 

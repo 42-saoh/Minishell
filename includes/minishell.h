@@ -25,14 +25,13 @@ int		error_occur_perror(char *msg);
 /*
 	utils
 */
-void	jump_space(char **input);
-char	*get_str(char **input);
-int		manage_chars(char c);
+int		is_quotation(char c);
 /*
 	check
 */
 int		check_builtin(char *cmd);
 char	*check_command(char **paths, char *cmd, int len);
+int		exist_dollar(char *input, int s, int e);
 /*
 	readline
 */
@@ -54,6 +53,10 @@ void	exec_command(t_info *info);
 	make command list
 */
 int		make_command_list(t_info *info, char *input);
-
+void	move_end_point(char *line, int *e, char end_c);
+/*
+	filter
+*/
+int		command_filter(t_info *info);
 
 #endif

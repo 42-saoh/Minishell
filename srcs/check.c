@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 23:50:42 by taesan            #+#    #+#             */
-/*   Updated: 2021/07/30 11:39:04 by taesan           ###   ########.fr       */
+/*   Updated: 2021/07/31 02:58:53 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,15 @@ char	*check_command(char **paths, char *cmd, int len)
 		free(new_cmd);
 	}
 	return (full_path);
+}
+
+int		exist_dollar(char *input, int s, int e)
+{
+	while (input[s] && s < e)
+	{
+		if (input[s] == DOLLAR)
+			return (s);
+		s++;
+	}
+	return (0);
 }
