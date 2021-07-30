@@ -6,7 +6,7 @@
 #    By: taesan <taesan@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: Invalid date        by taekang           #+#    #+#              #
-#    Updated: 2021/07/25 22:23:57 by taesan           ###   ########.fr        #
+#    Updated: 2021/07/30 13:46:33 by taesan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,8 +70,8 @@ RMFLAGS = -rf
 AR = ar
 ARFLAGS = rcs
 
-$(NAME) : $(OBJS)
-		$(AR) $(ARFLAGS) $(NAME) $(OBJS)
+$(NAME) : $(OBJS) $(BONUS_OBJS)
+		$(AR) $(ARFLAGS) $(NAME) $(OBJS) $(BONUS_OBJS)
 
 all: $(NAME)
 
@@ -83,7 +83,4 @@ fclean: clean
 
 re:		fclean all
 
-bonus: $(OBJS) $(BONUS_OBJS)
-		$(AR) $(ARFLAGS) $(NAME) $(OBJS) $(BONUS_OBJS)
-
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re

@@ -15,6 +15,7 @@
 	data_set.c
 */
 char	**set_path(char *envp[]);
+char	*get_env_value(char *envp[], char *input, int len);
 
 /*
 	error.c
@@ -26,6 +27,7 @@ int		error_occur_perror(char *msg);
 */
 void	jump_space(char **input);
 char	*get_str(char **input);
+int		manage_chars(char c);
 /*
 	check
 */
@@ -38,20 +40,20 @@ void	wait_closing_quote(char start_q);
 /*
 	init
 */
-int		init_info(t_info *info, char *input);
+int		init_info(t_info *info);
 /*
 	using free
 */
 void	split_free(char **data);
 void	ft_free(void *data);
 /*
-	input filter
-*/
-char	*input_space_filter(char *input, int len);
-/*
 	exec
 */
-void	exec_command(t_info *info, int pipe[2], int flags, int is_last);
+void	exec_command(t_info *info);
+/*
+	make command list
+*/
+int		make_command_list(t_info *info, char *input);
 
 
 #endif

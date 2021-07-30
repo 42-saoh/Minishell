@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 23:50:42 by taesan            #+#    #+#             */
-/*   Updated: 2021/07/29 15:12:37 by taesan           ###   ########.fr       */
+/*   Updated: 2021/07/30 11:39:04 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,19 +39,20 @@ int	check_builtin(char *cmd)
 {
 	if (ft_strcmp(cmd, "echo") == 0)
 		return (ECHO);
-	if (ft_strcmp(cmd, "cd") == 0)
+	else if (ft_strcmp(cmd, "cd") == 0)
 		return (CD);
-	if (ft_strcmp(cmd, "pwd") == 0)
+	else if (ft_strcmp(cmd, "pwd") == 0)
 		return (PWD);
-	if (ft_strcmp(cmd, "export") == 0)
+	else if (ft_strcmp(cmd, "export") == 0)
 		return (EXPORT);
-	if (ft_strcmp(cmd, "unset") == 0)
+	else if (ft_strcmp(cmd, "unset") == 0)
 		return (UNSET);
-	if (ft_strcmp(cmd, "env") == 0)
+	else if (ft_strcmp(cmd, "env") == 0)
 		return (ENV);
-	if (ft_strcmp(cmd, "exit") == 0)
+	else if (ft_strcmp(cmd, "exit") == 0)
 		return (EXIT);
-	return (NOT_BUILTIN);
+	else
+		return (NOT_BUILTIN);
 }
 
 char	*check_command(char **paths, char *cmd, int len)
@@ -78,4 +79,3 @@ char	*check_command(char **paths, char *cmd, int len)
 	}
 	return (full_path);
 }
-

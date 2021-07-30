@@ -6,11 +6,18 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 22:35:08 by taesan            #+#    #+#             */
-/*   Updated: 2021/07/29 15:18:09 by taesan           ###   ########.fr       */
+/*   Updated: 2021/07/29 21:38:53 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+
+int		manage_chars(char c)
+{
+	if (c == SINGLE_Q || c == DOUBLE_Q || c == PIPE)
+		return (1);
+	return (0);
+}
 
 void	jump_space(char **input)
 {

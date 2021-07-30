@@ -6,29 +6,35 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 22:00:23 by taesan            #+#    #+#             */
-/*   Updated: 2021/07/29 15:31:31 by taesan           ###   ########.fr       */
+/*   Updated: 2021/07/30 17:27:50 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
+void	command_string(t_info info)
+{
+	while (info.commands)
+	{
+		printf("[%s]\n", info.commands->content);
+		info.commands = info.commands->next;
+	}
+}
+
 int	start(t_info *info)
 {
-	if (info->pipe_cnt > 0)
-	{
-		printf("pipe 코드 타도록 !\n");
-	}
-	else
-	{
-		exec_command(info, 0, 0, 0);
-	}
+	/*
+		init할 때, 파싱 제대로해서 2개이상의 명령어가 존재하는 경우.
+		pipecnt말고, 명령어 갯수로 변경
+	*/
+	if (!init_info(info))
+		return (0);
 	return (0);
 }
 
 int main(int argc, char *argv[], char *envp[])
 {
 	char	*input;
-	char	*filter_input;
 	char	*prompt;
 	t_info	info;
 
@@ -36,7 +42,7 @@ int main(int argc, char *argv[], char *envp[])
 	prompt = "$";
 	// 종료 시그널 받으면 프로그램 끝내야 함.
 
-	ft_bzero(&info, sizeof(t_info));
+	ft_memset(&info, 0, sizeof(t_info));
 	info.paths = set_path(envp);
 	if (!info.paths)
 		return (error_occur_std(SPLIT_ERR));
@@ -44,19 +50,17 @@ int main(int argc, char *argv[], char *envp[])
 	while(1)
 	{
 		input = readline(prompt);
-		if (ft_strcmp(input, "") == 0)
+		if (ft_strcmp(input, "") != 0)
 		{
-			ft_free(input);
-			continue;
+			add_history(input);
+			if (!make_command_list(&info, input))
+				break ;
+			// command_string(info);
+			if (start(&info))
+			 	break ;
+			ft_lstclear(&info.commands, ft_free);
 		}
-		add_history(input);
-		filter_input = input_space_filter(input, ft_strlen(input) + 1);
-		if (!filter_input)
-			return (error_occur_std(MALLOC_ERR));
-		init_info(&info, filter_input);
-		start(&info);
 		ft_free(input);
-		ft_free(filter_input);
 	}
 	// clear heap
 }
