@@ -58,5 +58,10 @@ void	move_end_point(char *line, int *e, char end_c);
 	filter
 */
 int		command_filter(t_info *info);
+/*
+	replace_env
+*/
+int		replace_env(char **envp, char **ptr, int s, int *next_idx);
+
 
 #endif

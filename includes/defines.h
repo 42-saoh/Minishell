@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 15:05:24 by taesan            #+#    #+#             */
-/*   Updated: 2021/07/31 03:07:36 by taesan           ###   ########.fr       */
+/*   Updated: 2021/07/31 17:22:30 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,10 @@ typedef struct s_pipe
 # define PATH "PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # define SPLIT_ERR "ft_split Error"
 # define MALLOC_ERR "malloc Error"
-
+# define WAIT_ERR "wait func return Error [-1]"
+# define SUBSTR_ERR "ft_substr Error"
+# define STRJOIN_ERR "ft_strjoin Error"
+# define MAKE_NEW_INPUT_ERR "make new input Error"
 /*
 	pipex defines ...ref..
 */
@@ -73,7 +76,6 @@ typedef struct s_pipe
 # define STDIN_PIPE 0x1
 # define STDOUT_PIPE 0x2
 
-# define WAIT_ERR "wait func return error [-1]"
 
 
 
