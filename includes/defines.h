@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 15:05:24 by taesan            #+#    #+#             */
-/*   Updated: 2021/07/31 17:22:30 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/01 14:29:46 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ typedef struct s_pipe
 # define SUBSTR_ERR "ft_substr Error"
 # define STRJOIN_ERR "ft_strjoin Error"
 # define MAKE_NEW_INPUT_ERR "make new input Error"
+# define FILTER_INPUT_ERR "filter_input error"
 /*
 	pipex defines ...ref..
 */

@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 22:00:23 by taesan            #+#    #+#             */
-/*   Updated: 2021/07/30 17:27:50 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/01 14:18:24 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	command_string(t_info info)
 {
+	t_list *temp;
+	
 	while (info.commands)
 	{
 		printf("[%s]\n", info.commands->content);
@@ -21,15 +23,20 @@ void	command_string(t_info info)
 	}
 }
 
-int	start(t_info *info)
+void	start(t_info *info)
 {
-	/*
-		init할 때, 파싱 제대로해서 2개이상의 명령어가 존재하는 경우.
-		pipecnt말고, 명령어 갯수로 변경
-	*/
-	if (!init_info(info))
-		return (0);
-	return (0);
+	t_list *temp;
+
+	temp = info->commands;
+	while (temp)
+	{
+		if (!command_filter(info, (char **)(&temp->content)))
+			return ;
+		if (!set_command_info(info, temp->content))
+			return ;
+		exec_command(info);
+		temp = temp->next;
+	}
 }
 
 int main(int argc, char *argv[], char *envp[])
@@ -55,12 +62,10 @@ int main(int argc, char *argv[], char *envp[])
 			add_history(input);
 			if (!make_command_list(&info, input))
 				break ;
-			// command_string(info);
-			if (start(&info))
-			 	break ;
+			start(&info);
 			ft_lstclear(&info.commands, ft_free);
 		}
 		ft_free(input);
 	}
-	// clear heap
+	// need clear pathes
 }

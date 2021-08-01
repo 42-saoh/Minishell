@@ -10,7 +10,10 @@ int		append_command(t_info *info, char *input, int s, int e)
 		return (error_occur_std(MALLOC_ERR));
 	data = ft_lstnew(temp);
 	if (!data)
+	{
+		free(temp);
 		return (error_occur_std(MALLOC_ERR));
+	}
 	if (info->command_cnt == 0)
 		info->commands = data;
 	else

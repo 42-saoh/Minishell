@@ -40,6 +40,7 @@ void	wait_closing_quote(char start_q);
 	init
 */
 int		init_info(t_info *info);
+int		set_command_info(t_info *info, char *input);
 /*
 	using free
 */
@@ -57,7 +58,7 @@ void	move_end_point(char *line, int *e, char end_c);
 /*
 	filter
 */
-int		command_filter(t_info *info);
+int	command_filter(t_info *info, char **content);
 /*
 	replace_env
 */

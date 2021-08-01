@@ -1,31 +1,27 @@
 #include "../includes/minishell.h"
 
-char	*space_filter(char *input, int len)
+void	space_filter(char **input, char *new_input)
 {
 	int		s;
 	int		e;
 	int		idx;
-	char	*new_input;
 
-	new_input = (char *)malloc(sizeof(char) * (len + 1));
-	ft_memset(new_input, 0, len + 1);
-	if (!new_input)
-		error_occur_std(MALLOC_ERR);
 	s = 0;
 	idx = 0;
-	while (new_input && input[s])
+	while (new_input && (*input)[s])
 	{
 		e = s;
-		while (input[e] && input[e] == ' ')
+		while ((*input)[e] && (*input)[e] == ' ')
 			e++;
-		if (s != e && s != 0 && input[e])
+		if (s != e && s != 0 && (*input)[e])
 			new_input[idx++] = ' ';
-		new_input[idx++] = input[e];
+		new_input[idx++] = (*input)[e];
 		if (s != e)
 			s = e;
 		s++;
 	}
-	return (new_input);
+	free(*input);
+	*input = new_input;
 }
 
 int		quote_filter(t_info *info, char **input, int s, int *e)
@@ -76,26 +72,18 @@ int	filter_input(t_info *info, char **input)
 }
 
 
-int	command_filter(t_info *info)
+int	command_filter(t_info *info, char **content)
 {
-	char	*temp;
+	char	*new_input;
 	int		len;
 
-	while (info->commands)
-	{
-		//printf("cmd : [%s]\n", info->commands->content);
-		if (!filter_input(info, (char **)&(info->commands->content)))
-		{
-			printf("filter input error\n");
-			return (0);
-		}
-		len = ft_strlen((char *)info->commands->content);
-		temp = space_filter(info->commands->content, len);
-		if (!temp)
-			return (error_occur_std(MALLOC_ERR));
-		info->commands->content = temp;
-		// printf("final : [%s]\n", info->commands->content);
-		info->commands = info->commands->next;
-	}
-	return (0);
+	if (!filter_input(info, content))
+		return (error_occur_std(FILTER_INPUT_ERR));
+	len = ft_strlen((char *)(*content));
+	new_input = (char *)malloc(sizeof(char) * (len + 1));
+	if (!new_input)
+		return (error_occur_std(MALLOC_ERR));
+	ft_memset(new_input, 0, len + 1);
+	space_filter(content, new_input);
+	return (1);
 }
