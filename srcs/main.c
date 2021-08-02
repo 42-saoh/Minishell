@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 22:00:23 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/02 16:40:35 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/02 17:07:01 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ void	start(t_info *info)
 			return ;
 		if (!set_command_info(info, temp->content))
 			return ;
-		if (info->command_cnt > 1)
-		{
-			printf("is pipe code\n");
-			// pipe code 
-		}
-		else
+		// if (info->command_cnt > 1)
+		// {
+		// 	printf("is pipe code\n");
+		// 	// pipe code 
+		// }
+		// else
 		exec_command(info);
 		//exec_command(info);
 		temp = temp->next;

@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 19:49:55 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/02 17:00:51 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/02 17:08:23 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,12 @@ int	set_command_info(t_info *info, char *input)
 	char 	**temp;
 	int		cmd_idx;
 
-	printf("input : [%s]\n", input);
 	input_sp = ft_split(input, ' ');
 	if (!input_sp)
-	{
-		printf("#1\n");
 		return (error_occur_std(SPLIT_ERR));
-	}
-	printf("input_sp[0] : [%s]\n", input_sp[0]);
 	temp = ft_split(input_sp[0], '/');
 	if (!temp)
-	{
-		printf("#2\n");
 		return (error_occur_std(SPLIT_ERR));
-	}
 	cmd_idx = 0;
 	while (temp[cmd_idx])
 		cmd_idx++;
