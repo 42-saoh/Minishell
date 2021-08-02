@@ -9,7 +9,7 @@ char	*get_dollar_value(char **envp, char *input)
 	{
 		i = 0;
 		exist = 1;
-		while (input[i] && input[i] != ' ')
+		while (pass_possible(input[i]))
 		{
 			if (!(*envp)[i] || (*envp)[i] != input[i])
 			{
@@ -43,7 +43,7 @@ char	*make_new_input(char *input, int s, int *next_idx, char *value)
 	if (!join)
 		return (0);
 	*next_idx = ft_strlen(join);
-	while (input[s] && input[s] != ' ')
+	while (pass_possible(input[s]))
 		s++;
 	back = ft_substr(input + s, 0, ft_strlen(input) - s);
 	result = ft_strjoin(join, back);

@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 22:00:23 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/01 14:18:24 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/01 20:10:51 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	start(t_info *info)
 	t_list *temp;
 
 	temp = info->commands;
+	printf("cnt : [%d]\n", info->command_cnt);
 	while (temp)
 	{
 		if (!command_filter(info, (char **)(&temp->content)))

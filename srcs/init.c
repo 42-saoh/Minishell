@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 19:49:55 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/01 13:39:45 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/01 17:40:32 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,21 +42,3 @@ int	set_command_info(t_info *info, char *input)
 	info->param = input_sp;
 	return (1);
 }
-
-// int	init_info(t_info *info)
-// {
-// 	// parsing을 먼저해야겠다, 파이프라인 존재하면 pipe사용해야 하니깐.
-
-// 	// n개의 명령어를 찾아야 함.
-// 	while (info->commands)
-// 	{
-// 		// printf("cmd : [%s]\n", info->commands->content);
-// 		if (!command_filter(info))
-// 			return (0);
-// 		if (!set_command_info(info, info->commands->content))
-// 			return (0);
-// 		exec_command(info);
-// 		info->commands = info->commands->next;
-// 	}
-// 	return (1);
-// }

@@ -41,6 +41,8 @@ int		make_command_list(t_info *info, char *input)
 
 	s = 0;
 	e = 0;
+	info->command_cnt = 0;
+	info->is_builtin = -1;
 	while (input[e])
 	{
 		if (is_quotation(input[e]))

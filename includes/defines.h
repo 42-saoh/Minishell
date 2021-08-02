@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 15:05:24 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/01 14:29:46 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/01 20:08:12 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,12 @@
 */
 typedef struct s_info
 {
-	char	**paths;
-	char	**param;
-	char	**envp;
-	int		command_cnt;
-	int		single_q;
-	int		double_q;
-	int 	pipe_cnt;
-	int		is_builtin;
-	char 	start_q;
-	t_list	*commands;
+	char	**paths; // 계속 씀.
+	char	**param; // parents에서 free됨.
+	char	**envp; // 계속 씀.
+	int		command_cnt; // 초기화
+	int		is_builtin; // 초기화
+	t_list	*commands; // lstclear함.
 }				t_info;
 
 typedef struct s_pipe
