@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 22:00:23 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/01 20:10:51 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/02 16:40:35 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,14 @@ void	start(t_info *info)
 			return ;
 		if (!set_command_info(info, temp->content))
 			return ;
+		if (info->command_cnt > 1)
+		{
+			printf("is pipe code\n");
+			// pipe code 
+		}
+		else
 		exec_command(info);
+		//exec_command(info);
 		temp = temp->next;
 	}
 }
@@ -51,7 +58,7 @@ int main(int argc, char *argv[], char *envp[])
 	// 종료 시그널 받으면 프로그램 끝내야 함.
 
 	ft_memset(&info, 0, sizeof(t_info));
-	info.paths = set_path(envp);
+	info.paths = init_path(envp);
 	if (!info.paths)
 		return (error_occur_std(SPLIT_ERR));
 	info.envp = envp;

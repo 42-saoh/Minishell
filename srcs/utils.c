@@ -6,11 +6,25 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 22:35:08 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/01 20:04:46 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/02 17:04:49 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+
+int		is_empty(char *temp)
+{
+	int	i;
+
+	i = 0;
+	while (temp[i])
+	{
+		if (temp[i] != ' ')
+			return (0);
+		i++;
+	}
+	return (1);
+}
 
 int		is_quotation(char c)
 {

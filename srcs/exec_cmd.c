@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 14:45:56 by taesan            #+#    #+#             */
-/*   Updated: 2021/07/30 17:28:14 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/02 15:42:20 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,18 @@ void	exec_command(t_info *info)
 {
 	pid_t	cpid;
 
-	cpid = fork();
-	if (cpid > 0)
-		parent_process(info);
-	else if (cpid < 0)
-		perror("fork");
+	if (info->is_builtin)
+	{
+		printf("is built in\n");
+	}
 	else
-		child_process(info);
+	{
+		cpid = fork();
+		if (cpid > 0)
+			parent_process(info);
+		else if (cpid < 0)
+			perror("fork");
+		else
+			child_process(info);
+	}
 }
