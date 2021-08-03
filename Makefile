@@ -11,7 +11,7 @@ INCDIR		= ./includes/
 LIBFT = libft.a
 
 SRC 	=	main.c error.c utils.c check.c readline.c init.c \
-			command_filter.c exec_cmd.c using_free.c \
+			command_filter.c redirect_filter.c exec_cmd.c using_free.c \
 			make_command_list.c replace_env.c \
 
 SRCS	= $(addprefix $(SRC_DIR), $(SRC))

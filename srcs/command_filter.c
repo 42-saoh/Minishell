@@ -71,7 +71,6 @@ int	filter_input(t_info *info, char **input)
 	return (1);
 }
 
-
 int	command_filter(t_info *info, char **content)
 {
 	char	*new_input;

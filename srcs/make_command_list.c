@@ -52,7 +52,7 @@ int		make_command_list(t_info *info, char *input)
 	{
 		if (is_quotation(input[e]))
 			move_end_point(input, &e, input[e]);
-		else if (input[e] == '|')
+		else if (input[e] == PIPE)
 		{
 			if (!append_command(info, input, s, e))
 				return (0);

@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 15:05:24 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/02 15:04:38 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/02 17:37:06 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ typedef struct s_pipe
 # define DOUBLE_Q '\"'
 # define PIPE '|'
 # define DOLLAR '$'
+# define REDIRECT_IN '<'
+# define REDIRECT_OUT '>'
 
 
 # define PATH "PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
