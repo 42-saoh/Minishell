@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 22:00:23 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/08 01:20:32 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/08 02:16:14 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ void	start(t_info *info)
 		// redirect처리
 		if (!redirect_filter(info, (char **)(&temp->content)))
 			return ;
-		printf("===== ===== after ===== =====\n");
-		redirect_in_to_string(*info);
-		redirect_out_to_string(*info);
+		// printf("===== ===== after ===== =====\n");
+		// redirect_in_to_string(*info);
+		// redirect_out_to_string(*info);
 		if (!init_command_info(info, temp->content))
 			return ;
 		if (info->command_cnt > 1)
