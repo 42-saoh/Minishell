@@ -19,10 +19,7 @@ int		append_command(t_info *info, char *input, int s, int e)
 		free(temp);
 		return (error_occur_std(MALLOC_ERR));
 	}
-	if (info->command_cnt == 0)
-		info->commands = data;
-	else
-		ft_lstadd_back(&info->commands, data);
+	ft_lstadd_back(&info->commands, data);
 	info->command_cnt++;
 	return (1);
 }

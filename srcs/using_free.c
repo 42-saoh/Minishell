@@ -6,11 +6,21 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 19:56:59 by taesan            #+#    #+#             */
-/*   Updated: 2021/07/29 16:56:55 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/08 00:21:20 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+
+void	redirect_in_free(void *data)
+{
+	t_redirect_in *temp;
+
+	temp = (t_redirect_in *)(data);
+	if (temp->limiter)
+		ft_free(temp->limiter);
+	ft_free(temp);
+}
 
 void	ft_free(void *data)
 {
