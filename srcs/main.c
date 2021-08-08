@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 22:00:23 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/08 02:16:14 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/08 17:16:33 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	clear_data(t_info *info)
 	if (info->in)
 		ft_lstclear(&info->in, redirect_in_free);
 	if (info->out)
-		ft_lstclear(&info->out, ft_free);
+		ft_lstclear(&info->out, redirect_out_free);
 }
 
 void	start(t_info *info)
@@ -28,7 +28,7 @@ void	start(t_info *info)
 
 	temp = info->commands;
 	printf("cnt : [%d]\n", info->command_cnt);
-	while (temp)
+	while (temp && info->command_cnt >= 0)
 	{
 		if (!command_filter(info, (char **)(&temp->content)))
 			return ;
@@ -40,17 +40,16 @@ void	start(t_info *info)
 		// redirect_out_to_string(*info);
 		if (!init_command_info(info, temp->content))
 			return ;
-		if (info->command_cnt > 1)
+		if (info->command_cnt > 1 && !info->in && !info->out)
 		{
-			printf("is pipe code\n");
+			// 파이프가 존재하면서,
+
+			// 해당 명령어에 
 			// pipe code 
 		}
 		else
 			exec_command(info);
-		if (info->in)
-			ft_lstclear(&info->in, redirect_in_free);
-		if (info->out)
-			ft_lstclear(&info->out, ft_free);
+		info->command_cnt--;
 		temp = temp->next;
 	}
 }

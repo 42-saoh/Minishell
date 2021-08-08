@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 23:50:42 by taesan            #+#    #+#             */
-/*   Updated: 2021/07/31 02:58:53 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/08 18:41:14 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@ char	*create_new_cmd(char *cmd, int len)
 {
 	char	*new_cmd;
 
-	new_cmd = (char *)malloc(sizeof(len + 1));
+	new_cmd = (char *)malloc(sizeof(char) * (len + 2));
 	if (!new_cmd)
 		return (0);
+	ft_bzero(new_cmd, len + 2);
 	new_cmd[0] = '/';
 	ft_strlcpy(new_cmd + 1, cmd, len + 1);
 	return (new_cmd);

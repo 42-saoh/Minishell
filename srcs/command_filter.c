@@ -1,6 +1,6 @@
 #include "../includes/minishell.h"
 
-void	space_filter(char **input, char *new_input)
+void	space_filter(char **input, char *new_input, int len)
 {
 	int		s;
 	int		e;
@@ -8,14 +8,17 @@ void	space_filter(char **input, char *new_input)
 
 	s = 0;
 	idx = 0;
-	while (new_input && (*input)[s])
+	while (s < len && (*input)[s])
 	{
 		e = s;
 		while ((*input)[e] && (*input)[e] == ' ')
 			e++;
-		if (s != e && s != 0 && (*input)[e])
-			new_input[idx++] = ' ';
-		new_input[idx++] = (*input)[e];
+		if (e < len)
+		{
+			if (s != e && s != 0 && (*input)[e])
+				new_input[idx++] = ' ';
+			new_input[idx++] = (*input)[e];
+		}
 		if (s != e)
 			s = e;
 		s++;
@@ -83,6 +86,6 @@ int	command_filter(t_info *info, char **content)
 	if (!new_input)
 		return (error_occur_std(MALLOC_ERR));
 	ft_memset(new_input, 0, len + 1);
-	space_filter(content, new_input);
+	space_filter(content, new_input, len);
 	return (1);
 }
