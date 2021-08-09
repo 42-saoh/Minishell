@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 22:35:08 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/03 20:25:18 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/08 17:23:48 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,11 @@ int		is_redirect(char c)
 	if (c == REDIRECT_IN || c == REDIRECT_OUT)
 		return (1);
 	return (0);
+}
+
+void	ft_close(int fd)
+{
+	if (fd <= 2)
+		return ;
+	close(fd);
 }

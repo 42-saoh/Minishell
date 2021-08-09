@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 14:45:56 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/03 20:25:11 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/08 17:06:57 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 void	child_process(t_info *info)
 {
-	int		dup_r;
 	char	*command;
 
 	command = info->param[0];
+	if (!redirection_dup(info))
+		return ;
 	execve(command, info->param, info->envp);
 	perror("execve");
 	exit(0);
