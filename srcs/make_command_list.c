@@ -24,18 +24,17 @@ int		append_command(t_info *info, char *input, int s, int e)
 	return (1);
 }
 
-void	move_end_point(char *line, int *e, char end_c)
+int		move_end_point(char *line, int *e, char end_c)
 {
 	int idx;
 
 	idx = *e + 1;
 	while (line[idx] && line[idx] != end_c)
 		idx++;
-	if (line[idx] == end_c)
-		idx++;
 	if (!line[idx])
-		idx--;
+		return (error_occur_std(NOT_CLOSED));
 	*e = idx;
+	return (1);
 }
 
 void	init_default(t_info *info)
@@ -56,8 +55,8 @@ int		make_command_list(t_info *info, char *input)
 	init_default(info);
 	while (e < len && input[e])
 	{
-		if (is_quotation(input[e]))
-			move_end_point(input, &e, input[e]);
+		if (is_quotation(input[e]) && !move_end_point(input, &e, input[e]))
+			return (2);
 		else if (input[e] == PIPE)
 		{
 			if (!append_command(info, input, s, e))

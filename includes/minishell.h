@@ -56,7 +56,6 @@ void	exec_command(t_info *info);
 	make command list
 */
 int		make_command_list(t_info *info, char *input);
-void	move_end_point(char *line, int *e, char end_c);
 /*
 	filter
 */

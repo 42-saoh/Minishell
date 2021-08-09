@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 15:05:24 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/08 01:12:56 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/09 16:10:23 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ typedef struct s_pipe
 # define STRJOIN_ERR "ft_strjoin Error"
 # define MAKE_NEW_INPUT_ERR "make new input Error"
 # define FILTER_INPUT_ERR "filter_input error"
+# define NOT_CLOSED "quotes are not closed"
 /*
 	pipex defines ...ref..
 */
@@ -107,6 +108,7 @@ typedef struct s_pipe
 # define UNLINK_ERR "file remove Error"
 # define HERE_DOC "here_doc"
 # define TEMP_FILE ".temp.txt"
+
 
 
 
