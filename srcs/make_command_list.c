@@ -33,19 +33,28 @@ void	move_end_point(char *line, int *e, char end_c)
 		idx++;
 	if (line[idx] == end_c)
 		idx++;
+	if (!line[idx])
+		idx--;
 	*e = idx;
+}
+
+void	init_default(t_info *info)
+{
+	info->command_cnt = 0;
+	info->is_builtin = -1;
 }
 
 int		make_command_list(t_info *info, char *input)
 {
 	int	s;
 	int	e;
+	int	len;
 
 	s = 0;
 	e = 0;
-	info->command_cnt = 0;
-	info->is_builtin = -1;
-	while (input[e])
+	len = ft_strlen(input);
+	init_default(info);
+	while (e < len && input[e])
 	{
 		if (is_quotation(input[e]))
 			move_end_point(input, &e, input[e]);

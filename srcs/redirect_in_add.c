@@ -19,10 +19,7 @@ int		file_open_getfd_in(char *content, int *e)
 		return (0);
 	fd = open(file_nm, O_RDONLY);
 	if (fd == -1)
-	{
 		printf("%s: %s\n", file_nm, NO_SUCH_FILE);
-		fd = 0;
-	}
 	ft_free(file_nm);
 	return (fd);
 }
@@ -48,7 +45,7 @@ int		set_right_fd_in(t_redirect_in *data, char *content, int *e)
 	else
 	{
 		data->right_fd = file_open_getfd_in(content, e);
-		if (!data->right_fd)
+		if (data->right_fd == -1)
 			return (0);
 	}
 	return (1);
@@ -115,6 +112,7 @@ int	redirect_in_add(t_info *info, char **content, int s, char dir)
 			return (0);
 	}
 	else
-		set_right_fd_in(redirect, *content, &e);
+		if (!set_right_fd_in(redirect, *content, &e))
+			return (0);
 	return (remove_redirect(s, e, content));
 }

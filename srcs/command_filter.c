@@ -47,20 +47,20 @@ int		quote_filter(t_info *info, char **input, int s, int *e)
 	return (1);
 }
 
-int	filter_input(t_info *info, char **input)
+int	filter_input(t_info *info, char **input, int len)
 {
 	int		s;
 	int		e;
 
 	e = 0;
-	while ((*input)[e])
+	while (e < len && (*input)[e])
 	{
 		if (is_quotation((*input)[e]))
 		{
 			s = e++;
 			while ((*input)[e] && (*input)[e] != (*input)[s])
 				e++;
-			if ((*input)[s] == (*input)[e])
+			if (e < len && (*input)[s] == (*input)[e])
 			{
 				if (!quote_filter(info, input, s, &e))
 					return (0);
@@ -79,9 +79,9 @@ int	command_filter(t_info *info, char **content)
 	char	*new_input;
 	int		len;
 
-	if (!filter_input(info, content))
-		return (error_occur_std(FILTER_INPUT_ERR));
 	len = ft_strlen((char *)(*content));
+	if (!filter_input(info, content, len))
+		return (error_occur_std(FILTER_INPUT_ERR));
 	new_input = (char *)malloc(sizeof(char) * (len + 1));
 	if (!new_input)
 		return (error_occur_std(MALLOC_ERR));
