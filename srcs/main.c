@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 22:00:23 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/08 17:16:33 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/09 16:14:15 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	start(t_info *info)
 
 int main(int argc, char *argv[], char *envp[])
 {
+	int		r;
 	char	*input;
 	char	*prompt;
 	t_info	info;
@@ -63,7 +64,6 @@ int main(int argc, char *argv[], char *envp[])
 	// 설정의 PS1, PS2로 받아올 수 있도록. ?
 	prompt = "$";
 	// 종료 시그널 받으면 프로그램 끝내야 함.
-
 	ft_memset(&info, 0, sizeof(t_info));
 	info.paths = init_path(envp);
 	if (!info.paths)
@@ -75,9 +75,11 @@ int main(int argc, char *argv[], char *envp[])
 		if (ft_strcmp(input, "") != 0)
 		{
 			add_history(input);
-			if (!make_command_list(&info, input))
+			r = make_command_list(&info, input);
+			if (!r)
 				break ;
-			start(&info);
+			if (r == 1)
+				start(&info);
 			clear_data(&info);
 		}
 		ft_free(input);
