@@ -61,6 +61,7 @@ int		make_command_list(t_info *info, char *input);
 */
 int	command_filter(t_info *info, char **content);
 int	redirect_filter(t_info *info, char **content);
+int	redirect_filter_tmp(t_info *info, char **content);
 /*
 	replace_env
 */

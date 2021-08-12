@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 15:05:24 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/09 16:10:23 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/11 18:22:36 by saoh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_info
 	t_list	*commands; // lstclear함.
 	t_list	*in;
 	t_list	*out;
+	t_list	*redirect_lst;
 }				t_info;
 
 typedef struct s_pipe
@@ -92,6 +93,7 @@ typedef struct s_pipe
 # define STDIN_PIPE 0x1
 # define STDOUT_PIPE 0x2
 # define BUFFER_SIZE 256
+# define FD_MAX 255
 # define PATH "PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # define SPLIT_ERR "ft_split Error"
 # define PARAM_ERR "Please Call [./pipex file1 \"cmd1\" \"cmd2\" file2]"

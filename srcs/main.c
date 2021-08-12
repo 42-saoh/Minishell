@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 22:00:23 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/09 16:14:15 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/12 20:24:43 by saoh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,14 @@ void	clear_data(t_info *info)
 		ft_lstclear(&info->out, redirect_out_free);
 }
 
-void	start(t_info *info)
+void	error_occur_parsing(t_info *info, char *input)
+{
+	printf("PARSING ERROR\n");
+	clear_data(info);
+	ft_free(input);
+}
+
+int	start(t_info *info)
 {
 	t_list *temp;
 
@@ -30,16 +37,16 @@ void	start(t_info *info)
 	printf("cnt : [%d]\n", info->command_cnt);
 	while (temp && info->command_cnt >= 0)
 	{
+		if (!redirect_filter_tmp(info, (char **)(&temp->content)))
+			return (0);
 		if (!command_filter(info, (char **)(&temp->content)))
-			return ;
+			return (0);
 		// redirect처리
-		if (!redirect_filter(info, (char **)(&temp->content)))
-			return ;
 		// printf("===== ===== after ===== =====\n");
 		// redirect_in_to_string(*info);
 		// redirect_out_to_string(*info);
 		if (!init_command_info(info, temp->content))
-			return ;
+			return (0);
 		if (info->command_cnt > 1 && !info->in && !info->out)
 		{
 			// 파이프가 존재하면서,
@@ -50,13 +57,15 @@ void	start(t_info *info)
 		else
 			exec_command(info);
 		info->command_cnt--;
+		if (info->redirect_lst)
+			ft_lstclear(&info->redirect_lst, ft_free);
 		temp = temp->next;
 	}
+	return (1);
 }
 
 int main(int argc, char *argv[], char *envp[])
 {
-	int		r;
 	char	*input;
 	char	*prompt;
 	t_info	info;
@@ -75,11 +84,16 @@ int main(int argc, char *argv[], char *envp[])
 		if (ft_strcmp(input, "") != 0)
 		{
 			add_history(input);
-			r = make_command_list(&info, input);
-			if (!r)
-				break ;
-			if (r == 1)
-				start(&info);
+			if (make_command_list(&info, input) != 1)
+			{
+				error_occur_parsing(&info, input);
+				continue ;
+			}
+			if (!start(&info))
+			{
+				error_occur_parsing(&info, input);
+				continue ;
+			}
 			clear_data(&info);
 		}
 		ft_free(input);
