@@ -9,6 +9,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <limits.h>
+# include <signal.h>
 # include "../libft/libft.h"
 # include "defines.h"
 
@@ -46,12 +47,10 @@ char	**init_path(char *envp[]);
 */
 void	split_free(char **data);
 void	ft_free(void *data);
-void	redirect_in_free(void *data);
-void	redirect_out_free(void *data);
 /*
 	exec
 */
-void	exec_command(t_info *info);
+void		exec_call(t_info *info, int instruct_seq);
 /*
 	make command list
 */
@@ -61,7 +60,6 @@ int		make_command_list(t_info *info, char *input);
 */
 int	command_filter(t_info *info, char **content);
 int	redirect_filter(t_info *info, char **content);
-int	redirect_filter_tmp(t_info *info, char **content);
 /*
 	replace_env
 */
@@ -70,18 +68,8 @@ int		replace_env(char **envp, char **ptr, int s, int *next_idx);
 /*
 	redirect util
 */
-int		get_fd(int s, int e, char *content);
-char	*get_right_str(char *content, int *e);
 int		remove_redirect(int s, int e, char **content);
 
-/*
-	redirect_in_add
-*/
-int	redirect_in_add(t_info *info, char **content, int s, char dir);
-/*
-	redirect_add
-*/
-int	redirect_out_add(t_info *info, char **content, int s, char dir);
 /*
 	gnl
 */
@@ -89,14 +77,18 @@ int		get_next_line(int fd, char **line);
 char	*content_null(char *buf);
 char	*check_first(int fd, char **line);
 /*
-	redirection_dup
-*/
-int		redirection_dup(t_info *info);
-/*
 	test. 지워야 함
 */
 void	command_to_string(t_info info);
-void	redirect_in_to_string(t_info info);
-void	redirect_out_to_string(t_info info);
+/*
+	sig_handler
+*/
+void	sigquit_handler(int signo);
+void	sigint_handler(int signo);
+/*
+	set_connect_pipe
+*/
+int		set_connect_pipe(t_info *info, int seq);
+
 
 #endif

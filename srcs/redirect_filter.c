@@ -1,120 +1,217 @@
 #include "../includes/minishell.h"
 
-/*
-	list에 넣어놓고,
-	몇번째 명령어껀지 구분 되어야 함.
-*/
+void	move_quot_point(char *line, int *e, char end_c)
+{
+	int idx;
 
-/*
-	append도 봐야 함
-	heredoc도 봐야 함
-*/
-// void	set_right_fd(t_redirection *data, char *content, int *e)
-// {
-// 	int	i;
+	idx = *e + 1;
+	while (line[idx] != end_c)
+		idx++;
+	*e = idx + 1;
+}
 
-// 	i = *e + 1;
-// 	// heredoc or append인 경우
-// 	if (content[i] && content[i] == content[*e])
-// 	{
+int	move_redirect_space(char *content, int *e, int idx)
+{
+	int	t_idx;
 
-// 	}
-// 	// 공백제거
-// 	while (content[i] && content[i] == ' ')
-// 		i++;
-// 	// 
-// 	if (content[i] == '&')
-// 	{
+	t_idx = idx + 1;
+	while (content[t_idx] && content[t_idx] == ' ')
+		t_idx++;
+	if (!content[t_idx])
+		return (0);
+	while (content[t_idx] && content[t_idx] != ' ')
+	{
+		if (content[t_idx] == SINGLE_Q || content[t_idx] == DOUBLE_Q)
+			move_quot_point(content, &t_idx, content[t_idx]);
+		else
+			t_idx++;
+	}
+	*e = t_idx;
+	return (1);
+}
 
-// 	}
-// }
+int	move_redirect_and(char *content, int *e, int idx)
+{
+	int t_idx;
 
-/*
-	왼쪽대상 찾기. 바로옆에 딱 붙어서 숫자여야 함.
-*/
-// void	set_left_fd(t_redirection *data, char *content, int *s)
-// {
-// 	int i;
-// 	int	end;
-// 	int fd;
-	
-// 	i = *s - 1;
-// 	fd = 0;
-// 	while(i >= 0 && ft_isdigit(content[i]))
-// 		i--;
-// 	if (i < *s - 1 && (i < 0 || (i >= 0 && content[i] == ' ')))
-// 	{
-// 		i++;
-// 		end = *s;
-// 		*s = i;
-// 		while (i < end)
-// 		{
-// 			fd = (fd * 10) + (content[i] - '0'); 
-// 			i++;
-// 		}
-// 		data->left_fd = fd;
-// 	}
-// }
+	t_idx = idx + 1;
+	while (content[t_idx] && content[t_idx] != ' ')
+	{
+		if (content[t_idx] == SINGLE_Q || content[t_idx] == DOUBLE_Q)
+			move_quot_point(content, &t_idx, content[t_idx]);
+		t_idx++;
+	}
+	if (t_idx == idx + 1)
+		return (move_redirect_space(content, e, idx));
+	*e = t_idx;
+	return (1);
+}
 
-// int	temp_func(t_info *info, char **content, int s, char dir)
-// {
-// 	t_list			*list;
-// 	t_list			*data;
-// 	t_redirection	*redirect;
-// 	int				e;
+int	move_db_redirect_out(char *content, int *e)
+{
+	int	idx;
 
-// 	redirect = (t_redirection *)malloc(sizeof(t_redirection));
-// 	if (!redirect)
-// 		return (0);
-// 	data = ft_lstnew(redirect);
-// 	if (!data)
-// 		return (0);
-// 	if (dir == REDIRECT_IN)
-// 	{
-// 		list = info->in;
-// 		redirect->left_fd = 0;
-// 	}
-// 	else if (dir == REDIRECT_OUT)
-// 	{
-// 		list = info->out;
-// 		redirect->left_fd = 1;
-// 	}
-// 	e = s;
-// 	printf("before => start : [%d], left_fd : [%d]\n", s, redirect->left_fd);
-// 	set_left_fd(redirect, *content, &s);
-// 	printf("after => start : [%d], left_fd : [%d]\n", s, redirect->left_fd);
-// 	// if (content[e + 1] && dir == content[e + 1])
-// 	// {
-// 	// 	if (e ==)
-// 	// 	// here_doc or append
-// 	// }
-// 	// // right fd받아오고, e포인트를 변경.
-// 	// printf("before => end : [%d], right_fd : [%d]\n", e, redirect->right_fd);
-// 	// set_right_fd(&data, *content, &e);
-// 	// printf("after => end : [%d], right_fd : [%d]\n", e, redirect->right_fd);
-	
-// 	// substr
-// 	return (0);
-// }
+	idx = *e + 2;
+	if (!content[idx])
+		return (0);
+	else if (content[idx] == REDIRECT_IN || content[idx] == REDIRECT_OUT)
+		return (0);
+	else if (content[idx] == '&')
+		return (move_redirect_and(content, e, idx));
+	else if (content[idx] == ' ')
+		return (move_redirect_space(content, e, idx));
+	else
+	{
+		while (content[idx] && content[idx] != ' ')
+		{
+			if (content[idx] == SINGLE_Q || content[idx] == DOUBLE_Q)
+				move_quot_point(content, &idx, content[idx]);
+			else
+				idx++;
+		}
+		*e = idx;
+	}
+	return (1);
+}
+
+int	move_db_redirect_in(char *content, int *e)
+{
+	int	idx;
+
+	idx = *e + 2;
+	if (!content[idx])
+		return (0);
+	else if (content[idx] == REDIRECT_IN || content[idx] == REDIRECT_OUT)
+		return (0);
+	else if (content[idx] == '&')
+		return (0);
+	else if (content[idx] == ' ')
+		return (move_redirect_space(content, e, idx));
+	else
+	{
+		while (content[idx] && content[idx] != ' ')
+		{
+			if (content[idx] == SINGLE_Q || content[idx] == DOUBLE_Q)
+				move_quot_point(content, &idx, content[idx]);
+			else
+				idx++;
+		}
+		*e = idx;
+	}
+	return (1);
+}
+
+int	move_sg_redirect_in(char *content, int *e)
+{
+	int	idx;
+
+	idx = *e + 1;
+	if (!content[idx])
+		return (0);
+	else if (content[idx] == REDIRECT_OUT)
+		return (0);
+	else if (content[idx] == '&')
+		return (move_redirect_and(content, e, idx));
+	else if (content[idx] == ' ')
+		return (move_redirect_space(content, e, idx));
+	else
+	{
+		while (content[idx] && content[idx] != ' ')
+		{
+			if (content[idx] == SINGLE_Q || content[idx] == DOUBLE_Q)
+				move_quot_point(content, &idx, content[idx]);
+			else
+				idx++;
+		}
+		*e = idx;
+	}
+	return (1);
+}
+
+int	move_sg_redirect_out(char *content, int *e)
+{
+	int	idx;
+
+	idx = *e + 1;
+	if (!content[idx])
+		return (0);
+	else if (content[idx] == REDIRECT_OUT)
+		return (0);
+	else if (content[idx] == '&')
+		return (move_redirect_and(content, e, idx));
+	else if (content[idx] == ' ')
+		return (move_redirect_space(content, e, idx));
+	else
+	{
+		while (content[idx] && content[idx] != ' ')
+		{
+			if (content[idx] == SINGLE_Q || content[idx] == DOUBLE_Q)
+				move_quot_point(content, &idx, content[idx]);
+			else
+				idx++;
+		}
+		*e = idx;
+	}
+	return (1);
+}
+
+int	redirect_get_end(char *content, int *e)
+{
+	int i;
+
+	if (content[*e] == REDIRECT_IN && content[*e + 1] == REDIRECT_IN)
+		i = move_db_redirect_in(content, e);
+	else if (content[*e] == REDIRECT_OUT && content[*e + 1] == REDIRECT_OUT)
+		i = move_db_redirect_out(content, e);
+	else if (content[*e] == REDIRECT_IN)
+		i = move_sg_redirect_in(content, e);
+	else if (content[*e] == REDIRECT_OUT)
+		i = move_sg_redirect_out(content, e);
+	else
+		i = 0;
+	return (i);
+}
+
+int	redirect_add(t_info *info, char **content, int *i)
+{
+	int	s;
+	int	e;
+
+	s = 1;
+	e = *i;
+	while (*i >= s)
+	{
+		if ((*content)[e - s] >= '0' && (*content)[e - s] <= '9')
+			s++;
+		else
+			break ;
+	}
+	if (e >= s && (*content)[e - s] != ' ')
+		s = 1;
+	s = e - s + 1;
+	if (!redirect_get_end(*content, &e))
+		return (0);
+	ft_lstadd_back(&info->redirect_lst, ft_lstnew(ft_substr(*content, s, e - s)));
+	*i = s;
+	return (remove_redirect(s, e, content));
+}
 
 int	redirect_filter(t_info *info, char **content)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while ((*content)[i])
 	{
-		if (is_redirect((*content)[i]))
+		if ((*content)[i] == SINGLE_Q || (*content)[i] == DOUBLE_Q)
+			move_quot_point(*content, &i, (*content)[i]);
+		else if ((*content)[i] == REDIRECT_IN || (*content)[i] == REDIRECT_OUT)
 		{
-			if ((*content)[i] == REDIRECT_IN && \
-				!redirect_in_add(info, content, i, REDIRECT_IN))
-					return (0);
-			else if ((*content)[i] == REDIRECT_OUT && \
-				!redirect_out_add(info, content, i, REDIRECT_OUT))
-					return (0);
-			i = -1;
+			if (!redirect_add(info, content, &i))
+				return (0);
 		}
-		i++;
+		else
+			i++;
 	}
 	return (1);
 }
