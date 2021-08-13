@@ -1,5 +1,14 @@
 #include "../includes/minishell.h"
 
+void	*get_numpoint(int num)
+{
+	int	*result;
+
+	result = (int *)malloc(sizeof(int));
+	*result = num;
+	return ((void *)result);
+}
+
 int		append_command(t_info *info, char *input, int s, int e)
 {
 	char	*temp;
@@ -21,6 +30,46 @@ int		append_command(t_info *info, char *input, int s, int e)
 	}
 	ft_lstadd_back(&info->commands, data);
 	info->command_cnt++;
+	return (1);
+}
+
+int		append_pipe_command(t_info *info, char *input, int *s, int *e)
+{
+	if (input[*e + 1] == PIPE)
+	{
+		if (!append_command(info, input, *s, *e))
+			return (0);
+		ft_lstadd_back(&info->commands_symbol, get_numpoint(DB_PIPE));
+		*s = *e + 2;
+		*e = *e + 1;
+	}
+	else
+	{
+		if (!append_command(info, input, *s, *e))
+			return (0);
+		ft_lstadd_back(&info->commands_symbol, get_numpoint(SG_PIPE));
+		*s = *e + 1;
+	}
+	return (1);
+}
+
+int		append_amper_command(t_info *info, char *input, int *s, int *e)
+{
+	if (input[*e + 1] == '&')
+	{
+		if (!append_command(info, input, *s, *e))
+			return (0);
+		ft_lstadd_back(&info->commands_symbol, get_numpoint(DB_AMPER));
+		*s = *e + 2;
+		*e = *e + 1;
+	}
+	else
+	{
+		if (*e == 0)
+			return (0);
+		if (input[*e - 1] != '>' && input[*e - 1] != '<')
+			return (0);
+	}
 	return (1);
 }
 
@@ -48,7 +97,8 @@ int		make_command_list(t_info *info, char *input)
 	int	s;
 	int	e;
 	int	len;
-
+/// 만약 함수의 줄수가 넘는다면 s, e, len 을 포함하는 구조체를 만들고
+/// init_defualt 에서 초기화를 한다면 5칸을 줄일 수 있다.
 	s = 0;
 	e = 0;
 	len = ft_strlen(input);
@@ -59,9 +109,13 @@ int		make_command_list(t_info *info, char *input)
 			return (2);
 		else if (input[e] == PIPE)
 		{
-			if (!append_command(info, input, s, e))
+			if (!append_pipe_command(info, input, &s, &e))
 				return (0);
-			s = e + 1;
+		}
+		else if (input[e] == '&')
+		{
+			if (!append_amper_command(info, input, &s, &e))
+				return (0);
 		}
 		e++;
 	}

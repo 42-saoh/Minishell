@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 22:00:23 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/12 20:24:43 by saoh             ###   ########.fr       */
+/*   Updated: 2021/08/13 14:27:24 by saoh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	clear_data(t_info *info)
 		ft_lstclear(&info->in, redirect_in_free);
 	if (info->out)
 		ft_lstclear(&info->out, redirect_out_free);
+	if (info->redirect_lst)
+		ft_lstclear(&info->redirect_lst, ft_free);
 }
 
 void	error_occur_parsing(t_info *info, char *input)

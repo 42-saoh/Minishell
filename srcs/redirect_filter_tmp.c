@@ -201,7 +201,6 @@ int	redirect_filter_tmp(t_info *info, char **content)
 	int	i;
 
 	i = 0;
-	info->redirect_lst = 0;
 	while ((*content)[i])
 	{
 		if ((*content)[i] == SINGLE_Q || (*content)[i] == DOUBLE_Q)

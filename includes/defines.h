@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 15:05:24 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/11 18:22:36 by saoh             ###   ########.fr       */
+/*   Updated: 2021/08/13 14:32:50 by saoh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_info
 	t_list	*in;
 	t_list	*out;
 	t_list	*redirect_lst;
+	t_list	*commands_symbol;
 }				t_info;
 
 typedef struct s_pipe
@@ -73,6 +74,9 @@ typedef struct s_pipe
 # define DOLLAR '$'
 # define REDIRECT_IN '<'
 # define REDIRECT_OUT '>'
+# define SG_PIPE 1
+# define DB_PIPE 2
+# define DB_AMPER 3
 
 
 # define PATH "PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
