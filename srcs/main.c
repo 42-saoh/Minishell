@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 22:00:23 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/14 01:06:54 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/14 15:08:28 by saoh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void	clear_data(t_info *info)
 		ft_lstclear(&info->commands, ft_free);
 	if (info->redirect_lst)
 		ft_lstclear(&info->redirect_lst, ft_free);
-	// commands_symbol은 안해도 되는지?
+	if (info->commands_symbol)
+		ft_lstclear(&info->commands_symbol, ft_free);
 }
 
 void	error_occur_parsing(t_info *info, char *input)
@@ -55,6 +56,18 @@ int	start(t_info *info)
 	return (1);
 }
 
+int	check_input(char *input)
+{
+	int	i;
+
+	i = 0;
+	while (input[i] == ' ')
+		i++;
+	if (!input[i])
+		return (0);
+	return (1);
+}
+
 int main(int argc, char *argv[], char *envp[])
 {
 	char	*input;
@@ -72,7 +85,7 @@ int main(int argc, char *argv[], char *envp[])
 	while(1)
 	{
 		input = readline(prompt);
-		if (ft_strcmp(input, "") != 0)
+		if (check_input(input))
 		{
 			add_history(input);
 			if (make_command_list(&info, input) != 1)

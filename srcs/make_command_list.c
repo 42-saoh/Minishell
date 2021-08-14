@@ -20,7 +20,7 @@ int		append_command(t_info *info, char *input, int s, int e)
 	if (is_empty(temp))
 	{
 		free(temp);
-		return (1);
+		return (0);
 	}
 	data = ft_lstnew(temp);
 	if (!data)

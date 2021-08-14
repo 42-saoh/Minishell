@@ -39,7 +39,8 @@ int	move_redirect_and(char *content, int *e, int idx)
 	{
 		if (content[t_idx] == SINGLE_Q || content[t_idx] == DOUBLE_Q)
 			move_quot_point(content, &t_idx, content[t_idx]);
-		t_idx++;
+		else
+			t_idx++;
 	}
 	if (t_idx == idx + 1)
 		return (move_redirect_space(content, e, idx));
