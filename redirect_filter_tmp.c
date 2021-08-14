@@ -1,5 +1,141 @@
 #include "../includes/minishell.h"
 
+void	ft_free(void *data)
+{
+	if (!data)
+		return ;
+	free(data);
+	data = 0;
+}
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char	*dst;
+
+	if (!s)
+		return (0);
+	if (!(dst = (char *)malloc(sizeof(char) * (len + 1))))
+		return (0);
+	if (start >= ft_strlen(s))
+		ft_strlcpy(dst, "", 2);
+	else
+		ft_strlcpy(dst, (s + start), len + 1);
+	return (dst);
+}
+size_t		ft_strlen(const char *s)
+{
+	size_t i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
+
+size_t	ft_strlcpy(char *dest, const char *src, size_t dstsize)
+{
+	size_t src_len;
+	size_t i;
+
+	if (!src)
+		return (0);
+	src_len = 0;
+	while (src[src_len])
+		src_len++;
+	if (!dest)
+		return (src_len);
+	if (dstsize)
+	{
+		i = 0;
+		while (src[i] && i + 1 < dstsize)
+		{
+			dest[i] = src[i];
+			i++;
+		}
+		dest[i] = '\0';
+	}
+	return (src_len);
+}
+
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	char	*dst;
+	int		s1_len;
+	int		s2_len;
+
+	if (!s1 || !s2)
+		return (0);
+	s1_len = ft_strlen(s1);
+	s2_len = ft_strlen(s2);
+	if (!(dst = (char *)malloc(s1_len + s2_len + 1)))
+		return (0);
+	ft_strlcpy(dst, s1, (s1_len + 1));
+	ft_strlcpy(dst + s1_len, s2, (s2_len + 1));
+	return (dst);
+}
+
+void	ft_lstadd_back(t_list **lst, t_list *new)
+{
+	t_list *last;
+
+	if (!lst || !new)
+		return ;
+	if (!*lst)
+		*lst = new;
+	else
+	{
+		last = ft_lstlast(lst[0]);
+		last->next = new;
+	}
+}
+
+t_list	*ft_lstlast(t_list *lst)
+{
+	while (lst)
+	{
+		if (!lst->next)
+			return (lst);
+		lst = lst->next;
+	}
+	return (lst);
+}
+
+t_list	*ft_lstnew(void *content)
+{
+	t_list	*list;
+
+	if (!(list = (t_list *)malloc(sizeof(t_list))))
+		return (0);
+	list->content = content;
+	list->next = NULL;
+	return (list);
+}
+
+int		remove_redirect(int s, int e, char **content)
+{
+	char *left;
+	char *right;
+	char *new_input;
+
+	new_input = 0;
+	left = ft_substr(*content, 0, s);
+	if (left)
+	{
+		right = ft_substr(*content + e, 0, ft_strlen(*content) - e);
+		if (right)
+		{
+			new_input = ft_strjoin(left, right);
+			ft_free(right);
+		}
+		ft_free(left);
+	}
+	if (!new_input)
+		return (0);
+	ft_free(*content);
+	*content = new_input;
+	return (1);
+}
+
 void	move_quot_point(char *line, int *e, char end_c)
 {
 	int idx;
@@ -201,6 +337,7 @@ int	redirect_filter_tmp(t_info *info, char **content)
 	int	i;
 
 	i = 0;
+	info->redirect_lst = 0;
 	while ((*content)[i])
 	{
 		if ((*content)[i] == SINGLE_Q || (*content)[i] == DOUBLE_Q)
@@ -214,4 +351,20 @@ int	redirect_filter_tmp(t_info *info, char **content)
 			i++;
 	}
 	return (1);
+}
+
+int main()
+{
+	t_info info;
+	int		i;
+	char	*a;
+	
+	a = readline("test : ");
+	i = redirect_filter_tmp(&info, &a);
+	printf("a : %s\n", a);
+	while(info.redirect_lst)
+	{
+		printf("%s\n", (char *)info.redirect_lst->content);
+		info.redirect_lst = info.redirect_lst->next;
+	}
 }

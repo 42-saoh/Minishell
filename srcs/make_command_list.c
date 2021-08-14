@@ -86,10 +86,13 @@ int		move_end_point(char *line, int *e, char end_c)
 	return (1);
 }
 
-void	init_default(t_info *info)
+int		init_default(t_info *info)
 {
 	info->command_cnt = 0;
 	info->is_builtin = -1;
+	if (pipe(info->pipe_out) == -1)
+		return (error_occur_perror(PIPE_ERR));
+	return (1);
 }
 
 int		make_command_list(t_info *info, char *input)
@@ -97,8 +100,8 @@ int		make_command_list(t_info *info, char *input)
 	int	s;
 	int	e;
 	int	len;
-/// 만약 함수의 줄수가 넘는다면 s, e, len 을 포함하는 구조체를 만들고
-/// init_defualt 에서 초기화를 한다면 5칸을 줄일 수 있다.
+	/// 만약 함수의 줄수가 넘는다면 s, e, len 을 포함하는 구조체를 만들고
+	/// init_defualt 에서 초기화를 한다면 5칸을 줄일 수 있다.
 	s = 0;
 	e = 0;
 	len = ft_strlen(input);

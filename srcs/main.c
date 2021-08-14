@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 22:00:23 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/13 14:27:24 by saoh             ###   ########.fr       */
+/*   Updated: 2021/08/14 01:06:54 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,14 @@ void	clear_data(t_info *info)
 {
 	if (info->commands)
 		ft_lstclear(&info->commands, ft_free);
-	if (info->in)
-		ft_lstclear(&info->in, redirect_in_free);
-	if (info->out)
-		ft_lstclear(&info->out, redirect_out_free);
 	if (info->redirect_lst)
 		ft_lstclear(&info->redirect_lst, ft_free);
+	// commands_symbol은 안해도 되는지?
 }
 
 void	error_occur_parsing(t_info *info, char *input)
 {
-	printf("PARSING ERROR\n");
+	printf("%s\n", PARSE_ERR);
 	clear_data(info);
 	ft_free(input);
 }
@@ -34,31 +31,23 @@ void	error_occur_parsing(t_info *info, char *input)
 int	start(t_info *info)
 {
 	t_list *temp;
+	int		seq;
 
 	temp = info->commands;
-	printf("cnt : [%d]\n", info->command_cnt);
+	seq = 0;
 	while (temp && info->command_cnt >= 0)
 	{
-		if (!redirect_filter_tmp(info, (char **)(&temp->content)))
+		info->command_cnt--;
+		if (!redirect_filter(info, (char **)(&temp->content)))
 			return (0);
 		if (!command_filter(info, (char **)(&temp->content)))
 			return (0);
-		// redirect처리
-		// printf("===== ===== after ===== =====\n");
-		// redirect_in_to_string(*info);
-		// redirect_out_to_string(*info);
 		if (!init_command_info(info, temp->content))
 			return (0);
-		if (info->command_cnt > 1 && !info->in && !info->out)
-		{
-			// 파이프가 존재하면서,
-
-			// 해당 명령어에 
-			// pipe code 
-		}
-		else
-			exec_command(info);
-		info->command_cnt--;
+		if (info->command_cnt != 0 && !set_connect_pipe(info, seq))
+		 	return (0);
+		exec_call(info, seq++);
+		// commands_symbol은 안해도 되는지?
 		if (info->redirect_lst)
 			ft_lstclear(&info->redirect_lst, ft_free);
 		temp = temp->next;

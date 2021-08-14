@@ -1,0 +1,30 @@
+ls -altr > r.txt
+ls -altr > r1 > r2 0<&1
+cat < f1
+cat << e1
+cat < f1 << e1 << e2
+cat < &1
+cat 0<1
+echo 1<0
+echo 1<&0
+cat f1 >2 >3 >4 >5
+cat >2 >3 >4 >5 f1
+< f1 cat
+< f1 cat -e
+< f1 cat -e > r1
+<< f1 >> r1
+ls -z > file 2>&1
+ls -z 2>&1 > file
+cat 8<f2
+ls | wc -l > r1 > r2 > r3
+cat file r1>r2
+1>>&2
+1>>>>>>>>>>>>&2
+1>&            2
+cat 1>&            2 f1
+cat 1<<<2
+cat f1 1>2 >3
+cat f1 1>2>3
+cat f1 >a>b>c
+<< e1&e2
+cat < f1 > r
