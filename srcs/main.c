@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 22:00:23 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/14 15:08:28 by saoh             ###   ########.fr       */
+/*   Updated: 2021/08/17 14:02:31 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,6 @@ int	start(t_info *info)
 		if (info->command_cnt != 0 && !set_connect_pipe(info, seq))
 		 	return (0);
 		exec_call(info, seq++);
-		// commands_symbol은 안해도 되는지?
-		if (info->redirect_lst)
-			ft_lstclear(&info->redirect_lst, ft_free);
 		temp = temp->next;
 	}
 	return (1);
