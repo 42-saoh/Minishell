@@ -8,7 +8,13 @@ t_list	*get_numpoint(int num)
 	ptr = (int *)malloc(sizeof(int));
 	if (!ptr)
 		return (0);
-	data = ft_lstnew(ptr);
+	*ptr = num;
+	data = ft_lstnew((void *)ptr);
+	if (!data)
+	{
+		free(ptr);
+		return (0);
+	}
 	return (data);
 }
 
@@ -38,11 +44,17 @@ int		append_command(t_info *info, char *input, int s, int e)
 
 int		append_pipe_command(t_info *info, char *input, int *s, int *e)
 {
+	t_list	*data;
+
 	if (input[*e + 1] == PIPE)
 	{
 		if (!append_command(info, input, *s, *e))
 			return (0);
-		ft_lstadd_back(&info->commands_symbol, get_numpoint(DB_PIPE));
+		data = get_numpoint(DB_PIPE);
+		if (!data)
+			return (0);
+		ft_lstadd_back(&info->commands_symbol, data);
+			return (0);
 		*s = *e + 2;
 		*e = *e + 1;
 	}
@@ -50,7 +62,10 @@ int		append_pipe_command(t_info *info, char *input, int *s, int *e)
 	{
 		if (!append_command(info, input, *s, *e))
 			return (0);
-		ft_lstadd_back(&info->commands_symbol, get_numpoint(SG_PIPE));
+		data = get_numpoint(SG_PIPE);
+		if (!data)
+			return (0);
+		ft_lstadd_back(&info->commands_symbol, data);
 		*s = *e + 1;
 	}
 	return (1);
@@ -58,11 +73,16 @@ int		append_pipe_command(t_info *info, char *input, int *s, int *e)
 
 int		append_amper_command(t_info *info, char *input, int *s, int *e)
 {
+	t_list	*data;
+
 	if (input[*e + 1] == '&')
 	{
 		if (!append_command(info, input, *s, *e))
 			return (0);
-		ft_lstadd_back(&info->commands_symbol, get_numpoint(DB_AMPER));
+		data = get_numpoint(DB_AMPER);
+		if (!data)
+			return (0);
+		ft_lstadd_back(&info->commands_symbol, data);
 		*s = *e + 2;
 		*e = *e + 1;
 	}
