@@ -10,6 +10,7 @@
 # include <fcntl.h>
 # include <limits.h>
 # include <signal.h>
+# include <unistd.h>
 # include "../libft/libft.h"
 # include "defines.h"
 
@@ -69,7 +70,9 @@ int		replace_env(char **envp, char **ptr, int s, int *next_idx);
 	redirect util
 */
 int		remove_redirect(int s, int e, char **content);
-
+int		get_ampersand_fd(char *content, int i, int fds[2]);
+char	*get_right_str(char *content, int i);
+void	redirection_dup(int fds[2]);
 /*
 	gnl
 */
@@ -89,6 +92,16 @@ void	sigint_handler(int signo);
 	set_connect_pipe
 */
 int		set_connect_pipe(t_info *info, int seq);
+/*
+	exec_redirection
+*/
+int		exec_redirection(t_info *info);
+
+/*
+	redirect_in_dup
+*/
+int		redirect_in_dup(t_info *info, int std_in, char *content);
+int		redirect_out_dup(int fds[2], char *content);
 
 
 #endif

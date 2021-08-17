@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 14:45:56 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/17 14:04:21 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/18 03:15:36 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,16 @@
 	pipex는 out또한 반드시 존재했음.
 	그래서 dup2대상이 항상 in, out동일하게 처리해야 했음. 마지막에만 파일로 변경.
 */
-
 int	exec_dup2(int pipe[2], int flags)
 {
 	if ((flags & STDIN_PIPE) && dup2(pipe[READ_FD_IDX], STDIN_FILENO) < 0)
 		return (error_occur_perror(DUP2_ERR));
 	if ((flags & STDOUT_PIPE) && dup2(pipe[WRITE_FD_IDX], STDOUT_FILENO) < 0)
 		return (error_occur_perror(DUP2_ERR));
-
-	// redirection_list를 돌면서, 입출력 처리.
+	if (flags & STDIN_PIPE)
+		close(pipe[READ_FD_IDX]);
+	if (flags & STDOUT_PIPE)
+		close(pipe[WRITE_FD_IDX]);
 	return (1);
 }
 
@@ -34,22 +35,20 @@ void	child_process(t_info *info, int pipe[2], int flags)
 	int		dup_r;
 	char	*command;
 
+	// redirection을 처리한다. 표준 입, 출력(0, 1)의 파일테이블 포인터가 파이프로 연결되었어도.
+	// redirection에 변경되면, 파이프 통신을 안한다.	
 	dup_r = 1;
 	if (pipe)
-	{
 		dup_r = exec_dup2(pipe, flags);
-		close(pipe[0]);
-		close(pipe[1]);
-	}
+	if (!exec_redirection(info))
+		return ;
+	// built in 함수 확인하기 , exec_result 확인하기.
 	if (dup_r)
 	{
 		command = info->param[0];
-		if (execve(command, info->param, info->envp) == -1)
-		{
-			// 여기에 걸리면, && 또는 ||를 확인하여, 다음프로세스를 진행할지 여부를 결정한다.
-			perror("execve");
-			exit(0);
-		}
+		execve(command, info->param, info->envp);
+		perror("execve");
+		exit(EXEC_FAIL);
 	}
 }
 
@@ -57,24 +56,27 @@ void	parent_process(t_info *info, int pipe[2], int flags)
 {
 	int	status;
 	int	r;
+	struct stat sb;
 
 	r = wait(&status);
 	while (r == -1 && errno == EINTR)
 		r = wait(&status);
 	if (r == -1)
 		perror(WAIT_ERR);
-	split_free(info->param);
-
-	// commands_symbol은 안해도 되는지?
-	if (info->redirect_lst)
-		ft_lstclear(&info->redirect_lst, ft_free);
-	info->param = 0;
+	info->exec_result = WEXITSTATUS(status);
 	if (!pipe)
 		pipe = info->pipe_out;
 	if (flags & STDIN_PIPE)
 		close(pipe[READ_FD_IDX]);
 	if (flags & STDOUT_PIPE)
 		close(pipe[WRITE_FD_IDX]);
+	split_free(info->param);
+	info->param = 0;
+	if (info->redirect_lst)
+		ft_lstclear(&info->redirect_lst, ft_free);
+	// 그냥 에러만? 시스템 종료되야 하나?, 파일 존재유무 stat으로 충분한가...
+	if (stat(TEMP_FILE, &sb) == 0 && unlink(TEMP_FILE) == -1)
+		printf("%s\n", UNLINK_ERR);
 }
 
 void	exec_command(t_info *info, int pipe[2], int flags)
