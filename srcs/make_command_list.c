@@ -1,12 +1,15 @@
 #include "../includes/minishell.h"
 
-void	*get_numpoint(int num)
+t_list	*get_numpoint(int num)
 {
-	int	*result;
+	t_list	*data;
+	int		*ptr;
 
-	result = (int *)malloc(sizeof(int));
-	*result = num;
-	return ((void *)result);
+	ptr = (int *)malloc(sizeof(int));
+	if (!ptr)
+		return (0);
+	data = ft_lstnew(ptr);
+	return (data);
 }
 
 int		append_command(t_info *info, char *input, int s, int e)

@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 14:45:56 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/14 00:46:25 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/17 14:04:21 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,10 @@ void	parent_process(t_info *info, int pipe[2], int flags)
 	if (r == -1)
 		perror(WAIT_ERR);
 	split_free(info->param);
+
+	// commands_symbol은 안해도 되는지?
+	if (info->redirect_lst)
+		ft_lstclear(&info->redirect_lst, ft_free);
 	info->param = 0;
 	if (!pipe)
 		pipe = info->pipe_out;
