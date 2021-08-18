@@ -136,7 +136,7 @@ int	move_sg_redirect_out(char *content, int *e)
 	idx = *e + 1;
 	if (!content[idx])
 		return (0);
-	else if (content[idx] == REDIRECT_OUT)
+	else if (content[idx] == REDIRECT_IN)
 		return (0);
 	else if (content[idx] == '&')
 		return (move_redirect_and(content, e, idx));

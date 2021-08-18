@@ -54,7 +54,6 @@ int		append_pipe_command(t_info *info, char *input, int *s, int *e)
 		if (!data)
 			return (0);
 		ft_lstadd_back(&info->commands_symbol, data);
-			return (0);
 		*s = *e + 2;
 		*e = *e + 1;
 	}
@@ -115,6 +114,9 @@ int		init_default(t_info *info)
 	info->is_builtin = -1;
 	if (pipe(info->pipe_out) == -1)
 		return (error_occur_perror(PIPE_ERR));
+	info->std_in = dup(STDIN_FILENO);
+	if (info->std_in == -1)
+		return (error_occur_perror("dup"));
 	return (1);
 }
 

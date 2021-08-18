@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 22:00:23 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/17 14:02:31 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/18 03:13:44 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	clear_data(t_info *info)
 		ft_lstclear(&info->redirect_lst, ft_free);
 	if (info->commands_symbol)
 		ft_lstclear(&info->commands_symbol, ft_free);
+	ft_close(info->std_in);
 }
 
 void	error_occur_parsing(t_info *info, char *input)
@@ -29,28 +30,43 @@ void	error_occur_parsing(t_info *info, char *input)
 	ft_free(input);
 }
 
-int	start(t_info *info)
+int	check_finish(t_info *info)
 {
-	t_list *temp;
+	int symbol;
+
+	if (info->commands_symbol)
+	{
+		symbol = *(int *)info->commands_symbol->content;
+		if ((symbol == DB_PIPE || symbol == DB_AMPER) && info->exec_result == EXEC_FAIL)
+			return (1) ;
+		info->commands_symbol = info->commands_symbol->next;
+	}
+	return (0);
+}
+
+void	start(t_info *info)
+{
+	t_list	*commands;
 	int		seq;
 
-	temp = info->commands;
+	commands = info->commands;
 	seq = 0;
-	while (temp && info->command_cnt >= 0)
+	while (commands && info->command_cnt >= 0)
 	{
 		info->command_cnt--;
-		if (!redirect_filter(info, (char **)(&temp->content)))
-			return (0);
-		if (!command_filter(info, (char **)(&temp->content)))
-			return (0);
-		if (!init_command_info(info, temp->content))
-			return (0);
+		if (!redirect_filter(info, (char **)(&commands->content)))
+			return ;
+		if (!command_filter(info, (char **)(&commands->content)))
+			return ;
+		if (!init_command_info(info, commands->content))
+			return ;
 		if (info->command_cnt != 0 && !set_connect_pipe(info, seq))
-		 	return (0);
+		 	return ;
 		exec_call(info, seq++);
-		temp = temp->next;
+		if (check_finish(info))
+			return ;
+		commands = commands->next;
 	}
-	return (1);
 }
 
 int	check_input(char *input)
@@ -82,7 +98,7 @@ int main(int argc, char *argv[], char *envp[])
 	while(1)
 	{
 		input = readline(prompt);
-		if (check_input(input))
+		if (input && check_input(input))
 		{
 			add_history(input);
 			if (make_command_list(&info, input) != 1)
@@ -90,11 +106,7 @@ int main(int argc, char *argv[], char *envp[])
 				error_occur_parsing(&info, input);
 				continue ;
 			}
-			if (!start(&info))
-			{
-				error_occur_parsing(&info, input);
-				continue ;
-			}
+			start(&info);
 			clear_data(&info);
 		}
 		ft_free(input);

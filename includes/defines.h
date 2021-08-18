@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 15:05:24 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/14 00:21:03 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/18 03:06:10 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,20 @@
 # define DEFINES_H
 
 #include "minishell.h"
+
+typedef struct	s_redirect_in
+{
+	int		left_fd;
+	int		right_fd;
+	char	*limiter; // 여러개 << 들어온경우 here_doc단어가 순서대로 나와야 끝남.
+}				t_redirect_in;
+
+typedef struct	s_redirect_out
+{
+	int		left_fd;
+	int		right_fd;
+	int		is_append; // >> 여부체크하여, open옵션 다르게 주기
+}				t_redirect_out;
 
 /*
 	명령어에서 아래 문자들이 존재하는지 ..
@@ -24,14 +38,17 @@ typedef struct s_info
 	char	**paths; // 계속 씀.
 	char	**param; // parents에서 free됨.
 	char	**envp; // 계속 씀.
-	int		command_cnt; // 초기화
-	int		is_builtin; // 초기화
-	t_list	*commands; // lstclear함.
-	t_list	*redirect_lst;
-	t_list	*commands_symbol;
+	int		command_cnt; // 유동적.
+	int		is_builtin; // param만들면서 체크 함.
+	t_list	*commands; // 마지막에 clear
+	t_list	*commands_symbol; // 마지막에 clear
+	t_list	*redirect_lst; // exec하고 clear
 	int			pipe_in[2];
 	int			pipe_out[2];
 	int			connect_pipe[2];
+	int			redirect_fd[2];
+	int			std_in;
+	int			exec_result; // exec하고 init
 }				t_info;
 
 # define INPUT_CHANGED 1
@@ -52,6 +69,7 @@ typedef struct s_info
 # define SG_PIPE 1
 # define DB_PIPE 2
 # define DB_AMPER 3
+# define EXEC_FAIL 42
 
 
 # define PATH "PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
@@ -77,7 +95,12 @@ typedef struct s_info
 # define PARSE_ERR "PARSING ERROR"
 # define SPLIT_ERR "ft_split Error"
 # define INPUT_OPEN_ERR "input file open"
+
+/* bash Error */
 # define NO_SUCH_FILE "No such file or directory"
+# define BAD_FD "Bad file descriptor"
+# define UNEXPECTED_TOKEN "syntax error near unexpected token `&\'"
+
 # define OUTPUT_OPEN_ERR "redirection output file open"
 # define COMMAND_NOT_EXIST "command program not exist"
 # define ENV_PATH_NOT_EXIST "system env PATH not exist"
@@ -86,7 +109,6 @@ typedef struct s_info
 # define PIPE_ERR "create pipe Error"
 # define READ_ERR "read result [-1]"
 # define UNLINK_ERR "file remove Error"
-# define HERE_DOC "here_doc"
 # define TEMP_FILE ".temp.txt"
 
 
