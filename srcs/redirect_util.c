@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/07 21:17:51 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/18 01:11:29 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/19 13:52:43 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ char	*get_right_str(char *content, int i)
 	left(fds[0])는 반드시 fd값이 들어오기 때문에,
 	별도로 close해줄 필요는 없음.
 */
-void	redirection_dup(int fds[2])
+void	redirection_dup_exec(int fds[2])
 {
 	// printf("fds[0] : %d, fds[1] : %d\n", fds[0], fds[1]);
 	dup2(fds[1], fds[0]);

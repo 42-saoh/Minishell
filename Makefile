@@ -15,8 +15,9 @@ SRC 	=	main.c error.c utils.c check.c init.c \
 			command_filter.c exec_cmd.c using_free.c \
 			make_command_list.c replace_env.c redirect_util.c \
 			get_next_line_utils.c get_next_line.c sig_handler.c \
-			set_connect_pipe.c redirect_filter.c exec_redirection.c\
-			redirection_in_dup.c redirection_out_dup.c test_file.c
+			set_connect_pipe.c redirect_filter.c redirection_dup.c\
+			redirection_in_dup.c redirection_out_dup.c exec_builtin.c \
+			test_file.c
 
 OBJ_FILES = $(SRC:.c=.o)
 OBJS	= $(addprefix $(OBJ_DIR), $(OBJ_FILES))

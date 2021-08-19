@@ -42,12 +42,14 @@ void	wait_closing_quote(char start_q);
 */
 int		init_info(t_info *info);
 int		init_command_info(t_info *info, char *input);
-char	**init_path(char *envp[]);
+int		init_envp(t_info *info, char *envp[]);
 /*
 	using free
 */
 void	split_free(char **data);
 void	ft_free(void *data);
+void	clear_all_data(t_info *info);
+void	clear_data(t_info *info);
 /*
 	exec
 */
@@ -72,7 +74,7 @@ int		replace_env(char **envp, char **ptr, int s, int *next_idx);
 int		remove_redirect(int s, int e, char **content);
 int		get_ampersand_fd(char *content, int i, int fds[2]);
 char	*get_right_str(char *content, int i);
-void	redirection_dup(int fds[2]);
+void	redirection_dup_exec(int fds[2]);
 /*
 	gnl
 */
@@ -95,13 +97,16 @@ int		set_connect_pipe(t_info *info, int seq);
 /*
 	exec_redirection
 */
-int		exec_redirection(t_info *info);
+int		redirection_dup(t_info *info);
 
 /*
 	redirect_in_dup
 */
 int		redirect_in_dup(t_info *info, int std_in, char *content);
 int		redirect_out_dup(int fds[2], char *content);
-
+/*
+	exec_builtin
+*/
+void	exec_builtin(int cmd, t_info *info);
 
 #endif

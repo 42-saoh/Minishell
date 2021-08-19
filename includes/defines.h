@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 15:05:24 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/18 03:06:10 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/19 13:57:30 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_info
 	t_list	*commands; // 마지막에 clear
 	t_list	*commands_symbol; // 마지막에 clear
 	t_list	*redirect_lst; // exec하고 clear
+	int			envp_cnt;
 	int			pipe_in[2];
 	int			pipe_out[2];
 	int			connect_pipe[2];

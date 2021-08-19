@@ -85,6 +85,6 @@ int	redirect_in_dup(t_info *info, int std_in, char *content)
 	else
 		if (!set_right_fd_in(content, i, info->redirect_fd))
 			return (0);
-	redirection_dup(info->redirect_fd);
+	redirection_dup_exec(info->redirect_fd);
 	return (1);
 }
