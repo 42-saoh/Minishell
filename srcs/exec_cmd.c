@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 14:45:56 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/18 03:15:36 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/19 13:49:50 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	exec_dup2(int pipe[2], int flags)
 	return (1);
 }
 
+
 void	child_process(t_info *info, int pipe[2], int flags)
 {
 	int		dup_r;
@@ -40,15 +41,20 @@ void	child_process(t_info *info, int pipe[2], int flags)
 	dup_r = 1;
 	if (pipe)
 		dup_r = exec_dup2(pipe, flags);
-	if (!exec_redirection(info))
+	if (!redirection_dup(info))
 		return ;
 	// built in 함수 확인하기 , exec_result 확인하기.
 	if (dup_r)
 	{
 		command = info->param[0];
-		execve(command, info->param, info->envp);
-		perror("execve");
-		exit(EXEC_FAIL);
+		if (info->is_builtin)
+			exec_builtin(info->is_builtin, info);
+		else
+		{
+			execve(command, info->param, info->envp);
+			perror("execve");
+			exit(EXEC_FAIL);
+		}
 	}
 }
 

@@ -47,6 +47,6 @@ int		redirect_out_dup(int fds[2], char *content)
 	}
 	if (!set_right_fd_out(content, i, fds, is_append))
 		return (0);
-	redirection_dup(fds);
+	redirection_dup_exec(fds);
 	return (1);
 }
