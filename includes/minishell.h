@@ -11,6 +11,7 @@
 # include <limits.h>
 # include <signal.h>
 # include <unistd.h>
+# include <string.h>
 # include "../libft/libft.h"
 # include "defines.h"
 
@@ -108,5 +109,9 @@ int		redirect_out_dup(int fds[2], char *content);
 	exec_builtin
 */
 void	exec_builtin(int cmd, t_info *info);
+void	builtin_exit(int argc, char **argv, char **envp);
+void	builtin_echo(int argc, char **argv, char **envp);
+void	builtin_cd(int argc, char **argv, char **envp);
+void	builtin_pwd(int argc, char **argv, char **envp);
 
 #endif
