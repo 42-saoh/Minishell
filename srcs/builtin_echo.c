@@ -3,19 +3,25 @@
 void	builtin_echo(int argc, char **argv, char **envp)
 {
 	int	i;
-	int	len;
+	int	n_flag;
 
 	i = 1;
-	len = 1;
-	while (argv[len])
-		len++;
-	while (i < len)
+	n_flag = 0;
+	if (argv[1][0] == '-')
 	{
-		if (i == len - 1)
+		if (argv[1][1] == 'n')
+			n_flag++;
+		i++;
+	}
+	while (i < argc)
+	{
+		if (i == argc - 1)
 			printf("%s", argv[i]);
 		else
 			printf("%s ", argv[i]);
 		i++;
 	}
-	printf("\n");
+	if (!n_flag)
+		printf("\n");
+	exit(0);
 }

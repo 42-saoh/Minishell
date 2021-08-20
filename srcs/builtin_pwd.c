@@ -7,8 +7,9 @@ void	builtin_pwd(int argc, char **argv, char **envp)
 	if (argc != 1)
 	{
 		printf("pwd: too many arguments\n");
-		return ;
+		exit(EXEC_FAIL);
 	}
 	path = getcwd(NULL, BUFSIZ);
 	printf("%s\n", path);
+	exit(0);
 }

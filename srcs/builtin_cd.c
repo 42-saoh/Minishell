@@ -29,36 +29,38 @@ void	get_root_dir(char **envp)
 	}
 	if (!(*envp))
 	{
-		printf("ERROR\n");
-		exit(-1);
+		printf("Home is not finded\n");
+		exit(EXEC_FAIL);
 	}
 	a = ft_strdup(*envp + 5);
 	i = chdir(a);
-	printf("%d\n", i);
 	free(a);
-	a = getcwd(NULL, BUFSIZ);
-	printf("%s\n", a);
-	free(a);
+	if (i)
+	{
+		printf("does not exist path\n");
+		exit(EXEC_FAIL);
+	}
 }
 
 void	builtin_cd(int argc, char **argv, char **envp)
 {
 	int i;
-	char *path;
 
 	if (argc == 1)
 		get_root_dir(envp);
 	else if (argc > 2)
 	{
-		printf("error\n");
-		return ;
+		printf("too many arguments\n");
+		exit(EXEC_FAIL);
 	}
 	else
 	{
 		i = chdir(argv[1]);
-		printf("i : %d argc : %d\n", i, argc);
-		printf("%s\n", strerror(errno));
-		path = getcwd(NULL, BUFSIZ);
-		printf("%s\n", path);
+		if (i)
+		{
+			printf("does not exist path\n");
+			exit(EXEC_FAIL);
+		}
 	}
+	exit(0);
 }
