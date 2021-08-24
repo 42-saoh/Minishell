@@ -6,35 +6,46 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 15:45:29 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/12 13:19:40 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/24 14:21:40 by saoh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-/*
-	ctrl + \
-*/
-void	sigquit_handler(int signo)
+typedef struct	s_test
 {
-	rl_redisplay();
-	return ;
+	void	(*test)(int);
+}				t_test;
+
+void	ctrl_d_handler(void)
+{
+	printf("exit\n");
+	exit(0);
 }
-/*
-	ctrl + c
-*/
+
 void	sigint_handler(int signo)
 {
-	// rl_replace_line("\n$", 0);
-	write(1, "\n$", 3);
-	return ;
-}
-/*
-	ctrl + d ..
-	signal 없음
-*/
-void	ctrl_d_handler(int signo)
-{
+	printf("push SIGINT\n");
+	rl_on_new_line();
+	rl_replace_line("",0);
 	rl_redisplay();
-	return ;
+}
+
+int main()
+{
+	char *str;
+	t_test test;
+	t_test test1;
+
+	test.test = signal(SIGINT, sigint_handler);
+	test1.test = signal(SIGQUIT, SIG_IGN);
+	while(1)
+	{
+		str = readline("test : ");
+		add_history(str);
+		if (!str)
+			ctrl_d_handler();
+		free(str);
+		str = 0;
+	}
 }
