@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 19:49:55 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/19 14:51:46 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/26 02:04:29 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,11 @@
 
 int	init_command_info(t_info *info, char *input)
 {
-	char	**input_sp;
 	char	*cmd;
 	char 	**temp;
 	int		cmd_idx;
 
-	input_sp = ft_split(input, ' ');
-	info->param = input_sp;
-	if (!input_sp)
-		return (error_occur_std(SPLIT_ERR));
-	temp = ft_split(input_sp[0], '/');
+	temp = ft_split(info->param[0], '/');
 	if (!temp)
 		return (error_occur_std(SPLIT_ERR));
 	cmd_idx = 0;
@@ -31,11 +26,11 @@ int	init_command_info(t_info *info, char *input)
 		cmd_idx++;
 	info->is_builtin = check_builtin(temp[cmd_idx - 1]);
 	split_free(temp);
-	cmd = check_command(info->paths, input_sp[0], ft_strlen(input_sp[0]));
+	cmd = check_command(info->paths, info->param[0], ft_strlen(info->param[0]));
 	if (cmd)
 	{
-		free(input_sp[0]);
-		input_sp[0] = cmd;
+		free(info->param[0]);
+		info->param[0] = cmd;
 	}
 	return (1);
 }
@@ -68,31 +63,26 @@ char	**init_path(char *envp[])
 	return (paths);
 }
 
-int		copy_envp(t_info *info, char *envp[])
+/*
+ 맨처음에는 envp읽어서 envp만들기.
+*/
+int		init_envp_file(char *envp[])
 {
-	char	**new_envp;
-	char	**temp;
-	int		idx;
+	int	fd;
+	int	idx;
 
-	temp = envp;
+	fd = open(ENV_FILE, O_WRONLY | O_CREAT | O_TRUNC, S_IRWXU);
+	if (fd == -1)
+		return (error_occur_std(FILE_OPEN_ERR));
 	idx = 0;
-	while (temp[idx])
-		idx++;
-	new_envp = (char **)malloc(sizeof(char *) * (idx + 1));
-	if (!new_envp)
-		return (0);
-	info->envp = new_envp;
-	info->envp_cnt = idx;
-	new_envp[idx] = 0;
-	idx = 0;
-	while (*envp)
+	while (envp[idx])
 	{
-		new_envp[idx] = ft_strdup(*envp);
-		if (!new_envp[idx])
-			return (0);
+		ft_putstr_fd(envp[idx], fd);
 		idx++;
-		envp++;
+		if (envp[idx])
+			ft_putchar_fd('\n', fd);
 	}
+	ft_close(fd);
 	return (1);
 }
 
@@ -101,12 +91,15 @@ int		init_envp(t_info *info, char *envp[])
 	info->paths = init_path(envp);
 	if (!info->paths)
 		return (0);
-	info->envp = envp;
-	// if (!copy_envp(info, envp))
-	// {
-	// 	clear_all_data(info);
-	// 	return (0);		
-	// }
+	if (!init_envp_file(envp))
+		return (0);
+	// info->envp = envp;
+	// copy를 파일 읽어서하는 걸로 바꿔줘야 함.
+	if (!copy_envp(info))
+	{
+		clear_all_data(info);
+		return (0);		
+	}
 	return (1);
 }
 

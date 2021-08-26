@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/01 10:47:44 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/08 14:07:51 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/22 02:20:40 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int	finish(int fd, char **contents, char **line, int read_r)
 	if (read_r == -1)
 		return (-1);
 	line_exist = 0;
-	if (!contents[fd])
+	if (contents[fd])
 		line_exist = line_check(fd, contents, line, 1);
 	if (line_exist)
 		return (line_exist);
