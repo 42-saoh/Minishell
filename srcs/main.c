@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 22:00:23 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/26 14:36:16 by saoh             ###   ########.fr       */
+/*   Updated: 2021/08/26 22:58:56 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int main(int argc, char *argv[], char *envp[])
 	prompt = "$";
 	// 종료 시그널 받으면 프로그램 끝내야 함.
 	ft_memset(&info, 0, sizeof(t_info));
-	if (!init_envp(&info, envp))
+	if (!init_envp_and_signal(&info, envp))
 		return (0);
 	while(1)
 	{
