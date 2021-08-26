@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 22:00:23 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/26 02:50:27 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/26 14:36:16 by saoh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	check_input(char *input)
 	int	i;
 
 	if (!input)
-		return (0);
+ 		ctrl_d_handler();
 	i = 0;
 	while (input[i] == ' ')
 		i++;

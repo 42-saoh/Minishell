@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 15:05:24 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/26 02:04:23 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/26 14:34:01 by saoh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ typedef struct s_info
 	t_list	*redirect_lst; // exec하고 clear
 	t_list	*param_list;
 	t_list	*temp_list;
+	void	(*sigint)(int);
+	void	(*sigquit)(int);
 	char	**paths; // 계속 씀.
 	char	**param; // parents에서 free됨.
 	char	**envp; // 계속 씀.

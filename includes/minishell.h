@@ -46,6 +46,8 @@ int		init_info(t_info *info);
 int		init_command_info(t_info *info, char *input);
 int		init_envp(t_info *info, char *envp[]);
 int		copy_envp(t_info *info);
+void	ctrl_d_handler(void);
+void	sigint_handler(int signo);
 /*
 	using free
 */
