@@ -11,7 +11,6 @@
 # include <limits.h>
 # include <signal.h>
 # include <unistd.h>
-# include <string.h>
 # include "../libft/libft.h"
 # include "defines.h"
 
@@ -28,6 +27,8 @@ int		pass_possible(char c);
 int		is_empty(char *temp);
 int		is_redirect(char c);
 void	ft_close(int fd);
+
+void	jump_space(char *input, int *i);
 /*
 	check
 */
@@ -44,6 +45,7 @@ void	wait_closing_quote(char start_q);
 int		init_info(t_info *info);
 int		init_command_info(t_info *info, char *input);
 int		init_envp(t_info *info, char *envp[]);
+int		copy_envp(t_info *info);
 /*
 	using free
 */
@@ -51,6 +53,7 @@ void	split_free(char **data);
 void	ft_free(void *data);
 void	clear_all_data(t_info *info);
 void	clear_data(t_info *info);
+void	content_not_rm(void *param);
 /*
 	exec
 */
@@ -109,9 +112,41 @@ int		redirect_out_dup(int fds[2], char *content);
 	exec_builtin
 */
 void	exec_builtin(int cmd, t_info *info);
-void	builtin_exit(int argc, char **argv, char **envp);
-void	builtin_echo(int argc, char **argv, char **envp);
-void	builtin_cd(int argc, char **argv, char **envp);
-void	builtin_pwd(int argc, char **argv, char **envp);
+
+/*
+	sort
+*/
+void	merge_sort(char **sorted, char **temp, int idx_l, int idx_r);
+
+/*
+	make param
+*/
+int	make_param(t_info *info, char *input, int len);
+
+/*
+	write_env_file
+*/
+int	write_env_file(t_info *info, char *key, char *value);
+int is_duplicate(char *line, char *key);
+int remove_env_var(char *var);
+
+/*
+	write_export_file
+*/
+int		write_export_file(char *var, int remove);
+int		temp_to_datafile(char *read, char *write); // 공통인데 어따 뺄까이거..
+
+void  builtin_exit(int argc, char **argv, char **envp);
+void  builtin_echo(int argc, char **argv, char **envp);
+void  builtin_cd(int argc, char **argv, char **envp);
+void  builtin_pwd(int argc, char **argv, char **envp);
+/*
+	test
+*/
+int		print_export(t_info *info);
+
+
+
+
 
 #endif

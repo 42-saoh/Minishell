@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 15:05:24 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/19 13:57:30 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/26 02:04:23 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,26 @@
 
 #include "minishell.h"
 
-typedef struct	s_redirect_in
+typedef	struct	s_sort
 {
-	int		left_fd;
-	int		right_fd;
-	char	*limiter; // 여러개 << 들어온경우 here_doc단어가 순서대로 나와야 끝남.
-}				t_redirect_in;
+	int		idx_l;
+	int		idx_r;
+	int		idx_m;
+	int		curr_l;
+	int		curr_r;
+	int		k;
+}				t_sort;
 
-typedef struct	s_redirect_out
+typedef struct	s_strjoin
 {
-	int		left_fd;
-	int		right_fd;
-	int		is_append; // >> 여부체크하여, open옵션 다르게 주기
-}				t_redirect_out;
+	int		front_s;
+	int		front_len;
+	int		back_s;
+	int		back_len;
+	char	*front;
+	char	*back;
+	char	*content;
+}				t_strjoin;
 
 /*
 	명령어에서 아래 문자들이 존재하는지 ..
@@ -35,21 +42,24 @@ typedef struct	s_redirect_out
 */
 typedef struct s_info
 {
+	t_list	*commands; // 마지막에 clear
+	t_list	*commands_symbol; // 마지막에 clear
+	t_list	*redirect_lst; // exec하고 clear
+	t_list	*param_list;
+	t_list	*temp_list;
 	char	**paths; // 계속 씀.
 	char	**param; // parents에서 free됨.
 	char	**envp; // 계속 씀.
 	int		command_cnt; // 유동적.
 	int		is_builtin; // param만들면서 체크 함.
-	t_list	*commands; // 마지막에 clear
-	t_list	*commands_symbol; // 마지막에 clear
-	t_list	*redirect_lst; // exec하고 clear
-	int			envp_cnt;
-	int			pipe_in[2];
-	int			pipe_out[2];
-	int			connect_pipe[2];
-	int			redirect_fd[2];
-	int			std_in;
-	int			exec_result; // exec하고 init
+	int		envp_cnt;
+	int		param_cnt;
+	int		pipe_in[2];
+	int		pipe_out[2];
+	int		connect_pipe[2];
+	int		redirect_fd[2];
+	int		std_in;
+	int		exec_result; // exec하고 init
 }				t_info;
 
 # define INPUT_CHANGED 1
@@ -90,7 +100,7 @@ typedef struct s_info
 # define WRITE_FD_IDX 1
 # define STDIN_PIPE 0x1
 # define STDOUT_PIPE 0x2
-# define BUFFER_SIZE 256
+# define BUFFER_SIZE 255
 # define FD_MAX 255
 # define PATH "PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # define PARSE_ERR "PARSING ERROR"
@@ -102,6 +112,7 @@ typedef struct s_info
 # define BAD_FD "Bad file descriptor"
 # define UNEXPECTED_TOKEN "syntax error near unexpected token `&\'"
 
+# define FILE_OPEN_ERR "file open Error"
 # define OUTPUT_OPEN_ERR "redirection output file open"
 # define COMMAND_NOT_EXIST "command program not exist"
 # define ENV_PATH_NOT_EXIST "system env PATH not exist"
@@ -111,8 +122,10 @@ typedef struct s_info
 # define READ_ERR "read result [-1]"
 # define UNLINK_ERR "file remove Error"
 # define TEMP_FILE ".temp.txt"
-
-
+# define EXPORT_FILE ".export.txt"
+# define EXPORT_FILE_2 ".export_2.txt"
+# define ENV_FILE ".env.txt"
+# define ENV_FILE_2 ".env_2.txt"
 
 
 #endif

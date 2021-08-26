@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 22:00:23 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/19 13:41:32 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/26 02:50:27 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ int main(int argc, char *argv[], char *envp[])
 		input = readline(prompt);
 		if (check_input(input))
 		{
+			if (ft_strcmp(input, "exit") == 0)
+				break ;
 			add_history(input);
 			if (make_command_list(&info, input) != 1)
 			{
@@ -103,5 +105,6 @@ int main(int argc, char *argv[], char *envp[])
 			ft_free(input);
 		}
 	}
+	clear_all_data(&info);
 	// need clear pathes
 }

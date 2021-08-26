@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   utils_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/15 18:39:30 by taekang           #+#    #+#             */
-/*   Updated: 2021/08/21 00:40:50 by taesan           ###   ########.fr       */
+/*   Created: 2021/07/25 22:35:08 by taesan            #+#    #+#             */
+/*   Updated: 2021/08/24 18:25:57 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/minishell.h"
 
-void	ft_putchar_fd(char c, int fd)
+void	jump_space(char *input, int *i)
 {
-	write(fd, &c, 1);
+	// 1. 앞에있는 스페이스 뛰어넘기.
+	while (input[*i] && input[*i] == ' ')
+		*i += 1;
 }
