@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 19:49:55 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/26 14:34:19 by saoh             ###   ########.fr       */
+/*   Updated: 2021/08/26 22:29:31 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,6 @@ int		init_envp_and_signal(t_info *info, char *envp[])
 		return (0);
 	if (!init_envp_file(envp))
 		return (0);
-	// info->envp = envp;
-	// copy를 파일 읽어서하는 걸로 바꿔줘야 함.
 	if (!copy_envp(info))
 	{
 		clear_all_data(info);

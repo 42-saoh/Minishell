@@ -44,7 +44,7 @@ void	wait_closing_quote(char start_q);
 */
 int		init_info(t_info *info);
 int		init_command_info(t_info *info, char *input);
-int		init_envp(t_info *info, char *envp[]);
+int		init_envp_and_signal(t_info *info, char *envp[]);
 int		copy_envp(t_info *info);
 void	ctrl_d_handler(void);
 void	sigint_handler(int signo);
@@ -128,27 +128,48 @@ int	make_param(t_info *info, char *input, int len);
 /*
 	write_env_file
 */
-int	write_env_file(t_info *info, char *key, char *value);
-int is_duplicate(char *line, char *key);
-int remove_env_var(char *var);
+int	write_env_file(char *key, char *param);
+int remove_var(char *r_file, char *w_file, char *key);
 
 /*
 	write_export_file
 */
-int		write_export_file(char *var, int remove);
-int		temp_to_datafile(char *read, char *write); // 공통인데 어따 뺄까이거..
+int		write_export_file(char *var);
+void	builtin_exit(int argc, char **argv, char **envp);
+void	builtin_echo(int argc, char **argv, char **envp);
+void	builtin_cd(int argc, char **argv, char **envp);
+void	builtin_pwd(int argc, char **argv, char **envp);
+void	builtin_env(t_info *info);
+void	builtin_unset(t_info *info);
+void	builtin_export(t_info *info);
 
-void  builtin_exit(int argc, char **argv, char **envp);
-void  builtin_echo(int argc, char **argv, char **envp);
-void  builtin_cd(int argc, char **argv, char **envp);
-void  builtin_pwd(int argc, char **argv, char **envp);
+/*
+	export_print.c
+*/
+int		print_export(t_info *info);
+void	export_errror(char *param);
+/*
+	export_file_merge
+*/
+int		export_file_merge(t_info *info, t_list **list);
+/*
+	export_add_var
+*/
+void	export_add_var(t_info *info);
+/*
+	정리하자
+*/
+int		env_file_cmp(const char *line, const char *key);
+/*
+	1 -> 2
+	2 -> 1  함수
+*/
+int		temp_to_datafile(char *read, char *write); // 공통인데 어따 뺄까이거..
+int		datafile_to_temp(char *r_file, char *w_file, char *key, char *param);
 /*
 	test
 */
 int		print_export(t_info *info);
-
-
-
 
 
 #endif

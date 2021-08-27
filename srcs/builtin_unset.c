@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec_builtin.c                                     :+:      :+:    :+:   */
+/*   builtin_unset.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/18 14:54:24 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/27 00:31:07 by taesan           ###   ########.fr       */
+/*   Created: 2021/08/27 00:23:58 by taesan            #+#    #+#             */
+/*   Updated: 2021/08/27 05:47:41 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	exec_builtin(int cmd, t_info *info)
+void	builtin_unset(t_info *info)
 {
-	int r;
+	int	i;
 
-	if (cmd == EXPORT)
-		builtin_export(info);
-	else if (cmd == UNSET)
-		builtin_unset(info);
-	else if (cmd == ENV)
-		builtin_env(info);
+	i = 1;
+	while (info->param[i])
+	{
+		// env_file에서 찾아서 지우면서 env_file2에 쓰고
+		if (!remove_var(ENV_FILE, ENV_FILE_2, info->param[i]))
+			exit(EXEC_FAIL);
+		if (!remove_var(EXPORT_FILE, EXPORT_FILE_2, info->param[i]))
+			exit(EXEC_FAIL);
+		i++;
+	}
 	exit(0);
 }

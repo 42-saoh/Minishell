@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 15:05:24 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/26 14:34:01 by saoh             ###   ########.fr       */
+/*   Updated: 2021/08/27 05:45:25 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,13 @@ typedef struct	s_strjoin
 	char	*content;
 }				t_strjoin;
 
+typedef	struct	s_data_to_temp
+{
+	int		read_fd;
+	int		write_fd;
+	char	*key;
+	char	*param;
+}				t_data_to_temp;
 /*
 	명령어에서 아래 문자들이 존재하는지 ..
 	single, double모두 존재할 경우, 1번이 먼저 나옴.

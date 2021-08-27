@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 16:53:36 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/26 04:47:53 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/26 22:58:00 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,15 +114,16 @@ int	append_param_list(t_info *info, char *input, int *i, int *s)
 				data = ft_lstnew(temp.content);
 		}
 	}
+	if (*i != *s && !data)
+		return (0);
 	if (data)
 	{
 		ft_lstadd_back(&info->param_list, data);
 		info->param_cnt++;
 		jump_space(input, i);
 		*s = *i;
-		return (1);
 	}
-	return (0);
+	return (1);
 }
 
 int last(t_info *info, char *input, int i, int s)
