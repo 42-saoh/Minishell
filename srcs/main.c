@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 22:00:23 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/27 16:23:19 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/27 19:33:30 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,44 @@ void	error_occur_parsing(t_info *info, char *input)
 	ft_free(input);
 }
 
-int	check_finish(t_info *info)
+int		ft_pass(t_info *info, int symbol)
 {
-	int symbol;
-
-	if (info->commands_symbol)
-	{
-		symbol = *(int *)info->commands_symbol->content;
-		if (symbol == DB_AMPER && info->exec_result == EXEC_FAIL)
-			return (1);
-		if (symbol == DB_PIPE && info->exec_result == 0)
-			return (1);
-		info->commands_symbol = info->commands_symbol->next;
-	}
+	if (symbol == DB_AMPER && info->exec_result != 0)
+		return (1);
+	if (symbol == DB_PIPE && info->exec_result == 0)
+		return (1);
 	return (0);
+}
+
+/*
+	command 수행 후, 다음 command로 이동한다.
+	symbol을 확인하여, 다음 command를 pass한다.
+*/
+void	move_next_cmd(t_info *info, t_list **commands, t_list **symbols)
+{
+	int		symbol;
+	int		pass;
+
+	*commands = (*commands)->next;
+	pass = 0;
+	if (*commands)
+	{
+		if (*symbols)
+		{
+			symbol = *(int *)(*symbols)->content;
+			if (symbol == DB_AMPER && info->exec_result != 0 ||\
+				symbol == DB_PIPE && info->exec_result == 0)
+			{
+				// pass인 경우, 이어지는 symbol을 확인한다.
+				// *commands = (*commands)->next;
+				// pass일 때, 명령어 갯수를 하나 지워주고, move_next_cmd한다.
+				// symbols도 옮긴다.
+				info->command_cnt--;
+				*symbols = (*symbols)->next;
+				move_next_cmd(info, commands, symbols);
+			}
+		}
+	}
 }
 
 void	start(t_info *info)
@@ -56,15 +80,10 @@ void	start(t_info *info)
 		if (info->command_cnt != 0 && !set_connect_pipe(info, seq))
 		 	return ;
 		if (symbols && is_double_symbol(*(int *)symbols->content))
-		{
 			exec_call(info, -1);
-			symbols = symbols->next;
-		}
 		else
 			exec_call(info, seq++);
-		if (check_finish(info))
-			return ;
-		commands = commands->next;
+		move_next_cmd(info, &commands, &symbols);
 	}
 }
 
