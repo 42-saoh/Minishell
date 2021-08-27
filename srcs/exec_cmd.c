@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 14:45:56 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/26 23:03:18 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/27 13:18:39 by saoh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	parent_process(t_info *info, int pipe[2], int flags)
 	if (r == -1)
 		perror(WAIT_ERR);
 	info->exec_result = WEXITSTATUS(status);
+	printf("\nexec_result : %d\n", info->exec_result);
 	if (!pipe)
 		pipe = info->pipe_out;
 	if (flags & STDIN_PIPE)

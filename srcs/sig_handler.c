@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 15:45:29 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/26 14:36:32 by saoh             ###   ########.fr       */
+/*   Updated: 2021/08/27 13:33:43 by saoh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ctrl_d_handler(void)
 void	sigint_handler(int signo)
 {
 	printf("push SIGINT\n");
-	rl_on_new_line();
+	//rl_on_new_line();
 	//rl_replace_line("",0);
 	//rl_redisplay();
 }

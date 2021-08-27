@@ -1,6 +1,6 @@
 #include "../includes/minishell.h"
 
-void	builtin_exit(int argc, char **argv, char **envp)
+void	builtin_exit(void)
 {
 	exit(0);
 }

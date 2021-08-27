@@ -1,5 +1,18 @@
 #include "../includes/minishell.h"
 
+int	get_argc(char **argv)
+{
+	int	i;
+
+	i = 0;
+	while(*argv)
+	{
+		argv++;
+		i++;
+	}
+	return (i);
+}
+
 int	find_root(char *envp)
 {
 	int	i;
@@ -42,20 +55,21 @@ void	get_root_dir(char **envp)
 	}
 }
 
-void	builtin_cd(int argc, char **argv, char **envp)
+void	builtin_cd(t_info *info)
 {
 	int i;
 
-	if (argc == 1)
-		get_root_dir(envp);
-	else if (argc > 2)
+	i = get_argc(info->param);
+	if (i == 1)
+		get_root_dir(info->envp);
+	else if (i > 2)
 	{
 		printf("too many arguments\n");
 		exit(EXEC_FAIL);
 	}
 	else
 	{
-		i = chdir(argv[1]);
+		i = chdir(info->param[1]);
 		if (i)
 		{
 			printf("does not exist path\n");

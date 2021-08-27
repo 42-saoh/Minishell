@@ -135,10 +135,10 @@ int remove_var(char *r_file, char *w_file, char *key);
 	write_export_file
 */
 int		write_export_file(char *var);
-void	builtin_exit(int argc, char **argv, char **envp);
-void	builtin_echo(int argc, char **argv, char **envp);
-void	builtin_cd(int argc, char **argv, char **envp);
-void	builtin_pwd(int argc, char **argv, char **envp);
+void	builtin_exit(void);
+void	builtin_echo(t_info *info);
+void	builtin_cd(t_info *info);
+void	builtin_pwd(t_info *info);
 void	builtin_env(t_info *info);
 void	builtin_unset(t_info *info);
 void	builtin_export(t_info *info);
@@ -170,6 +170,7 @@ int		datafile_to_temp(char *r_file, char *w_file, char *key, char *param);
 	test
 */
 int		print_export(t_info *info);
+int		get_argc(char **argv);
 
 
 #endif
