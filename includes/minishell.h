@@ -26,6 +26,7 @@ int		is_quotation(char c);
 int		pass_possible(char c);
 int		is_empty(char *temp);
 int		is_redirect(char c);
+int		is_double_symbol(int symbol);
 void	ft_close(int fd);
 
 void	jump_space(char *input, int *i);

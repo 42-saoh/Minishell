@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 14:45:56 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/27 15:29:25 by saoh             ###   ########.fr       */
+/*   Updated: 2021/08/27 16:20:45 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void	exec_call(t_info *info, int seq)
 {
 	//1 개의 명령어만 존재하는 경우, dup를 할필요가 없음 but int에서 열었던 파이프의 fd는 닫아주자.
 	// 얘 플래그는 close를 위해서.
-	if (info->command_cnt == 0 && seq == 0)
+	if ((info->command_cnt == 0 && seq == 0) || seq == -1)
 		exec_command(info, 0, STDIN_PIPE | STDOUT_PIPE);
 	// 다중 명령어에서 첫번째 명령어인 경우. => 표준 출력을 파이프로. connect pipe사용
 	else if (info->command_cnt > 0 && seq == 0)

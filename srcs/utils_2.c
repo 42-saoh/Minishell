@@ -6,11 +6,18 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 22:35:08 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/27 15:25:47 by saoh             ###   ########.fr       */
+/*   Updated: 2021/08/27 16:21:53 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+
+int		is_double_symbol(int symbol)
+{
+	if (symbol == DB_AMPER || symbol == DB_PIPE)
+		return (1);
+	return (0);
+}
 
 void	jump_space(char *input, int *i)
 {
