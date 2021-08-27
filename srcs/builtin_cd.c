@@ -34,12 +34,13 @@ void	get_root_dir_sib(char **envp)
 	}
 	a = ft_strdup(*envp + 5);
 	i = chdir(a);
-	free(a);
 	if (i)
 	{
-		printf("does not exist path\n");
+		printf("cd: %s: No such file or directory\n", a);
+		free(a);
 		exit(EXEC_FAIL);
 	}
+	free(a);
 }
 
 void	builtin_cd_sib(t_info *info)
@@ -51,16 +52,11 @@ void	builtin_cd_sib(t_info *info)
 		get_root_dir_sib(info->envp);
 	else
 	{
-		if (info->param[1][0] == '~' && info->param[1][1] == 0)
-			get_root_dir_sib(info->envp);
-		else
+		i = chdir(info->param[1]);
+		if (i)
 		{
-			i = chdir(info->param[1]);
-			if (i)
-			{
-				printf("does not exist path\n");
-				exit(EXEC_FAIL);
-			}
+			printf("cd: %s: No such file or directory\n", info->param[1]);
+			exit(EXEC_FAIL);
 		}
 	}
 	exit(0);
@@ -92,10 +88,5 @@ void	builtin_cd_parent(t_info *info)
 	if (i == 1)
 		get_root_dir_parent(info->envp);
 	else
-	{
-		if (info->param[1][0] == '~' && info->param[1][1] == 0)
-			get_root_dir_sib(info->envp);
-		else
-			i = chdir(info->param[1]);
-	}
+		i = chdir(info->param[1]);
 }
