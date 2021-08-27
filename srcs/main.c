@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 22:00:23 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/27 13:16:40 by saoh             ###   ########.fr       */
+/*   Updated: 2021/08/27 14:58:36 by saoh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	check_finish(t_info *info)
 		symbol = *(int *)info->commands_symbol->content;
 		if (symbol == DB_AMPER && info->exec_result == EXEC_FAIL)
 			return (1);
-		if (symbol == DB_PIPE && info->exec_result == EXEC_FAIL)
+		if (symbol == DB_PIPE && info->exec_result == 0)
 			return (1);
 		info->commands_symbol = info->commands_symbol->next;
 	}
