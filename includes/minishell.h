@@ -114,6 +114,7 @@ int		redirect_out_dup(int fds[2], char *content);
 	exec_builtin
 */
 void	exec_builtin(int cmd, t_info *info);
+void	clear_pipe(t_info *info, int pipe[2], int flags);
 
 /*
 	sort
@@ -137,7 +138,8 @@ int remove_var(char *r_file, char *w_file, char *key);
 int		write_export_file(char *var);
 void	builtin_exit(void);
 void	builtin_echo(t_info *info);
-void	builtin_cd(t_info *info);
+void	builtin_cd_sib(t_info *info);
+void	builtin_cd_parent(t_info *info);
 void	builtin_pwd(t_info *info);
 void	builtin_env(t_info *info);
 void	builtin_unset(t_info *info);

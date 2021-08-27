@@ -1,5 +1,18 @@
 #include "../includes/minishell.h"
 
+int	get_argc(char **argv)
+{
+	int	i;
+
+	i = 0;
+	while(*argv)
+	{
+		argv++;
+		i++;
+	}
+	return (i);
+}
+
 void	builtin_pwd(t_info *info)
 {
 	char *path;
