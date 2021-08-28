@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 22:00:23 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/27 19:33:30 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/27 19:54:27 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,6 @@ void	error_occur_parsing(t_info *info, char *input)
 	printf("%s\n", PARSE_ERR);
 	clear_data(info);
 	ft_free(input);
-}
-
-int		ft_pass(t_info *info, int symbol)
-{
-	if (symbol == DB_AMPER && info->exec_result != 0)
-		return (1);
-	if (symbol == DB_PIPE && info->exec_result == 0)
-		return (1);
-	return (0);
 }
 
 /*
@@ -55,6 +46,8 @@ void	move_next_cmd(t_info *info, t_list **commands, t_list **symbols)
 				*symbols = (*symbols)->next;
 				move_next_cmd(info, commands, symbols);
 			}
+			else
+				*symbols = (*symbols)->next;
 		}
 	}
 }
