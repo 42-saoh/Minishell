@@ -58,7 +58,9 @@ int	command_filter(t_info *info, char **content)
 	if (!filter_input(info, content, len))
 		return (error_occur_std(FILTER_INPUT_ERR));
 	len = ft_strlen((char *)(*content));
-	r =  make_param(info, *content, len);
+	r = make_param(info, *content, len);
+	if (info->param[1])
+		r = filter_asterisk(info, 1);
 	ft_lstclear(&info->param_list, content_not_rm);
 	ft_lstclear(&info->temp_list, ft_free);
 	return (r);

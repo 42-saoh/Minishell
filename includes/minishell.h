@@ -11,6 +11,7 @@
 # include <limits.h>
 # include <signal.h>
 # include <unistd.h>
+# include <dirent.h>
 # include "../libft/libft.h"
 # include "defines.h"
 
@@ -169,6 +170,10 @@ int		env_file_cmp(const char *line, const char *key);
 */
 int		temp_to_datafile(char *read, char *write); // 공통인데 어따 뺄까이거..
 int		datafile_to_temp(char *r_file, char *w_file, char *key, char *param);
+/*
+	filter_asterisk
+*/
+int		filter_asterisk(t_info *info, int i);
 /*
 	test
 */

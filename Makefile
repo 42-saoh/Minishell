@@ -22,7 +22,7 @@ SRC 	=	main.c error.c utils.c check.c init.c \
 			builtin_cd.c builtin_echo.c builtin_exit.c builtin_pwd.c\
 			builtin_env.c builtin_unset.c builtin_export.c export_print.c\
 			export_add_var.c export_file_merge.c datafile_to_temp.c\
-			temp_to_datafile.c remove_var.c test_file.c\
+			temp_to_datafile.c remove_var.c filter_asterisk.c test_file.c\
 
 OBJ_FILES = $(SRC:.c=.o)
 OBJS	= $(addprefix $(OBJ_DIR), $(OBJ_FILES))
