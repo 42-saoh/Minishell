@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   redirection_out_dup.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: taekang <taekang@student.42seoul.kr>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/30 20:44:43 by taekang           #+#    #+#             */
+/*   Updated: 2021/08/30 20:45:19 by taekang          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/minishell.h"
 
-int		file_open_getfd_out(char *content, int e, int is_append)
+int	file_open_getfd_out(char *content, int e, int is_append)
 {
 	char	*file_nm;
 	int		fd;
@@ -11,7 +23,7 @@ int		file_open_getfd_out(char *content, int e, int is_append)
 	if (is_append)
 		fd = open(file_nm, O_WRONLY | O_CREAT | O_APPEND, \
 					S_IRUSR | S_IWUSR);
-	else	
+	else
 		fd = open(file_nm, O_WRONLY | O_CREAT | O_TRUNC | O_APPEND, \
 							S_IRUSR | S_IWUSR);
 	ft_free(file_nm);
@@ -20,7 +32,7 @@ int		file_open_getfd_out(char *content, int e, int is_append)
 	return (fd);
 }
 
-int		set_right_fd_out(char *content, int i, int fds[2], int is_append)
+int	set_right_fd_out(char *content, int i, int fds[2], int is_append)
 {
 	if (content[i] == '&')
 		fds[1] = get_ampersand_fd(content, i, fds);
@@ -33,7 +45,7 @@ int		set_right_fd_out(char *content, int i, int fds[2], int is_append)
 	return (1);
 }
 
-int		redirect_out_dup(int fds[2], char *content)
+int	redirect_out_dup(int fds[2], char *content)
 {
 	int	i;
 	int	is_append;

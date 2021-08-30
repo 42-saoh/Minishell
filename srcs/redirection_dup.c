@@ -33,7 +33,7 @@ int	set_left_fd(char *content, int *i, int fd[2])
 		fd[0] = fd[0] * 10 + content[*i] - '0';
 		*i += 1;
 	}
-	return (error_occur_std(PARSE_ERR)); 
+	return (error_occur_std(PARSE_ERR));
 }
 
 int	redirection_dup(t_info *info)

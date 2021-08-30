@@ -14,7 +14,7 @@
 
 void	builtin_env(t_info *info)
 {
-	char **envp;
+	char	**envp;
 
 	envp = info->envp;
 	while (*envp)

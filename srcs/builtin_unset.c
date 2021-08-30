@@ -19,7 +19,6 @@ void	builtin_unset(t_info *info)
 	i = 1;
 	while (info->param[i])
 	{
-		// env_file에서 찾아서 지우면서 env_file2에 쓰고
 		if (!remove_var(ENV_FILE, ENV_FILE_2, info->param[i]))
 			exit(EXEC_FAIL);
 		if (!remove_var(EXPORT_FILE, EXPORT_FILE_2, info->param[i]))

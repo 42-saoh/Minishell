@@ -27,7 +27,7 @@ char	*create_new_cmd(char *cmd, int len)
 
 int	exec_file_check(char *path)
 {
-	struct stat sb;
+	struct stat	sb;
 
 	if (stat(path, &sb) == -1)
 		return (0);
@@ -81,7 +81,7 @@ char	*check_command(char **paths, char *cmd, int len)
 	return (full_path);
 }
 
-int		exist_dollar(char *input, int s, int e)
+int	exist_dollar(char *input, int s, int e)
 {
 	while (input[s] && s < e)
 	{

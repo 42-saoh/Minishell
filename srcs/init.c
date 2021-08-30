@@ -15,7 +15,7 @@
 int	init_command_info(t_info *info, char *input)
 {
 	char	*cmd;
-	char 	**temp;
+	char	**temp;
 	int		cmd_idx;
 
 	temp = ft_split(info->param[0], '/');
@@ -63,10 +63,7 @@ char	**init_path(char *envp[])
 	return (paths);
 }
 
-/*
- 맨처음에는 envp읽어서 envp만들기.
-*/
-int		init_envp_file(char *envp[])
+int	init_envp_file(char *envp[])
 {
 	int	fd;
 	int	idx;
@@ -86,7 +83,7 @@ int		init_envp_file(char *envp[])
 	return (1);
 }
 
-int		init_envp_and_signal(t_info *info, char *envp[])
+int	init_envp_and_signal(t_info *info, char *envp[])
 {
 	info->paths = init_path(envp);
 	if (!info->paths)
@@ -96,10 +93,9 @@ int		init_envp_and_signal(t_info *info, char *envp[])
 	if (!copy_envp(info))
 	{
 		clear_all_data(info);
-		return (0);		
+		return (0);
 	}
- 	info->sigint = signal(SIGINT, sigint_handler);
- 	info->sigquit = signal(SIGQUIT, SIG_IGN);
+	info->sigint = signal(SIGINT, sigint_handler);
+	info->sigquit = signal(SIGQUIT, SIG_IGN);
 	return (1);
 }
-

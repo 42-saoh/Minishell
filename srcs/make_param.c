@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 16:53:36 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/26 22:58:00 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/30 20:16:01 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,39 +31,7 @@ t_list	*front_back_join(char *input, t_strjoin *temp)
 		}
 		ft_free(temp->front);
 	}
-	return (data);	
-}
-
-char	*list_to_string(t_list *list)
-{
-	t_list	*temp;
-	char	*str;
-	int		len;
-	int		i;
-	int		j;
-
-	temp = list;
-	len = 0;
-	while (temp)
-	{
-		len += ft_strlen((char *)temp->content);
-		temp = temp->next;
-	}
-	str = (char *)malloc(sizeof(char *) * (len + 1));
-	if (str)
-	{
-		str[len] = 0;
-		i = 0;
-		temp = list;
-		while (temp)
-		{
-			j = 0;
-			while (((char *)(temp->content))[j])
-				str[i++] = ((char *)(temp->content))[j++];
-			temp = temp->next;
-		}
-	}
-	return (str);
+	return (data);
 }
 
 int	append_temp_list(t_info *info, char *input, int *i, int *s)
@@ -93,26 +61,17 @@ int	append_temp_list(t_info *info, char *input, int *i, int *s)
 int	append_param_list(t_info *info, char *input, int *i, int *s)
 {
 	t_list		*data;
-	t_strjoin	temp;
+	char		*content;
 
-	ft_bzero(&temp, sizeof(t_strjoin));
+	content = 0;
 	data = 0;
 	if (info->temp_list)
+		data = list_to_string(info, input, i, s);
+	if (!info->temp_list && *i != *s)
 	{
-		temp.front = list_to_string(info->temp_list);
-		ft_lstclear(&info->temp_list, ft_free);
-		temp.back_s = *s;
-		temp.back_len = *i - *s;
-		data = front_back_join(input, &temp);
-	}
-	else
-	{
-		if (*i != *s)
-		{
-			temp.content = ft_substr(input + *s, 0, *i - *s);
-			if (temp.content)
-				data = ft_lstnew(temp.content);
-		}
+		content = ft_substr(input + *s, 0, *i - *s);
+		if (content)
+			data = ft_lstnew(content);
 	}
 	if (*i != *s && !data)
 		return (0);
@@ -126,9 +85,9 @@ int	append_param_list(t_info *info, char *input, int *i, int *s)
 	return (1);
 }
 
-int last(t_info *info, char *input, int i, int s)
+int	last(t_info *info, char *input, int i, int s)
 {
-	t_list *temp;
+	t_list	*temp;
 
 	if (!append_param_list(info, input, &i, &s))
 		return (0);
@@ -145,11 +104,7 @@ int last(t_info *info, char *input, int i, int s)
 	}
 	return (1);
 }
-/*
-	실패하면 list2개를 비워줘야한다.
-	temp_list
-	param_list
-*/
+
 int	make_param(t_info *info, char *input, int len)
 {
 	int		i;

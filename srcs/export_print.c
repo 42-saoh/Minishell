@@ -45,5 +45,5 @@ int	print_export(t_info *info)
 			ft_putendl_fd("\"", STDOUT_FILENO);
 		envp++;
 	}
-	return (1);	
+	return (1);
 }

@@ -12,10 +12,11 @@
 
 #include "../includes/minishell.h"
 
-void	read_and_remove(t_data_to_temp *info, int(*cmp_func)(const char *, const char *))
+void	read_and_remove(t_data_to_temp *info, \
+						int(*cmp_func)(const char *, const char *))
 {
-	int visited;
-	char *line;
+	int		visited;
+	char	*line;
 
 	line = 0;
 	visited = 0;
@@ -34,12 +35,9 @@ void	read_and_remove(t_data_to_temp *info, int(*cmp_func)(const char *, const ch
 	ft_close(info->write_fd);
 }
 
-// // env_file2 -> env_file1로 복사
-// if (!temp_to_datafile(ENV_FILE_2, ENV_FILE))
-// 	exit(EXEC_FAIL);
-int remove_var(char *r_file, char *w_file, char *key)
+int	remove_var(char *r_file, char *w_file, char *key)
 {
-	t_data_to_temp info;
+	t_data_to_temp	info;
 
 	info.read_fd = open(r_file, O_RDONLY, S_IRWXU);
 	if (info.read_fd == -1)
