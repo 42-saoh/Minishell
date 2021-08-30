@@ -36,7 +36,7 @@ void	get_root_dir_sib(char **envp)
 	i = chdir(a);
 	if (i)
 	{
-		printf("cd: %s: No such file or directory\n", a);
+		printf("cd: %s: %s\n", a, strerror(errno));
 		free(a);
 		exit(EXEC_FAIL);
 	}
@@ -55,7 +55,7 @@ void	builtin_cd_sib(t_info *info)
 		i = chdir(info->param[1]);
 		if (i)
 		{
-			printf("cd: %s: No such file or directory\n", info->param[1]);
+			printf("cd: %s: %s\n", info->param[1], strerror(errno));
 			exit(EXEC_FAIL);
 		}
 	}
