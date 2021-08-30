@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 22:00:23 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/28 16:02:45 by saoh             ###   ########.fr       */
+/*   Updated: 2021/08/29 01:03:17 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	move_next_cmd(t_info *info, t_list **commands, t_list **symbols)
 		if (*symbols)
 		{
 			symbol = *(int *)(*symbols)->content;
-			if ((symbol == DB_AMPER && info->exec_result != 0) ||\
-				(symbol == DB_PIPE && info->exec_result == 0))
+			if (symbol == DB_AMPER && info->exec_result != 0 ||\
+				symbol == DB_PIPE && info->exec_result == 0)
 			{
 				// pass인 경우, 이어지는 symbol을 확인한다.
 				// *commands = (*commands)->next;
