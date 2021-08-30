@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 22:35:08 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/27 16:21:53 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/30 14:26:47 by saoh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,24 @@ void	clear_pipe(t_info *info, int pipe[2], int flags)
 		close(pipe[READ_FD_IDX]);
 	if (flags & STDOUT_PIPE)
 		close(pipe[WRITE_FD_IDX]);
+}
+
+void	builtin_set(t_info *info, int pipe[2])
+{
+	int	result;
+
+	if (!pipe && info->is_builtin == EXIT && info->exec_result != EXEC_FAIL)
+	{
+		result = info->exec_result;
+		ft_free(info->input);
+		clear_all_data(info);
+		exit(result);
+	}
+	else if (!pipe && info->is_builtin == EXIT &&
+			info->exec_result == EXEC_FAIL)
+		info->command_cnt = -1;
+	else if (info->is_builtin == CD && info->exec_result == 0)
+		builtin_cd_parent(info);
+	else if (info->is_builtin == EXPORT || info->is_builtin == UNSET)
+		copy_envp(info);
 }

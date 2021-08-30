@@ -6,7 +6,11 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 15:05:24 by taesan            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2021/08/30 14:50:58 by taesan           ###   ########.fr       */
+=======
+/*   Updated: 2021/08/30 16:05:15 by saoh             ###   ########.fr       */
+>>>>>>> 6eb1ad9e36718af9acea529d76ac1eaa58de2e4c
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +63,7 @@ typedef struct s_info
 	char	**paths; // 계속 씀.
 	char	**param; // parents에서 free됨.
 	char	**envp; // 계속 씀.
+	char	*input;
 	int		command_cnt; // 유동적.
 	int		asterisk_check; // 유동적
 	int		is_builtin; // param만들면서 체크 함.

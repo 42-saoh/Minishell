@@ -138,7 +138,7 @@ int remove_var(char *r_file, char *w_file, char *key);
 	write_export_file
 */
 int		write_export_file(char *var);
-void	builtin_exit(void);
+void	builtin_exit(t_info *info);
 void	builtin_echo(t_info *info);
 void	builtin_cd_sib(t_info *info);
 void	builtin_cd_parent(t_info *info);
@@ -146,6 +146,7 @@ void	builtin_pwd(t_info *info);
 void	builtin_env(t_info *info);
 void	builtin_unset(t_info *info);
 void	builtin_export(t_info *info);
+void	builtin_set(t_info *info, int pipe[2]);
 
 /*
 	export_print.c
