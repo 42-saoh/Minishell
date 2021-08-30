@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/29 01:25:08 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/30 03:01:50 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/30 14:57:23 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int		append_asterisk_name(char *param, t_list **list, DIR *dir_ptr)
 	return (append);
 }
 
-int		append_new_param_list(char **param, t_list **list, int is_asterisk)
+int		append_new_param_list(t_info *info, char **param, t_list **list, int is_ast)
 {
 	DIR		*dir_ptr;
 	t_list	*data;
@@ -110,9 +110,12 @@ int		append_new_param_list(char **param, t_list **list, int is_asterisk)
 	dir_ptr = opendir(".");
 	if (!dir_ptr)
 		r = 0;
-	if (r && is_asterisk)
+	if (r && is_ast)
+	{
+		info->asterisk_check = 1;
 		r = append_asterisk_name(*param, list, dir_ptr);
-	if (!is_asterisk || r == -1)
+	}
+	if (!is_ast || r == -1)
 	{
 		data = ft_lstnew(*param);
 		if (!data)
@@ -141,13 +144,13 @@ int	filter_asterisk(t_info *info, int i)
 			if (info->param[i][j] == '*')
 			{
 				is_asterisk = 1;
-				if (!append_new_param_list(&info->param[i], &list, 1))
+				if (!append_new_param_list(info, &info->param[i], &list, 1))
 					return (0);
 				break ;
 			}
 			j++;
 		}
-		if (!is_asterisk && !append_new_param_list(&info->param[i], &list, 0))
+		if (!is_asterisk && !append_new_param_list(info, &info->param[i], &list, 0))
 			return (0);
 		i++;
 	}
