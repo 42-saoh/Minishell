@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 22:00:23 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/29 01:03:17 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/30 14:25:46 by saoh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	move_next_cmd(t_info *info, t_list **commands, t_list **symbols)
 	int		symbol;
 	int		pass;
 
+	if (info->command_cnt == -1)
+		return ;
 	*commands = (*commands)->next;
 	pass = 0;
 	if (*commands)
@@ -114,8 +116,6 @@ int main(int argc, char *argv[], char *envp[])
 		input = readline(prompt);
 		if (check_input(input))
 		{
-			if (ft_strcmp(input, "exit") == 0)
-				break ;
 			add_history(input);
 			if (make_command_list(&info, input) != 1)
 			{

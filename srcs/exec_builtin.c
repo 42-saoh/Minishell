@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 14:54:24 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/27 15:19:58 by saoh             ###   ########.fr       */
+/*   Updated: 2021/08/30 13:09:08 by saoh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	exec_builtin(int cmd, t_info *info)
 	else if (cmd == PWD)
 		builtin_pwd(info);
 	else if (cmd == EXIT)
-		builtin_exit();
+		builtin_exit(info);
 	else if (cmd == ECHO)
 		builtin_echo(info);
 	exit(0);

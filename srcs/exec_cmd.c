@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 14:45:56 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/28 17:26:10 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/30 13:31:44 by saoh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,8 @@ void	parent_process(t_info *info, int pipe[2], int flags)
 		perror(WAIT_ERR);
 	info->exec_result = WEXITSTATUS(status);
 	clear_pipe(info, pipe, flags);
-	if (info->is_builtin == CD && info->exec_result == 0)
-		builtin_cd_parent(info);
-	if (info->is_builtin == EXPORT || info->is_builtin == UNSET)
-		copy_envp(info);
+	if (info->is_builtin)
+		builtin_set(info, pipe);
 	split_free(info->param);
 	info->param_cnt = 0;
 	if (info->redirect_lst)

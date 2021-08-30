@@ -108,7 +108,7 @@ int		move_end_point(char *line, int *e, char end_c)
 	return (1);
 }
 
-int		init_default(t_info *info)
+int		init_default(t_info *info, char *input)
 {
 	info->command_cnt = 0;
 	info->is_builtin = -1;
@@ -117,6 +117,7 @@ int		init_default(t_info *info)
 	info->std_in = dup(STDIN_FILENO);
 	if (info->std_in == -1)
 		return (error_occur_perror("dup"));
+	info->input = input;
 	return (1);
 }
 
@@ -130,7 +131,7 @@ int		make_command_list(t_info *info, char *input)
 	s = 0;
 	e = 0;
 	len = ft_strlen(input);
-	init_default(info);
+	init_default(info, input);
 	while (e < len && input[e])
 	{
 		if (is_quotation(input[e]) && !move_end_point(input, &e, input[e]))
