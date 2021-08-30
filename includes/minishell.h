@@ -12,6 +12,7 @@
 # include <signal.h>
 # include <unistd.h>
 # include <dirent.h>
+# include <string.h>
 # include "../libft/libft.h"
 # include "defines.h"
 
