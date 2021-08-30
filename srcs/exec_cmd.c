@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 14:45:56 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/28 17:26:10 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/30 14:50:16 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void	parent_process(t_info *info, int pipe[2], int flags)
 		copy_envp(info);
 	split_free(info->param);
 	info->param_cnt = 0;
+	info->asterisk_check = 0;
 	if (info->redirect_lst)
 		ft_lstclear(&info->redirect_lst, ft_free);
 	if (stat(TEMP_FILE, &sb) == 0 && unlink(TEMP_FILE) == -1)

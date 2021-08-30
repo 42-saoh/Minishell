@@ -50,6 +50,7 @@ int	filter_input(t_info *info, char **input, int len)
 
 int	command_filter(t_info *info, char **content)
 {
+	char	**temp;
 	char	*new_input;
 	int		len;
 	int		r;
@@ -61,6 +62,17 @@ int	command_filter(t_info *info, char **content)
 	r = make_param(info, *content, len);
 	if (info->param[1])
 		r = filter_asterisk(info, 1);
+	if (info->asterisk_check && info->envp_cnt > 2)
+	{
+		temp = (char **)malloc(sizeof(char *) * (info->param_cnt + 1));
+		if (temp)
+		{
+			merge_sort(info->param, temp, 1, info->param_cnt - 1);
+			ft_free(temp);
+		}
+		else
+			r = 0;
+	}
 	ft_lstclear(&info->param_list, content_not_rm);
 	ft_lstclear(&info->temp_list, ft_free);
 	return (r);
