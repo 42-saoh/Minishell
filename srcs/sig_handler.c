@@ -25,5 +25,3 @@ void	sigint_handler(int signo)
 	rl_replace_line("", 0);
 	rl_redisplay();
 }
-/*
-	*/
