@@ -12,7 +12,7 @@
 
 #include "../includes/minishell.h"
 
-void		sorted_fill(char **sorted, char **temp, t_sort *info)
+void	sorted_fill(char **sorted, char **temp, t_sort *info)
 {
 	while (info->idx_l <= info->idx_r)
 	{
@@ -21,7 +21,7 @@ void		sorted_fill(char **sorted, char **temp, t_sort *info)
 	}	
 }
 
-void		remain_fill(char **sorted, char **temp, t_sort *info)
+void	remain_fill(char **sorted, char **temp, t_sort *info)
 {
 	if (info->curr_l > info->idx_m)
 	{
@@ -35,7 +35,7 @@ void		remain_fill(char **sorted, char **temp, t_sort *info)
 	}
 }
 
-void		compare_fill(char **sorted, char **temp, t_sort *info)
+void	compare_fill(char **sorted, char **temp, t_sort *info)
 {
 	while (info->curr_l <= info->idx_m && info->curr_r <= info->idx_r)
 	{
@@ -46,18 +46,17 @@ void		compare_fill(char **sorted, char **temp, t_sort *info)
 	}
 }
 
-void		merge(char **sorted, char **temp, t_sort *info)
+void	merge(char **sorted, char **temp, t_sort *info)
 {
 	info->curr_l = info->idx_l;
 	info->curr_r = info->idx_m + 1;
 	info->k = info->idx_l;
-
 	compare_fill(sorted, temp, info);
 	remain_fill(sorted, temp, info);
 	sorted_fill(sorted, temp, info);
 }
 
-void		merge_sort(char **sorted, char **temp, int idx_l, int idx_r)
+void	merge_sort(char **sorted, char **temp, int idx_l, int idx_r)
 {
 	int		mid;
 	t_sort	info;

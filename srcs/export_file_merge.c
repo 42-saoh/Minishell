@@ -60,10 +60,7 @@ int	envp_add_var(t_info *info, t_list **list)
 	return (1);
 }
 
-/*
-	** envp에다가 .export.txt읽어서 붙인다.
-*/
-int		export_file_merge(t_info *info, t_list **list)
+int	export_file_merge(t_info *info, t_list **list)
 {
 	int		fd;
 	char	*line;

@@ -12,7 +12,7 @@
 
 #include "../includes/minishell.h"
 
-int		file_to_envp(t_info *info)
+int	file_to_envp(t_info *info)
 {
 	int		fd;
 	int		idx;
@@ -41,7 +41,7 @@ int		file_to_envp(t_info *info)
 	return (1);
 }
 
-int		count_envp_len(t_info *info)
+int	count_envp_len(t_info *info)
 {
 	int		fd;
 	char	*line;
@@ -70,10 +70,10 @@ void	clear_envp_info(t_info *info)
 	while (info->envp[i])
 		ft_free(info->envp[i++]);
 	ft_free(info->envp);
-	info->envp_cnt = 0;	
+	info->envp_cnt = 0;
 }
 
-int		copy_envp(t_info *info)
+int	copy_envp(t_info *info)
 {
 	clear_envp_info(info);
 	if (!count_envp_len(info))
