@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 19:49:55 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/26 22:29:31 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/31 20:28:40 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	init_command_info(t_info *info, char *input)
 
 	temp = ft_split(info->param[0], '/');
 	if (!temp)
-		return (error_occur_std(SPLIT_ERR));
+		return (error_occur_perror(SPLIT_ERR));
 	cmd_idx = 0;
 	while (temp[cmd_idx])
 		cmd_idx++;
@@ -59,7 +59,7 @@ char	**init_path(char *envp[])
 		path = PATH;
 	paths = ft_split(path + 5, ':');
 	if (!paths)
-		error_occur_std(SPLIT_ERR);
+		error_occur_perror(SPLIT_ERR);
 	return (paths);
 }
 
@@ -70,7 +70,7 @@ int	init_envp_file(char *envp[])
 
 	fd = open(ENV_FILE, O_WRONLY | O_CREAT | O_TRUNC, S_IRWXU);
 	if (fd == -1)
-		return (error_occur_std(FILE_OPEN_ERR));
+		return (error_occur_perror(FILE_OPEN_ERR));
 	idx = 0;
 	while (envp[idx])
 	{

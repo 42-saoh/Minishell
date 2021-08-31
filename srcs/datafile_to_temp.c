@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 03:45:01 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/30 18:44:09 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/31 20:32:59 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	call_and_finish(t_data_to_temp *info, char *r_file, int is_env)
 		read_and_write(info, ft_strcmp);
 	ft_close(info->read_fd);
 	if (info->read_fd > 0 && unlink(r_file) == -1)
-		error_occur_std(UNLINK_ERR);
+		error_occur_perror(UNLINK_ERR);
 	return (1);
 }
 
@@ -102,7 +102,7 @@ int	datafile_to_temp(char *r_file, char *w_file, char *key, char *param)
 	if (info.write_fd == -1)
 	{
 		ft_close(info.read_fd);
-		return (error_occur_std(FILE_OPEN_ERR));
+		return (error_occur_perror(FILE_OPEN_ERR));
 	}
 	info.key = key;
 	info.param = param;

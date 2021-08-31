@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirection_out_dup.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taekang <taekang@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 20:44:43 by taekang           #+#    #+#             */
-/*   Updated: 2021/08/30 20:45:19 by taekang          ###   ########.fr       */
+/*   Updated: 2021/08/31 20:20:55 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	file_open_getfd_out(char *content, int e, int is_append)
 							S_IRUSR | S_IWUSR);
 	ft_free(file_nm);
 	if (fd == -1)
-		printf("%s: %s\n", file_nm, NO_SUCH_FILE);
+		no_such_file_error(file_nm);
 	return (fd);
 }
 

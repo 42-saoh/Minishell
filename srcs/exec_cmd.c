@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 14:45:56 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/30 16:33:02 by saoh             ###   ########.fr       */
+/*   Updated: 2021/08/31 20:06:44 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	parent_process(t_info *info, int pipe[2], int flags)
 	if (info->redirect_lst)
 		ft_lstclear(&info->redirect_lst, ft_free);
 	if (stat(TEMP_FILE, &sb) == 0 && unlink(TEMP_FILE) == -1)
-		printf("[file_nm : %s] %s\n", TEMP_FILE, UNLINK_ERR);
+		perror(UNLINK_ERR);
 }
 
 void	exec_command(t_info *info, int pipe[2], int flags)

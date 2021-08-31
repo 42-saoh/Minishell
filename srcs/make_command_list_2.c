@@ -25,7 +25,7 @@ int	append_command(t_info *info, char *input, int s, int e)
 
 	temp = ft_substr(input + s, 0, e - s);
 	if (!temp)
-		return (error_occur_std(MALLOC_ERR));
+		return (error_occur_perror(MALLOC_ERR));
 	if (is_empty(temp))
 	{
 		free(temp);
@@ -35,7 +35,7 @@ int	append_command(t_info *info, char *input, int s, int e)
 	if (!data)
 	{
 		free(temp);
-		return (error_occur_std(MALLOC_ERR));
+		return (error_occur_perror(MALLOC_ERR));
 	}
 	ft_lstadd_back(&info->commands, data);
 	info->command_cnt++;

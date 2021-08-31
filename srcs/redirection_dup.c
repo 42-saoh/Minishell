@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/17 15:34:47 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/19 13:50:52 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/31 20:32:22 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ int	set_left_fd(char *content, int *i, int fd[2])
 				fd[0] = 1;
 			if (fd[0] > FD_MAX)
 			{
-				printf("%d: %s\n", fd[0], BAD_FD);
+				ft_putnbr_fd(fd[0], STDERR_FILENO);
+				write(STDERR_FILENO, ": ", 3);
+				perror(BAD_FD);
 				return (0);
 			}
 			return (1);
@@ -33,7 +35,7 @@ int	set_left_fd(char *content, int *i, int fd[2])
 		fd[0] = fd[0] * 10 + content[*i] - '0';
 		*i += 1;
 	}
-	return (error_occur_std(PARSE_ERR));
+	return (error_occur_perror(PARSE_ERR));
 }
 
 int	redirection_dup(t_info *info)
