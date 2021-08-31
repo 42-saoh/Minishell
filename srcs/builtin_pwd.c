@@ -5,7 +5,7 @@ int	get_argc(char **argv)
 	int	i;
 
 	i = 0;
-	while(*argv)
+	while (*argv)
 	{
 		argv++;
 		i++;
@@ -15,8 +15,8 @@ int	get_argc(char **argv)
 
 void	builtin_pwd(t_info *info)
 {
-	char *path;
-	int	argc;
+	char	*path;
+	int		argc;
 
 	argc = get_argc(info->param);
 	if (argc > 1)

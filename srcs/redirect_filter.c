@@ -2,7 +2,7 @@
 
 void	move_quot_point(char *line, int *e, char end_c)
 {
-	int idx;
+	int	idx;
 
 	idx = *e + 1;
 	while (line[idx] != end_c)
@@ -32,7 +32,7 @@ int	move_redirect_space(char *content, int *e, int idx)
 
 int	move_redirect_and(char *content, int *e, int idx)
 {
-	int t_idx;
+	int	t_idx;
 
 	t_idx = idx + 1;
 	while (content[t_idx] && content[t_idx] != ' ')
@@ -46,131 +46,6 @@ int	move_redirect_and(char *content, int *e, int idx)
 		return (move_redirect_space(content, e, idx));
 	*e = t_idx;
 	return (1);
-}
-
-int	move_db_redirect_out(char *content, int *e)
-{
-	int	idx;
-
-	idx = *e + 2;
-	if (!content[idx])
-		return (0);
-	else if (content[idx] == REDIRECT_IN || content[idx] == REDIRECT_OUT)
-		return (0);
-	else if (content[idx] == '&')
-		return (move_redirect_and(content, e, idx));
-	else if (content[idx] == ' ')
-		return (move_redirect_space(content, e, idx));
-	else
-	{
-		while (content[idx] && content[idx] != ' ')
-		{
-			if (content[idx] == SINGLE_Q || content[idx] == DOUBLE_Q)
-				move_quot_point(content, &idx, content[idx]);
-			else
-				idx++;
-		}
-		*e = idx;
-	}
-	return (1);
-}
-
-int	move_db_redirect_in(char *content, int *e)
-{
-	int	idx;
-
-	idx = *e + 2;
-	if (!content[idx])
-		return (0);
-	else if (content[idx] == REDIRECT_IN || content[idx] == REDIRECT_OUT)
-		return (0);
-	else if (content[idx] == '&')
-		return (0);
-	else if (content[idx] == ' ')
-		return (move_redirect_space(content, e, idx));
-	else
-	{
-		while (content[idx] && content[idx] != ' ')
-		{
-			if (content[idx] == SINGLE_Q || content[idx] == DOUBLE_Q)
-				move_quot_point(content, &idx, content[idx]);
-			else
-				idx++;
-		}
-		*e = idx;
-	}
-	return (1);
-}
-
-int	move_sg_redirect_in(char *content, int *e)
-{
-	int	idx;
-
-	idx = *e + 1;
-	if (!content[idx])
-		return (0);
-	else if (content[idx] == REDIRECT_OUT)
-		return (0);
-	else if (content[idx] == '&')
-		return (move_redirect_and(content, e, idx));
-	else if (content[idx] == ' ')
-		return (move_redirect_space(content, e, idx));
-	else
-	{
-		while (content[idx] && content[idx] != ' ')
-		{
-			if (content[idx] == SINGLE_Q || content[idx] == DOUBLE_Q)
-				move_quot_point(content, &idx, content[idx]);
-			else
-				idx++;
-		}
-		*e = idx;
-	}
-	return (1);
-}
-
-int	move_sg_redirect_out(char *content, int *e)
-{
-	int	idx;
-
-	idx = *e + 1;
-	if (!content[idx])
-		return (0);
-	else if (content[idx] == REDIRECT_IN)
-		return (0);
-	else if (content[idx] == '&')
-		return (move_redirect_and(content, e, idx));
-	else if (content[idx] == ' ')
-		return (move_redirect_space(content, e, idx));
-	else
-	{
-		while (content[idx] && content[idx] != ' ')
-		{
-			if (content[idx] == SINGLE_Q || content[idx] == DOUBLE_Q)
-				move_quot_point(content, &idx, content[idx]);
-			else
-				idx++;
-		}
-		*e = idx;
-	}
-	return (1);
-}
-
-int	redirect_get_end(char *content, int *e)
-{
-	int i;
-
-	if (content[*e] == REDIRECT_IN && content[*e + 1] == REDIRECT_IN)
-		i = move_db_redirect_in(content, e);
-	else if (content[*e] == REDIRECT_OUT && content[*e + 1] == REDIRECT_OUT)
-		i = move_db_redirect_out(content, e);
-	else if (content[*e] == REDIRECT_IN)
-		i = move_sg_redirect_in(content, e);
-	else if (content[*e] == REDIRECT_OUT)
-		i = move_sg_redirect_out(content, e);
-	else
-		i = 0;
-	return (i);
 }
 
 int	redirect_add(t_info *info, char **content, int *i)
@@ -192,7 +67,8 @@ int	redirect_add(t_info *info, char **content, int *i)
 	s = e - s + 1;
 	if (!redirect_get_end(*content, &e))
 		return (0);
-	ft_lstadd_back(&info->redirect_lst, ft_lstnew(ft_substr(*content, s, e - s)));
+	ft_lstadd_back(&info->redirect_lst, \
+			ft_lstnew(ft_substr(*content, s, e - s)));
 	*i = s;
 	return (remove_redirect(s, e, content));
 }

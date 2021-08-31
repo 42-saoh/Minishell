@@ -3,8 +3,8 @@
 long	ft_atoi_long_exit(char *str, int *flag)
 {
 	unsigned long long	get_num;
-	long	result;
-	int		i;
+	long				result;
+	int					i;
 
 	i = 0;
 	get_num = 0;
@@ -36,10 +36,10 @@ void	error_exit(char *str)
 
 void	builtin_exit(t_info *info)
 {
-	int	argc;
-	int	error_flag;
+	int		argc;
+	int		error_flag;
 	long	exit_num;
-	
+
 	argc = get_argc(info->param);
 	error_flag = 0;
 	if (argc == 1)

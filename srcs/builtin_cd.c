@@ -9,8 +9,8 @@ int	find_root(char *envp)
 		i++;
 	if (i < 4)
 		return (0);
-	else if (envp[0] == 'H' && envp[1] == 'O' && envp[2] == 'M' && envp[3] == 'E'
-			&& envp[4] == '=')
+	else if (envp[0] == 'H' && envp[1] == 'O' && envp[2] == 'M' && \
+			envp[3] == 'E' && envp[4] == '=')
 		return (1);
 	else
 		return (0);
@@ -18,8 +18,8 @@ int	find_root(char *envp)
 
 void	get_root_dir_sib(char **envp)
 {
-	char *a;
-	int	i;
+	char	*a;
+	int		i;
 
 	while (*envp)
 	{
@@ -45,7 +45,7 @@ void	get_root_dir_sib(char **envp)
 
 void	builtin_cd_sib(t_info *info)
 {
-	int i;
+	int	i;
 
 	i = get_argc(info->param);
 	if (i == 1)
@@ -64,8 +64,8 @@ void	builtin_cd_sib(t_info *info)
 
 void	get_root_dir_parent(char **envp)
 {
-	char *a;
-	int	i;
+	char	*a;
+	int		i;
 
 	while (*envp)
 	{
@@ -82,7 +82,7 @@ void	get_root_dir_parent(char **envp)
 
 void	builtin_cd_parent(t_info *info)
 {
-	int i;
+	int	i;
 
 	i = get_argc(info->param);
 	if (i == 1)

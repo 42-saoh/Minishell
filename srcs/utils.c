@@ -12,7 +12,7 @@
 
 #include "../includes/minishell.h"
 
-int		is_empty(char *temp)
+int	is_empty(char *temp)
 {
 	int	i;
 
@@ -26,14 +26,14 @@ int		is_empty(char *temp)
 	return (1);
 }
 
-int		is_quotation(char c)
+int	is_quotation(char c)
 {
 	if (c == SINGLE_Q || c == DOUBLE_Q)
 		return (1);
 	return (0);
 }
 
-int		pass_possible(char c)
+int	pass_possible(char c)
 {
 	if (!c)
 		return (0);
@@ -46,7 +46,7 @@ int		pass_possible(char c)
 	return (1);
 }
 
-int		is_redirect(char c)
+int	is_redirect(char c)
 {
 	if (c == REDIRECT_IN || c == REDIRECT_OUT)
 		return (1);

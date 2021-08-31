@@ -2,7 +2,7 @@
 
 char	*get_dollar_value(char **envp, char *input)
 {
-	int i;
+	int	i;
 	int	exist;
 
 	while (*envp)
@@ -24,7 +24,7 @@ char	*get_dollar_value(char **envp, char *input)
 			return (*envp + i + 1);
 		envp++;
 	}
-	return "";
+	return ("");
 }
 
 char	*make_new_input(char *input, int s, int *next_idx, char *value)
@@ -57,15 +57,15 @@ char	*make_new_input(char *input, int s, int *next_idx, char *value)
 	str의 s ~ e범위에 존재하는 $를 치환한 새로운 문자열로 변경한다.
 	다음 탐색 인덱스 (e)를 여기서 함께 변경해준다.
 */
-int		replace_env(char **envp, char **ptr, int s, int *next_idx)
+int	replace_env(char **envp, char **ptr, int s, int *next_idx)
 {
 	char	*value;
 	char	*result;
-	// printf("str : [%s], idx : [%d], (*ptr) + s : [%s]\n", *ptr, s, (*ptr) + s);
+
 	value = get_dollar_value(envp, *ptr + s + 1);
 	result = make_new_input(*ptr, s, next_idx, value);
 	if (!result)
-		return (error_occur_std(MAKE_NEW_INPUT_ERR));	
+		return (error_occur_std(MAKE_NEW_INPUT_ERR));
 	free(*ptr);
 	*ptr = result;
 	return (1);

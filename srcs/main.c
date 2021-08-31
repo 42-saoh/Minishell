@@ -37,13 +37,9 @@ void	move_next_cmd(t_info *info, t_list **commands, t_list **symbols)
 		if (*symbols)
 		{
 			symbol = *(int *)(*symbols)->content;
-			if (symbol == DB_AMPER && info->exec_result != 0 ||\
+			if (symbol == DB_AMPER && info->exec_result != 0 || \
 				symbol == DB_PIPE && info->exec_result == 0)
 			{
-				// pass인 경우, 이어지는 symbol을 확인한다.
-				// *commands = (*commands)->next;
-				// pass일 때, 명령어 갯수를 하나 지워주고, move_next_cmd한다.
-				// symbols도 옮긴다.
 				info->command_cnt--;
 				*symbols = (*symbols)->next;
 				move_next_cmd(info, commands, symbols);
@@ -73,7 +69,7 @@ void	start(t_info *info)
 		if (!init_command_info(info, commands->content))
 			return ;
 		if (info->command_cnt != 0 && !set_connect_pipe(info, seq))
-		 	return ;
+			return ;
 		if (symbols && is_double_symbol(*(int *)symbols->content))
 			exec_call(info, -1);
 		else
@@ -87,7 +83,7 @@ int	check_input(char *input)
 	int	i;
 
 	if (!input)
- 		ctrl_d_handler();
+		ctrl_d_handler();
 	i = 0;
 	while (input[i] == ' ')
 		i++;
@@ -99,19 +95,17 @@ int	check_input(char *input)
 	return (1);
 }
 
-int main(int argc, char *argv[], char *envp[])
+int	main(int argc, char *argv[], char *envp[])
 {
 	char	*input;
 	char	*prompt;
 	t_info	info;
 
-	// 설정의 PS1, PS2로 받아올 수 있도록. ?
 	prompt = "$";
-	// 종료 시그널 받으면 프로그램 끝내야 함.
 	ft_memset(&info, 0, sizeof(t_info));
 	if (!init_envp_and_signal(&info, envp))
 		return (0);
-	while(1)
+	while (1)
 	{
 		input = readline(prompt);
 		if (check_input(input))
@@ -128,5 +122,4 @@ int main(int argc, char *argv[], char *envp[])
 		}
 	}
 	clear_all_data(&info);
-	// need clear pathes
 }
