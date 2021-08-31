@@ -6,15 +6,15 @@
 /*   By: taekang <taekang@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 20:12:27 by taekang           #+#    #+#             */
-/*   Updated: 2020/09/28 22:12:23 by taekang          ###   ########.fr       */
+/*   Updated: 2021/08/31 15:55:59 by taekang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t		ft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (s[i])

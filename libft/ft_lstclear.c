@@ -6,7 +6,7 @@
 /*   By: taekang <taekang@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 16:27:14 by taekang           #+#    #+#             */
-/*   Updated: 2020/10/17 16:52:25 by taekang          ###   ########.fr       */
+/*   Updated: 2021/08/31 15:50:55 by taekang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	t_list *curr;
-	t_list *next;
+	t_list	*curr;
+	t_list	*next;
 
 	if (!lst || !del)
 		return ;

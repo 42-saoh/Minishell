@@ -6,7 +6,7 @@
 /*   By: taekang <taekang@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 18:57:44 by taekang           #+#    #+#             */
-/*   Updated: 2020/10/17 19:50:51 by taekang          ###   ########.fr       */
+/*   Updated: 2021/08/31 15:57:47 by taekang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,14 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 
 	if (!lst || !f)
 		return (0);
-	if (!(result = ft_lstnew(f(lst->content))))
+	result = ft_lstnew(f(lst->content));
+	if (!result)
 		return (0);
 	lst = lst->next;
 	while (lst)
 	{
-		if (!(append = ft_lstnew(f(lst->content))))
+		append = ft_lstnew(f(lst->content));
+		if (!append)
 		{
 			ft_lstclear(&result, del);
 			return (0);

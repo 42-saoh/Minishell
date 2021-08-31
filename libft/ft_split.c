@@ -6,13 +6,13 @@
 /*   By: taekang <taekang@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 16:44:55 by taekang           #+#    #+#             */
-/*   Updated: 2020/10/19 20:19:17 by taekang          ###   ########.fr       */
+/*   Updated: 2021/08/31 16:04:32 by taekang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t		get_cnt(char const *s, char c)
+size_t	get_cnt(char const *s, char c)
 {
 	int		i;
 	size_t	cnt;
@@ -32,13 +32,14 @@ size_t		get_cnt(char const *s, char c)
 	return (cnt);
 }
 
-int			add_str(char **result, int seq, char *src, size_t n)
+int	add_str(char **result, int seq, char *src, size_t n)
 {
-	char *dst;
+	char	*dst;
 
 	if (n <= 1)
 		return (1);
-	if (!(dst = (char *)malloc(sizeof(char) * n)))
+	dst = (char *)malloc(sizeof(char) * n);
+	if (!dst)
 	{
 		while (seq - 1 >= 0)
 		{
@@ -53,7 +54,7 @@ int			add_str(char **result, int seq, char *src, size_t n)
 	return (1);
 }
 
-int			set_result(char **result, char const *s, char c, int seq)
+int	set_result(char **result, char const *s, char c, int seq)
 {
 	int		l;
 	int		r;
@@ -79,7 +80,7 @@ int			set_result(char **result, char const *s, char c, int seq)
 	return (seq);
 }
 
-char		**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	char	**result;
 	size_t	cnt;
@@ -89,11 +90,13 @@ char		**ft_split(char const *s, char c)
 		return (0);
 	seq = 0;
 	cnt = get_cnt(s, c);
-	if (!(result = (char **)malloc(sizeof(char *) * cnt)))
+	result = (char **)malloc(sizeof(char *) * cnt);
+	if (!result)
 		return (0);
 	if (cnt != 1)
 	{
-		if (!(seq = set_result(result, s, c, 0)))
+		seq = set_result(result, s, c, 0);
+		if (!seq)
 			return (0);
 	}
 	result[seq] = 0;

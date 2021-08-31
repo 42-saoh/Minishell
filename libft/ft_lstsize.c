@@ -6,7 +6,7 @@
 /*   By: taekang <taekang@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/16 19:02:44 by taekang           #+#    #+#             */
-/*   Updated: 2020/10/16 19:08:56 by taekang          ###   ########.fr       */
+/*   Updated: 2021/08/31 15:53:53 by taekang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_lstsize(t_list *lst)
 {
-	int result;
+	int	result;
 
 	result = 0;
 	while (lst)
