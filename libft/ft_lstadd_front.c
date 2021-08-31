@@ -6,7 +6,7 @@
 /*   By: taekang <taekang@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/16 16:59:37 by taekang           #+#    #+#             */
-/*   Updated: 2020/10/16 17:36:23 by taekang          ###   ########.fr       */
+/*   Updated: 2021/08/31 15:55:13 by taekang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	t_list *start;
+	t_list	*start;
 
 	if (!lst || !new)
 		return ;

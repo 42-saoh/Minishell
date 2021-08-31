@@ -6,7 +6,7 @@
 /*   By: taekang <taekang@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 18:43:34 by taekang           #+#    #+#             */
-/*   Updated: 2020/10/19 14:47:33 by taekang          ###   ########.fr       */
+/*   Updated: 2021/08/31 15:52:17 by taekang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	long long num;
+	long long	num;
 
 	num = n;
 	if (num < 0)
