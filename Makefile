@@ -31,7 +31,7 @@ OBJS	= $(addprefix $(OBJ_DIR), $(OBJ_FILES))
 # -L/opt/homebrew/Cellar/readline/8.1/lib -I/opt/homebrew/Cellar/readline/8.1/include
 # -L/opt/homebrew/Cellar/readline/8.1/lib/ -I/opt/homebrew/include/
 # /opt/homebrew/lib
-LIBS	= ${LIBFT} -lreadline #-L/opt/homebrew/Cellar/readline/8.1/lib
+LIBS	= ${LIBFT} -lreadline -L./readline/lib -I./readline/include/
 
 
 all:		$(NAME)
@@ -45,7 +45,7 @@ $(LIBFT):
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
-	$(CC) ${CFLAGS} -c $< -o $@
+	$(CC) ${CFLAGS} -c $< -o $@ -lreadline -L./readline/lib -I./readline/include
 
 clean:
 	@$(MAKE) -C $(LIBFT_DIR) clean
