@@ -45,7 +45,7 @@ $(LIBFT):
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
-	$(CC) ${CFLAGS} -c $< -o $@ -lreadline -L./readline/lib -I./readline/include
+	$(CC) ${CFLAGS} -c $< -o $@ -I./readline/include
 
 clean:
 	@$(MAKE) -C $(LIBFT_DIR) clean
