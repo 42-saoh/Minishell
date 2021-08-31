@@ -66,12 +66,19 @@ void		exec_call(t_info *info, int instruct_seq);
 /*
 	make command list
 */
-int		make_command_list(t_info *info, char *input);
+int	make_command_list(t_info *info, char *input);
+int	append_command(t_info *info, char *input, int s, int e);
+int	append_pipe_command(t_info *info, char *input, int *s, int *e);
+int	append_amper_command(t_info *info, char *input, int *s, int *e);
 /*
 	filter
 */
 int	command_filter(t_info *info, char **content);
 int	redirect_filter(t_info *info, char **content);
+int	redirect_get_end(char *content, int *e);
+int	move_redirect_space(char *content, int *e, int idx);
+int	move_redirect_and(char *content, int *e, int idx);
+void	move_quot_point(char *line, int *e, char end_c);
 /*
 	replace_env
 */
