@@ -20,8 +20,10 @@ void	ctrl_d_handler(void)
 
 void	sigint_handler(int signo)
 {
-	printf("$      \n");
+	printf("\n");
 	rl_on_new_line();
 	rl_replace_line("", 0);
 	rl_redisplay();
 }
+/*
+	*/
