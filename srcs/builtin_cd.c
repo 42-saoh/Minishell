@@ -29,14 +29,14 @@ void	get_root_dir_sib(char **envp)
 	}
 	if (!(*envp))
 	{
-		printf("Home is not finded\n");
+		perror("Home is not finded\n");
 		exit(EXEC_FAIL);
 	}
 	a = ft_strdup(*envp + 5);
 	i = chdir(a);
 	if (i)
 	{
-		printf("cd: %s: %s\n", a, strerror(errno));
+		stderr_print("cd", a, strerror(errno));
 		free(a);
 		exit(EXEC_FAIL);
 	}
@@ -55,7 +55,7 @@ void	builtin_cd_sib(t_info *info)
 		i = chdir(info->param[1]);
 		if (i)
 		{
-			printf("cd: %s: %s\n", info->param[1], strerror(errno));
+			stderr_print("cd", info->param[1], strerror(errno));
 			exit(EXEC_FAIL);
 		}
 	}

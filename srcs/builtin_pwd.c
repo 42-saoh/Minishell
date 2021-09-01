@@ -26,7 +26,7 @@ void	builtin_pwd(t_info *info)
 			if (info->param[1][1] != 0 && (info->param[1][1] != '-' ||
 						info->param[1][2] != 0))
 			{
-				printf("pwd: %s: invalid option\n", info->param[1]);
+				stderr_print("pwd", info->param[1], "invalid option");
 				exit(EXEC_FAIL);
 			}
 		}

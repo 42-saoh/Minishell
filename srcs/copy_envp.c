@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 01:34:38 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/26 23:26:13 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/31 20:32:39 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	file_to_envp(t_info *info)
 	info->envp[info->envp_cnt] = 0;
 	fd = open(ENV_FILE, O_RDONLY);
 	if (fd == -1)
-		return (error_occur_std(FILE_OPEN_ERR));
+		return (error_occur_perror(FILE_OPEN_ERR));
 	idx = 0;
 	while (get_next_line(fd, &line) > 0 && idx < info->envp_cnt)
 	{
@@ -48,7 +48,7 @@ int	count_envp_len(t_info *info)
 
 	fd = open(ENV_FILE, O_RDONLY);
 	if (fd == -1)
-		return (error_occur_std(FILE_OPEN_ERR));
+		return (error_occur_perror(FILE_OPEN_ERR));
 	while (get_next_line(fd, &line) > 0)
 	{
 		info->envp_cnt++;

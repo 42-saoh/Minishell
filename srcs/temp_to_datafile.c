@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 05:20:53 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/30 20:36:02 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/31 20:22:02 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	temp_to_datafile(char *read, char *write)
 			ft_close(fd_2);
 		}
 		if (unlink(read) == -1)
-			error_occur_std(UNLINK_ERR);
+			error_occur_perror(UNLINK_ERR);
 	}
 	return (1);
 }

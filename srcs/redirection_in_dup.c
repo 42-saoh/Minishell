@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   redirection_in_dup.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/31 20:19:02 by taesan            #+#    #+#             */
+/*   Updated: 2021/08/31 20:20:42 by taesan           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/minishell.h"
 
 int	here_doc_exec(char *limiter, int fds[2], int fd_in)
@@ -23,7 +35,7 @@ int	here_doc_exec(char *limiter, int fds[2], int fd_in)
 	ft_close(fd);
 	fds[1] = open(TEMP_FILE, O_RDONLY, S_IRUSR | S_IWUSR);
 	if (fds[1] == -1)
-		printf("%s: %s\n", TEMP_FILE, NO_SUCH_FILE);
+		no_such_file_error(TEMP_FILE);
 	return (fds[1]);
 }
 
@@ -37,7 +49,7 @@ int	file_open_getfd_in(char *content, int e)
 		return (0);
 	fd = open(file_nm, O_RDONLY);
 	if (fd == -1)
-		printf("%s: %s\n", file_nm, NO_SUCH_FILE);
+		no_such_file_error(file_nm);
 	ft_free(file_nm);
 	return (fd);
 }

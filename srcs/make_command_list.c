@@ -8,7 +8,7 @@ int	move_end_point(char *line, int *e, char end_c)
 	while (line[idx] && line[idx] != end_c)
 		idx++;
 	if (!line[idx])
-		return (error_occur_std(NOT_CLOSED));
+		return (error_occur_perror(NOT_CLOSED));
 	*e = idx;
 	return (1);
 }

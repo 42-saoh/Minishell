@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 05:30:38 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/27 05:51:11 by taesan           ###   ########.fr       */
+/*   Updated: 2021/08/31 20:33:18 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	remove_var(char *r_file, char *w_file, char *key)
 	if (info.write_fd == -1)
 	{
 		ft_close(info.read_fd);
-		return (error_occur_std(FILE_OPEN_ERR));
+		return (error_occur_perror(FILE_OPEN_ERR));
 	}
 	info.key = key;
 	if (ft_strcmp(r_file, ENV_FILE) == 0)
@@ -54,6 +54,6 @@ int	remove_var(char *r_file, char *w_file, char *key)
 	else
 		read_and_remove(&info, ft_strcmp);
 	if (unlink(r_file) == -1)
-		error_occur_std(UNLINK_ERR);
+		error_occur_perror(UNLINK_ERR);
 	return (temp_to_datafile(w_file, r_file));
 }

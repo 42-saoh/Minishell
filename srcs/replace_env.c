@@ -65,7 +65,7 @@ int	replace_env(char **envp, char **ptr, int s, int *next_idx)
 	value = get_dollar_value(envp, *ptr + s + 1);
 	result = make_new_input(*ptr, s, next_idx, value);
 	if (!result)
-		return (error_occur_std(MAKE_NEW_INPUT_ERR));
+		return (error_occur_perror(MAKE_NEW_INPUT_ERR));
 	free(*ptr);
 	*ptr = result;
 	return (1);

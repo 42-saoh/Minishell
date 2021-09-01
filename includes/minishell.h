@@ -19,8 +19,9 @@
 /*
 	error.c
 */
-int		error_occur_std(char *msg);
 int		error_occur_perror(char *msg);
+int		stderr_print(char *cmd, char *param, char *msg);
+void	no_such_file_error(char *file_nm);
 /*
 	utils
 */
@@ -194,6 +195,7 @@ t_list	*front_back_join(char *input, t_strjoin *temp);
 	free_utils
 */
 void	remove_file(void);
+
 /*
 	test
 */

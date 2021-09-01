@@ -54,7 +54,7 @@ int	command_filter(t_info *info, char **content)
 
 	len = ft_strlen((char *)(*content));
 	if (!filter_input(info, content, len))
-		return (error_occur_std(FILTER_INPUT_ERR));
+		return (error_occur_perror(FILTER_INPUT_ERR));
 	len = ft_strlen((char *)(*content));
 	r = make_param(info, *content, len);
 	if (info->param[1])
