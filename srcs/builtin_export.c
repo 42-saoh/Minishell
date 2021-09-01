@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 00:23:10 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/27 00:55:06 by taesan           ###   ########.fr       */
+/*   Updated: 2021/09/01 17:19:49 by taekang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	builtin_export(t_info *info)
 {
-	int		i;
 	char	**temp;
 	t_list	*list;
 

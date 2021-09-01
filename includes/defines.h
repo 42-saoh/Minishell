@@ -6,16 +6,16 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 15:05:24 by taesan            #+#    #+#             */
-/*   Updated: 2021/09/01 15:38:04 by taesan           ###   ########.fr       */
+/*   Updated: 2021/09/01 17:01:53 by taekang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEFINES_H
 # define DEFINES_H
 
-#include "minishell.h"
+# include "minishell.h"
 
-typedef	struct	s_sort
+typedef struct s_sort
 {
 	int		idx_l;
 	int		idx_r;
@@ -25,7 +25,7 @@ typedef	struct	s_sort
 	int		k;
 }				t_sort;
 
-typedef struct	s_strjoin
+typedef struct s_strjoin
 {
 	int		front_s;
 	int		front_len;
@@ -36,7 +36,7 @@ typedef struct	s_strjoin
 	char	*content;
 }				t_strjoin;
 
-typedef	struct	s_data_to_temp
+typedef struct s_data_to_temp
 {
 	int		read_fd;
 	int		write_fd;

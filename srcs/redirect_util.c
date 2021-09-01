@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/07 21:17:51 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/19 13:52:43 by taesan           ###   ########.fr       */
+/*   Updated: 2021/09/01 17:17:10 by taekang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	redirection_dup_exec(int fds[2])
 	ft_close(fds[1]);
 }
 
-int	get_ampersand_fd(char *content, int i, int fds[2])
+int	get_ampersand_fd(char *content, int i)
 {
 	int	s;
 	int	fd;

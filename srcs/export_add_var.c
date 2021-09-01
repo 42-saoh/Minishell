@@ -32,8 +32,6 @@ int	check_and_write_exec(char *param)
 void	export_add_var(t_info *info)
 {
 	int		i;
-	int		j;
-	char	*param;
 
 	i = 1;
 	while (info->param[i])

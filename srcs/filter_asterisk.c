@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/29 01:25:08 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/30 21:04:19 by taesan           ###   ########.fr       */
+/*   Updated: 2021/09/01 17:20:45 by taekang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,6 @@ int	add_new_p_list(t_info *info, char **param, t_list **list, int is_ast)
 {
 	DIR		*dir_ptr;
 	t_list	*data;
-	char	*new_content;
 	int		r;
 
 	r = 1;
