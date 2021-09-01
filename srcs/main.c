@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 22:00:23 by taesan            #+#    #+#             */
-/*   Updated: 2021/09/01 15:21:17 by taesan           ###   ########.fr       */
+/*   Updated: 2021/09/01 17:15:56 by taekang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,6 @@ void	error_occur_parsing(t_info *info, char *input)
 	ft_free(input);
 }
 
-/*
-	command 수행 후, 다음 command로 이동한다.
-	symbol을 확인하여, 다음 command를 pass한다.
-*/
 void	move_next_cmd(t_info *info, t_list **commands, t_list **symbols)
 {
 	int		symbol;
@@ -37,8 +33,8 @@ void	move_next_cmd(t_info *info, t_list **commands, t_list **symbols)
 		if (*symbols)
 		{
 			symbol = *(int *)(*symbols)->content;
-			if (symbol == DB_AMPER && info->exec_result != 0 || \
-				symbol == DB_PIPE && info->exec_result == 0)
+			if ((symbol == DB_AMPER && info->exec_result != 0) || \
+				(symbol == DB_PIPE && info->exec_result == 0))
 			{
 				info->command_cnt--;
 				*symbols = (*symbols)->next;
@@ -66,7 +62,7 @@ void	start(t_info *info)
 			return ;
 		if (!command_filter(info, (char **)(&commands->content)))
 			return ;
-		if (!init_command_info(info, commands->content))
+		if (!init_command_info(info))
 			return ;
 		if (info->command_cnt != 0 && !set_connect_pipe(info, seq))
 			return ;
@@ -103,7 +99,7 @@ int	main(int argc, char *argv[], char *envp[])
 
 	prompt = "$";
 	ft_memset(&info, 0, sizeof(t_info));
-	if (!init_envp_and_signal(&info, envp))
+	if (!init_envp_and_signal(&info, argc, argv, envp))
 		return (0);
 	while (1)
 	{

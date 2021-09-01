@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 20:46:35 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/30 20:51:52 by taekang          ###   ########.fr       */
+/*   Updated: 2021/09/01 17:22:43 by taekang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	content_not_rm(void *param)
 {
+	void	*temp;
+
+	temp = param;
 	return ;
 }
 

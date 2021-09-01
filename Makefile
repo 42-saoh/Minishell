@@ -1,8 +1,7 @@
 NAME	= minishell
 
-# -I/opt/homebrew/include
-CC		= gcc -g -fsanitize=address #arch -x86_64
-#CFLAGS	= -Wall -Wextra -Werror
+CC		= gcc
+CFLAGS	= -Wall -Wextra -Werror
 
 SRC_DIR		= ./srcs/
 OBJ_DIR		= ./objs/
@@ -28,11 +27,7 @@ SRC 	=	main.c error.c utils.c check.c init.c \
 OBJ_FILES = $(SRC:.c=.o)
 OBJS	= $(addprefix $(OBJ_DIR), $(OBJ_FILES))
 
-# -L/opt/homebrew/Cellar/readline/8.1/lib -I/opt/homebrew/Cellar/readline/8.1/include
-# -L/opt/homebrew/Cellar/readline/8.1/lib/ -I/opt/homebrew/include/
-# /opt/homebrew/lib
 LIBS	= ${LIBFT} -lreadline -L$(HOME)/.brew/opt/readline/lib -I$(HOME)/.brew/opt/readline/include
-
 
 all:		$(NAME)
 
@@ -58,4 +53,4 @@ fclean:	clean
 
 re: fclean all
 
-.PHONY:	all bonus clean fclean re
+.PHONY:	all clean fclean re

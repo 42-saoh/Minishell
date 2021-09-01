@@ -6,13 +6,13 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 19:49:55 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/31 20:28:40 by taesan           ###   ########.fr       */
+/*   Updated: 2021/09/01 17:15:37 by taekang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-int	init_command_info(t_info *info, char *input)
+int	init_command_info(t_info *info)
 {
 	char	*cmd;
 	char	**temp;
@@ -83,8 +83,10 @@ int	init_envp_file(char *envp[])
 	return (1);
 }
 
-int	init_envp_and_signal(t_info *info, char *envp[])
+int	init_envp_and_signal(t_info *info, int argc, char *argv[], char *envp[])
 {
+	argc = 0;
+	argv = 0;
 	info->paths = init_path(envp);
 	if (!info->paths)
 		return (0);

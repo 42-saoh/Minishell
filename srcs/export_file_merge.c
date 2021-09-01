@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 00:38:01 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/27 00:55:17 by taesan           ###   ########.fr       */
+/*   Updated: 2021/09/01 17:20:33 by taekang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	append_export_list(t_info *info, t_list **list, char *line)
 {
-	int		len;
 	t_list	*data;
 	char	*content;
 

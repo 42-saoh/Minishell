@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 19:03:01 by taesan            #+#    #+#             */
-/*   Updated: 2021/09/01 15:17:22 by taesan           ###   ########.fr       */
+/*   Updated: 2021/09/01 17:14:27 by taekang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	no_such_file_error(char *file_nm)
 {
-	write(STDERR_FILENO, TEMP_FILE, ft_strlen(TEMP_FILE));
+	write(STDERR_FILENO, file_nm, ft_strlen(file_nm));
 	write(STDERR_FILENO, ": ", 3);
 	write(STDERR_FILENO, NO_SUCH_FILE, ft_strlen(NO_SUCH_FILE));
 	write(STDERR_FILENO, "\n", 2);

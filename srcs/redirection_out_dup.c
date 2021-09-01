@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 20:44:43 by taekang           #+#    #+#             */
-/*   Updated: 2021/08/31 20:20:55 by taesan           ###   ########.fr       */
+/*   Updated: 2021/09/01 17:18:45 by taekang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	file_open_getfd_out(char *content, int e, int is_append)
 int	set_right_fd_out(char *content, int i, int fds[2], int is_append)
 {
 	if (content[i] == '&')
-		fds[1] = get_ampersand_fd(content, i, fds);
+		fds[1] = get_ampersand_fd(content, i);
 	else
 	{
 		fds[1] = file_open_getfd_out(content, i, is_append);

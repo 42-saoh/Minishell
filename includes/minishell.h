@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 15:50:59 by taesan            #+#    #+#             */
-/*   Updated: 2021/09/01 15:50:59 by taesan           ###   ########.fr       */
+/*   Updated: 2021/09/01 17:22:07 by taekang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ int		exist_dollar(char *input, int s, int e);
 /*
 	init
 */
-int		init_command_info(t_info *info, char *input);
-int		init_envp_and_signal(t_info *info, char *envp[]);
+int		init_command_info(t_info *info);
+int		init_envp_and_signal(t_info *info, int ac, char *av[], char *en[]);
 int		copy_envp(t_info *info);
 /*
 	sig_handler
@@ -96,7 +96,7 @@ int		replace_env(char **envp, char **ptr, int s, int *next_idx);
 	redirect_util
 */
 int		remove_redirect(int s, int e, char **content);
-int		get_ampersand_fd(char *content, int i, int fds[2]);
+int		get_ampersand_fd(char *content, int i);
 char	*get_right_str(char *content, int i);
 void	redirection_dup_exec(int fds[2]);
 /*
