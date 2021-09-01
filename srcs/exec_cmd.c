@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 14:45:56 by taesan            #+#    #+#             */
-/*   Updated: 2021/09/01 15:20:24 by taesan           ###   ########.fr       */
+/*   Updated: 2021/09/01 15:25:39 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	parent_process(t_info *info, int pipe[2], int flags)
 	while (r == -1 && errno == EINTR)
 		r = wait(&status);
 	if (r == -1)
-		perror(WAIT_ERR);
+		error_occur_perror(WAIT_ERR);
 	info->exec_result = WEXITSTATUS(status);
 	clear_pipe(info, pipe, flags);
 	if (info->is_builtin)
@@ -70,7 +70,7 @@ void	parent_process(t_info *info, int pipe[2], int flags)
 	if (info->redirect_lst)
 		ft_lstclear(&info->redirect_lst, ft_free);
 	if (stat(TEMP_FILE, &sb) == 0 && unlink(TEMP_FILE) == -1)
-		perror(UNLINK_ERR);
+		error_occur_perror(UNLINK_ERR);
 }
 
 void	exec_command(t_info *info, int pipe[2], int flags)
@@ -81,7 +81,7 @@ void	exec_command(t_info *info, int pipe[2], int flags)
 	if (cpid > 0)
 		parent_process(info, pipe, flags);
 	else if (cpid < 0)
-		perror("fork");
+		error_occur_perror("fork");
 	else
 		child_process(info, pipe, flags);
 }

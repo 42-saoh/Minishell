@@ -29,7 +29,7 @@ void	get_root_dir_sib(char **envp)
 	}
 	if (!(*envp))
 	{
-		write(STDERR_FILENO, "Home is not finded\n", 20);
+		error_occur_perror("Home is not finded");
 		exit(EXEC_FAIL);
 	}
 	a = ft_strdup(*envp + 5);
