@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/17 15:34:47 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/31 20:32:22 by taesan           ###   ########.fr       */
+/*   Updated: 2021/09/01 15:21:55 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	set_left_fd(char *content, int *i, int fd[2])
 			{
 				ft_putnbr_fd(fd[0], STDERR_FILENO);
 				write(STDERR_FILENO, ": ", 3);
-				perror(BAD_FD);
+				error_occur_perror(BAD_FD);
 				return (0);
 			}
 			return (1);

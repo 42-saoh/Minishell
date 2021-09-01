@@ -30,7 +30,7 @@ long	ft_atoi_long_exit(char *str, int *flag)
 
 void	error_exit(char *str)
 {
-	write(STDERR_FILENO, str, ft_strlen(str));
+	error_occur_perror(str);
 	exit(255);
 }
 
@@ -50,15 +50,15 @@ void	builtin_exit(t_info *info)
 		if (exit_num == EXEC_FAIL)
 			exit(1);
 		if (error_flag)
-			error_exit("exit: -n: numeric argument required\n");
+			error_exit(EXIT_NUMERIC_ERR);
 		exit (exit_num);
 	}
 	else
 	{
 		exit_num = ft_atoi_long_exit(info->param[1], &error_flag);
 		if (error_flag)
-			error_exit("exit: -n: numeric argument required\n");
-		write(STDERR_FILENO, "exit \nexit: too many arguments\n", 32);
+			error_exit(EXIT_NUMERIC_ERR);
+		error_occur_perror(EXIT_MANY_ARGS);
 		exit(EXEC_FAIL);
 	}
 }
