@@ -6,17 +6,19 @@
 /*   By: taekang <taekang@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 13:17:45 by taekang           #+#    #+#             */
-/*   Updated: 2020/10/15 14:25:51 by taekang          ###   ########.fr       */
+/*   Updated: 2021/09/01 21:20:01 by taekang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		get_len(long long n)
+int	get_len(long long n)
 {
-	int len;
+	int	len;
 
-	len = n <= 0 ? 1 : 0;
+	len = 0;
+	if (n <= 0)
+		len = 1;
 	if (n < 0)
 		n *= -1;
 	while (n > 0)
@@ -36,7 +38,8 @@ char	*ft_itoa(int n)
 
 	num = n;
 	len = get_len(num);
-	if (!(str = (char *)malloc(sizeof(char) * (len + 1))))
+	str = (char *)malloc(sizeof(char) * (len + 1));
+	if (!str)
 		return (0);
 	str[len--] = '\0';
 	start = 0;
