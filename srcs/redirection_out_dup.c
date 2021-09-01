@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 20:44:43 by taekang           #+#    #+#             */
-/*   Updated: 2021/09/01 17:18:45 by taekang          ###   ########.fr       */
+/*   Updated: 2021/09/01 20:09:06 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,14 @@ int	file_open_getfd_out(char *content, int e, int is_append)
 							S_IRUSR | S_IWUSR);
 	ft_free(file_nm);
 	if (fd == -1)
-		no_such_file_error(file_nm);
+		stderr_print(SHELL_NAME, file_nm, NO_SUCH_FILE);
 	return (fd);
 }
 
 int	set_right_fd_out(char *content, int i, int fds[2], int is_append)
 {
+	char	*num;
+
 	if (content[i] == '&')
 		fds[1] = get_ampersand_fd(content, i);
 	else
@@ -41,6 +43,13 @@ int	set_right_fd_out(char *content, int i, int fds[2], int is_append)
 		fds[1] = file_open_getfd_out(content, i, is_append);
 		if (fds[1] <= 0)
 			return (0);
+	}
+	if (fds[1] > FD_MAX)
+	{
+		num = ft_itoa(fds[1]);
+		if (!num)
+			return (0);
+		return (stderr_print(SHELL_NAME, num, BAD_FD));
 	}
 	return (1);
 }

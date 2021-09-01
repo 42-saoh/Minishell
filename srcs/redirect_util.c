@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/07 21:17:51 by taesan            #+#    #+#             */
-/*   Updated: 2021/09/01 17:17:10 by taekang          ###   ########.fr       */
+/*   Updated: 2021/09/01 20:45:39 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	*get_right_str(char *content, int i)
 		i++;
 	if (content[i] == '&')
 	{
-		printf(UNEXPECTED_TOKEN);
+		stderr_print(SHELL_NAME, content + i, UNEXPECTED_TOKEN);
 		return (0);
 	}
 	s = i;

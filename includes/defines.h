@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 15:05:24 by taesan            #+#    #+#             */
-/*   Updated: 2021/09/01 17:01:53 by taekang          ###   ########.fr       */
+/*   Updated: 2021/09/01 19:33:58 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ typedef struct s_info
 # define BUFFER_SIZE 255
 # define FD_MAX 255
 # define PATH "PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+# define SHELL_NAME "minishell"
 /*
 	program Error
 */
@@ -122,6 +123,7 @@ typedef struct s_info
 # define UNEXPECTED_TOKEN "syntax error near unexpected token `&\'"
 # define EXIT_NUMERIC_ERR "exit: -n: numeric argument required"
 # define EXIT_MANY_ARGS "exit \nexit: too many arguments"
+# define COMMAND_NOT_FOUND "command not found"
 /*
 	file names
 */
