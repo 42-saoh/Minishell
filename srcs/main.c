@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 22:00:23 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/31 20:11:37 by taesan           ###   ########.fr       */
+/*   Updated: 2021/09/01 15:21:17 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	error_occur_parsing(t_info *info, char *input)
 {
-	perror(PARSE_ERR);
+	error_occur_perror(PARSE_ERR);
 	clear_data(info);
 	ft_free(input);
 }

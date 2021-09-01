@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 14:45:56 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/31 20:06:44 by taesan           ###   ########.fr       */
+/*   Updated: 2021/09/01 15:20:24 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	child_process(t_info *info, int pipe[2], int flags)
 		else
 		{
 			execve(command, info->param, info->envp);
-			perror("execve");
+			error_occur_perror("execve");
 			exit(EXEC_FAIL);
 		}
 	}
