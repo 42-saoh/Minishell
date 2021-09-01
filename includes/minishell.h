@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 15:50:59 by taesan            #+#    #+#             */
-/*   Updated: 2021/09/01 17:22:07 by taekang          ###   ########.fr       */
+/*   Updated: 2021/09/01 20:46:20 by saoh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int		copy_envp(t_info *info);
 /*
 	sig_handler
 */
-void	ctrl_d_handler(void);
+void	ctrl_d_handler(t_info *info);
 void	sigint_handler(int signo);
 /*
 	using free

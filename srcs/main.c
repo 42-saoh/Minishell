@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 22:00:23 by taesan            #+#    #+#             */
-/*   Updated: 2021/09/01 17:15:56 by taekang          ###   ########.fr       */
+/*   Updated: 2021/09/01 20:45:22 by saoh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,12 @@ void	start(t_info *info)
 	}
 }
 
-int	check_input(char *input)
+int	check_input(char *input, t_info *info)
 {
 	int	i;
 
 	if (!input)
-		ctrl_d_handler();
+		ctrl_d_handler(info);
 	i = 0;
 	while (input[i] == ' ')
 		i++;
@@ -104,7 +104,7 @@ int	main(int argc, char *argv[], char *envp[])
 	while (1)
 	{
 		input = readline(prompt);
-		if (check_input(input))
+		if (check_input(input, &info))
 		{
 			add_history(input);
 			if (make_command_list(&info, input) != 1)
