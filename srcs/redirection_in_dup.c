@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 20:19:02 by taesan            #+#    #+#             */
-/*   Updated: 2021/09/01 17:18:27 by taekang          ###   ########.fr       */
+/*   Updated: 2021/09/01 20:08:29 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	here_doc_exec(char *limiter, int fds[2], int fd_in)
 	ft_close(fd);
 	fds[1] = open(TEMP_FILE, O_RDONLY, S_IRUSR | S_IWUSR);
 	if (fds[1] == -1)
-		no_such_file_error(TEMP_FILE);
+		stderr_print(SHELL_NAME, TEMP_FILE, NO_SUCH_FILE);
 	return (fds[1]);
 }
 
@@ -49,13 +49,15 @@ int	file_open_getfd_in(char *content, int e)
 		return (0);
 	fd = open(file_nm, O_RDONLY);
 	if (fd == -1)
-		no_such_file_error(file_nm);
+		stderr_print(SHELL_NAME, file_nm, NO_SUCH_FILE);
 	ft_free(file_nm);
 	return (fd);
 }
 
 int	set_right_fd_in(char *content, int i, int fds[2])
 {
+	char	*num;
+
 	if (content[i] == '&')
 		fds[1] = get_ampersand_fd(content, i);
 	else
@@ -63,6 +65,13 @@ int	set_right_fd_in(char *content, int i, int fds[2])
 		fds[1] = file_open_getfd_in(content, i);
 		if (fds[1] <= 0)
 			return (0);
+	}
+	if (fds[1] > FD_MAX)
+	{
+		num = ft_itoa(fds[1]);
+		if (!num)
+			return (0);
+		return (stderr_print(SHELL_NAME, num, BAD_FD));
 	}
 	return (1);
 }
