@@ -6,18 +6,11 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 00:33:40 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/27 03:22:27 by taesan           ###   ########.fr       */
+/*   Updated: 2021/09/02 20:15:41 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
-
-void	export_errror(char *param)
-{
-	write(STDERR_FILENO, "export: `", 10);
-	ft_putstr_fd(param, STDERR_FILENO);
-	ft_putendl_fd(": not a valid identifier", STDERR_FILENO);
-}
 
 int	print_export(t_info *info)
 {

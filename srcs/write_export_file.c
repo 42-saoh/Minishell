@@ -6,11 +6,28 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 03:57:34 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/27 05:22:33 by taesan           ###   ########.fr       */
+/*   Updated: 2021/09/02 20:37:05 by taekang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+
+int	export_before_check(char *param)
+{
+	int	i;
+
+	i = 0;
+	if (!ft_isalpha(param[i]))
+		return (0);
+	i++;
+	while (param[i])
+	{
+		if (param[i] == ' ')
+			return (0);
+		i++;
+	}
+	return (1);
+}
 
 int	exist_env(char *var)
 {
@@ -39,6 +56,8 @@ int	exist_env(char *var)
 
 int	write_export_file(char *param)
 {
+	if (!export_before_check(param))
+		return (export_errror(param));
 	if (exist_env(param))
 		return (1);
 	if (!datafile_to_temp(EXPORT_FILE, EXPORT_FILE_2, param, param))
