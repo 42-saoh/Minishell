@@ -62,6 +62,8 @@ void	parent_process(t_info *info, int pipe[2], int flags)
 	if (r == -1)
 		error_occur_perror(WAIT_ERR);
 	info->exec_result = WEXITSTATUS(status);
+	if (WTERMSIG(status) == SIGINT)
+		printf("\b\b");
 	clear_pipe(info, pipe, flags);
 	if (info->is_builtin)
 		builtin_set(info, pipe);

@@ -94,16 +94,14 @@ int	check_input(char *input, t_info *info)
 int	main(int argc, char *argv[], char *envp[])
 {
 	char	*input;
-	char	*prompt;
 	t_info	info;
 
-	prompt = "$";
 	ft_memset(&info, 0, sizeof(t_info));
 	if (!init_envp_and_signal(&info, argc, argv, envp))
 		return (0);
 	while (1)
 	{
-		input = readline(prompt);
+		input = readline("$ ");
 		if (check_input(input, &info))
 		{
 			add_history(input);
