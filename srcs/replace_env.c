@@ -1,5 +1,16 @@
 #include "../includes/minishell.h"
 
+char	*special_positional_param(t_info *info, char *input)
+{
+	if (input[0] == '0' && is_empty(input + 1))
+		return (SHELL_NAME);
+	else if (input[0] == '#' && is_empty(input + 1))
+		return ("0");
+	else if (input[0] == '?' && is_empty(input + 1))
+		return (ft_itoa(info->exec_result));
+	return (0);
+}
+
 char	*get_dollar_value(char **envp, char *input)
 {
 	int	i;
@@ -53,17 +64,24 @@ char	*make_new_input(char *input, int s, int *next_idx, char *value)
 	return (result);
 }
 
-/*
-	str의 s ~ e범위에 존재하는 $를 치환한 새로운 문자열로 변경한다.
-	다음 탐색 인덱스 (e)를 여기서 함께 변경해준다.
-*/
-int	replace_env(char **envp, char **ptr, int s, int *next_idx)
+int	replace_env(t_info *info, char **ptr, int s, int *next_idx)
 {
 	char	*value;
 	char	*result;
+	int		need_malloc;
 
-	value = get_dollar_value(envp, *ptr + s + 1);
+	need_malloc = 0;
+	value = special_positional_param(info, *ptr + s + 1);
+	if (value)
+	{
+		if ((*ptr)[s + 1] == '?' && is_empty(*ptr + s + 2))
+			need_malloc = 1;
+	}
+	else
+		value = get_dollar_value(info->envp, *ptr + s + 1);
 	result = make_new_input(*ptr, s, next_idx, value);
+	if (need_malloc)
+		ft_free(value);
 	if (!result)
 		return (error_occur_perror(MAKE_NEW_INPUT_ERR));
 	free(*ptr);

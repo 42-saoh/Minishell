@@ -11,7 +11,7 @@ int	quote_filter(t_info *info, char **input, int s, int *e)
 		dollar_idx = exist_dollar(*input, s, *e);
 		if (dollar_idx)
 		{
-			if (!replace_env(info->envp, input, dollar_idx, e))
+			if (!replace_env(info, input, dollar_idx, e))
 				return (0);
 		}
 	}
@@ -37,7 +37,7 @@ int	filter_input(t_info *info, char **input, int len)
 		}
 		else if ((*input)[e] == DOLLAR)
 		{
-			if (!replace_env(info->envp, input, e, &e))
+			if (!replace_env(info, input, e, &e))
 				return (0);
 			len = ft_strlen(*input);
 		}

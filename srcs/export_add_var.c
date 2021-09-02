@@ -37,7 +37,7 @@ void	export_add_var(t_info *info)
 	while (info->param[i])
 	{
 		if (!check_and_write_exec(info->param[i]))
-			exit(EXEC_FAIL);
+			exit(1);
 		i++;
 	}
 	exit(0);

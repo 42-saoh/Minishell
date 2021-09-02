@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 15:05:24 by taesan            #+#    #+#             */
-/*   Updated: 2021/09/01 19:33:58 by taesan           ###   ########.fr       */
+/*   Updated: 2021/09/02 19:08:02 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ typedef struct s_info
 # define SG_PIPE 1
 # define DB_PIPE 2
 # define DB_AMPER 3
-# define EXEC_FAIL 42
+# define EXEC_FAIL 127
 # define READ_FD_IDX 0
 # define WRITE_FD_IDX 1
 # define STDIN_PIPE 0x1
