@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 15:50:59 by taesan            #+#    #+#             */
-/*   Updated: 2021/09/02 19:14:56 by taesan           ###   ########.fr       */
+/*   Updated: 2021/09/02 20:30:28 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 */
 int		error_occur_perror(char *msg);
 int		stderr_print(char *cmd, char *param, char *msg);
-void	no_such_file_error(char *file_nm);
+int		export_errror(char *param);
 /*
 	utils
 */
@@ -59,7 +59,7 @@ int		copy_envp(t_info *info);
 /*
 	sig_handler
 */
-void	ctrl_d_handler(t_info *info); // 내가만짐, 바뀌면 안됨
+void	ctrl_d_handler(t_info *info);
 void	sigint_handler(int signo);
 /*
 	using free
@@ -150,7 +150,6 @@ int		get_argc(char **argv);
 */
 int		write_export_file(char *var);
 int		print_export(t_info *info);
-void	export_errror(char *param);
 int		export_file_merge(t_info *info, t_list **list);
 void	export_add_var(t_info *info);
 int		env_file_cmp(const char *line, const char *key);

@@ -6,7 +6,7 @@
 #    By: taesan <taesan@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: Invalid date        by taekang           #+#    #+#              #
-#    Updated: 2021/09/01 19:48:18 by taesan           ###   ########.fr        #
+#    Updated: 2021/09/02 20:23:13 by taesan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRCS =			ft_bzero.c\
 	   		 	ft_substr.c\
 				ft_strcmp.c\
 				ft_itoa.c\
+				ft_isalpha.c\
 
 BONUS_SRCS = 	ft_lstadd_back.c\
 				ft_lstadd_front.c\
