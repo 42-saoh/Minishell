@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 15:50:59 by taesan            #+#    #+#             */
-/*   Updated: 2021/09/01 20:46:20 by saoh             ###   ########.fr       */
+/*   Updated: 2021/09/02 19:14:56 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int		copy_envp(t_info *info);
 /*
 	sig_handler
 */
-void	ctrl_d_handler(t_info *info);
+void	ctrl_d_handler(t_info *info); // 내가만짐, 바뀌면 안됨
 void	sigint_handler(int signo);
 /*
 	using free
@@ -91,7 +91,7 @@ void	move_quot_point(char *line, int *e, char end_c);
 /*
 	replace_env
 */
-int		replace_env(char **envp, char **ptr, int s, int *next_idx);
+int		replace_env(t_info *info, char **ptr, int s, int *next_idx);
 /*
 	redirect_util
 */
