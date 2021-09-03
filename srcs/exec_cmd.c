@@ -63,7 +63,7 @@ void	parent_process(t_info *info, int pipe[2], int flags)
 		error_occur_perror(WAIT_ERR);
 	info->exec_result = exit_status(status);
 	if (term_status(status) == SIGINT)
-		printf("\b\b");
+		sigint_occur(info);
 	clear_pipe(info, pipe, flags);
 	if (info->is_builtin)
 		builtin_set(info, pipe);

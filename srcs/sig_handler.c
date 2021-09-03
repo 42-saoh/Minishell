@@ -31,3 +31,9 @@ void	sigint_handler(int signo)
 		rl_redisplay();
 	}
 }
+
+void	sigint_occur(t_info *info)
+{
+	info->exec_result = 130;
+	printf("\b\b");
+}
