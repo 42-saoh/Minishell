@@ -61,8 +61,8 @@ void	parent_process(t_info *info, int pipe[2], int flags)
 		r = wait(&status);
 	if (r == -1)
 		error_occur_perror(WAIT_ERR);
-	info->exec_result = WEXITSTATUS(status);
-	if (WTERMSIG(status) == SIGINT)
+	info->exec_result = exit_status(status);
+	if (term_status(status) == SIGINT)
 		printf("\b\b");
 	clear_pipe(info, pipe, flags);
 	if (info->is_builtin)

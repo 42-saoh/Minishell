@@ -31,6 +31,7 @@
 	error.c
 */
 int		error_occur_perror(char *msg);
+void	error_occur_perror_void(char *msg);
 int		stderr_print(char *cmd, char *param, char *msg);
 int		export_errror(char *param);
 /*

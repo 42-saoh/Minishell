@@ -59,13 +59,13 @@ void	start(t_info *info)
 	{
 		info->command_cnt--;
 		if (!redirect_filter(info, (char **)(&commands->content)))
-			return ;
+			return (error_occur_perror_void("Redirect_filter error"));
 		if (!command_filter(info, (char **)(&commands->content)))
-			return ;
+			return (error_occur_perror_void("Command_filter error"));
 		if (!init_command_info(info))
-			return ;
+			return (error_occur_perror_void("init_command_info error"));
 		if (info->command_cnt != 0 && !set_connect_pipe(info, seq))
-			return ;
+			return (error_occur_perror_void("set_connect_pipe error"));
 		if (symbols && is_double_symbol(*(int *)symbols->content))
 			exec_call(info, -1);
 		else
