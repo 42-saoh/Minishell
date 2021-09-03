@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 15:05:24 by taesan            #+#    #+#             */
-/*   Updated: 2021/09/02 19:08:02 by taesan           ###   ########.fr       */
+/*   Updated: 2021/09/03 20:15:35 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,6 @@ typedef struct s_info
 # define EXIT_ERROR 220
 # define BUFFER_SIZE 255
 # define FD_MAX 255
-# define PATH "PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # define SHELL_NAME "minishell"
 /*
 	program Error

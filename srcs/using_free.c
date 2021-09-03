@@ -6,11 +6,27 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 19:56:59 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/30 20:51:35 by taekang          ###   ########.fr       */
+/*   Updated: 2021/09/03 20:07:05 by taekang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+
+void	paths_clear(t_info *info)
+{
+	int	i;
+
+	i = 0;
+	if (info->paths)
+	{
+		while (info->paths[i])
+		{
+			ft_free(info->paths[i]);
+			i++;
+		}
+		ft_free(info->paths);
+	}
+}
 
 void	ft_free(void *data)
 {
@@ -46,26 +62,8 @@ void	clear_data(t_info *info)
 
 void	clear_all_data(t_info *info)
 {
-	char	**temp;
-
-	if (info->paths)
-	{
-		temp = info->paths;
-		while (*temp)
-		{
-			ft_free(*temp);
-			temp++;
-		}
-	}
-	if (info->envp)
-	{
-		temp = info->envp;
-		while (*temp)
-		{
-			ft_free(*temp);
-			temp++;
-		}
-	}
+	paths_clear(info);
+	clear_envp_info(info);
 	clear_data(info);
 	remove_file();
 }
