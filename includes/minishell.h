@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 15:50:59 by taesan            #+#    #+#             */
-/*   Updated: 2021/09/02 20:30:28 by taesan           ###   ########.fr       */
+/*   Updated: 2021/09/03 15:34:07 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,5 +170,10 @@ t_list	*front_back_join(char *input, t_strjoin *temp);
 */
 void	remove_file(void);
 void	content_not_rm(void *param);
+/*
+	status_macro
+*/
+int		exit_status(int status);
+int		term_status(int status);
 
 #endif
