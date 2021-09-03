@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 15:50:59 by taesan            #+#    #+#             */
-/*   Updated: 2021/09/03 15:34:07 by taesan           ###   ########.fr       */
+/*   Updated: 2021/09/03 19:45:03 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ int		exist_dollar(char *input, int s, int e);
 int		init_command_info(t_info *info);
 int		init_envp_and_signal(t_info *info, int ac, char *av[], char *en[]);
 int		copy_envp(t_info *info);
+void	clear_envp_info(t_info *info);
+char	**init_path(char *envp[]);
 /*
 	sig_handler
 */
@@ -69,6 +71,7 @@ void	split_free(char **data);
 void	ft_free(void *data);
 void	clear_all_data(t_info *info);
 void	clear_data(t_info *info);
+void	paths_clear(t_info *info);
 /*
 	exec
 */

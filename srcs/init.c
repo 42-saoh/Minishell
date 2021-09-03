@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 19:49:55 by taesan            #+#    #+#             */
-/*   Updated: 2021/09/02 19:06:46 by taesan           ###   ########.fr       */
+/*   Updated: 2021/09/03 20:07:48 by taekang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,15 @@ int	init_command_info(t_info *info)
 		cmd_idx++;
 	info->is_builtin = check_builtin(temp[cmd_idx - 1]);
 	split_free(temp);
-	cmd = check_command(info->paths, info->param[0], ft_strlen(info->param[0]));
-	if (cmd)
+	if (info->paths)
 	{
-		free(info->param[0]);
-		info->param[0] = cmd;
+		cmd = check_command(info->paths, info->param[0], \
+							ft_strlen(info->param[0]));
+		if (cmd)
+		{
+			free(info->param[0]);
+			info->param[0] = cmd;
+		}
 	}
 	return (1);
 }
@@ -41,6 +45,7 @@ char	**init_path(char *envp[])
 	char	**paths;
 
 	path = 0;
+	paths = 0;
 	while (*envp)
 	{
 		path = *envp;
@@ -50,16 +55,14 @@ char	**init_path(char *envp[])
 					path[2] == 'T' && path[3] == 'H')
 			{
 				path = *envp;
+				paths = ft_split(path + 5, ':');
+				if (!paths)
+					error_occur_perror(SPLIT_ERR);
 				break ;
 			}
 		}
 		envp++;
 	}
-	if (!path)
-		path = PATH;
-	paths = ft_split(path + 5, ':');
-	if (!paths)
-		error_occur_perror(SPLIT_ERR);
 	return (paths);
 }
 
@@ -88,8 +91,6 @@ int	init_envp_and_signal(t_info *info, int argc, char *argv[], char *envp[])
 	argc = 0;
 	argv = 0;
 	info->paths = init_path(envp);
-	if (!info->paths)
-		return (0);
 	if (!init_envp_file(envp))
 		return (0);
 	if (!copy_envp(info))

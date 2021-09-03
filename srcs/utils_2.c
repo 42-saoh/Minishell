@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 22:35:08 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/30 14:26:47 by saoh             ###   ########.fr       */
+/*   Updated: 2021/09/03 19:45:35 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,9 @@ void	builtin_set(t_info *info, int pipe[2])
 		builtin_cd_parent(info);
 	else if (info->is_builtin == EXPORT || info->is_builtin == UNSET)
 		copy_envp(info);
+	if (info->is_builtin == UNSET)
+	{
+		paths_clear(info);
+		info->paths = init_path(info->envp);
+	}
 }
