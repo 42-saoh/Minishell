@@ -14,7 +14,7 @@
 
 void	ctrl_d_handler(t_info *info)
 {
-	ft_putstr_fd("\x1b[1A", STDOUT_FILENO);
+	ft_putstr_fd("\033[1A", STDOUT_FILENO);
 	ft_putstr_fd("\033[2C", STDOUT_FILENO);
 	printf("exit\n");
 	clear_all_data(info);

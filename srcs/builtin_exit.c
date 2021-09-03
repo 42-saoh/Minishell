@@ -47,8 +47,6 @@ void	builtin_exit(t_info *info)
 	else if (argc == 2)
 	{
 		exit_num = ft_atoi_long_exit(info->param[1], &error_flag);
-		if (exit_num == EXEC_FAIL)
-			exit(1);
 		if (error_flag)
 			error_exit(EXIT_NUMERIC_ERR);
 		exit (exit_num);
@@ -59,6 +57,6 @@ void	builtin_exit(t_info *info)
 		if (error_flag)
 			error_exit(EXIT_NUMERIC_ERR);
 		error_occur_perror(EXIT_MANY_ARGS);
-		exit(EXEC_FAIL);
+		exit(254);
 	}
 }
