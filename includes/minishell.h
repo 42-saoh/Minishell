@@ -62,6 +62,7 @@ int		copy_envp(t_info *info);
 */
 void	ctrl_d_handler(t_info *info);
 void	sigint_handler(int signo);
+void	sigint_occur(t_info *info);
 /*
 	using free
 */
