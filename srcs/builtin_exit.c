@@ -34,6 +34,12 @@ void	error_exit(char *str)
 	exit(255);
 }
 
+void	exit_true(long exit_num)
+{
+	error_occur_perror("exit");
+	exit(exit_num);
+}
+
 void	builtin_exit(t_info *info)
 {
 	int		argc;
@@ -43,13 +49,13 @@ void	builtin_exit(t_info *info)
 	argc = get_argc(info->param);
 	error_flag = 0;
 	if (argc == 1)
-		exit(0);
+		exit_true(0);
 	else if (argc == 2)
 	{
 		exit_num = ft_atoi_long_exit(info->param[1], &error_flag);
 		if (error_flag)
 			error_exit(EXIT_NUMERIC_ERR);
-		exit (exit_num);
+		exit_true(exit_num);
 	}
 	else
 	{
@@ -57,6 +63,6 @@ void	builtin_exit(t_info *info)
 		if (error_flag)
 			error_exit(EXIT_NUMERIC_ERR);
 		error_occur_perror(EXIT_MANY_ARGS);
-		exit(254);
+		exit(EXIT_ERROR);
 	}
 }

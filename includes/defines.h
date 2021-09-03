@@ -95,6 +95,7 @@ typedef struct s_info
 # define WRITE_FD_IDX 1
 # define STDIN_PIPE 0x1
 # define STDOUT_PIPE 0x2
+# define EXIT_ERROR 220
 # define BUFFER_SIZE 255
 # define FD_MAX 255
 # define PATH "PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
@@ -121,7 +122,7 @@ typedef struct s_info
 # define NO_SUCH_FILE "No such file or directory"
 # define BAD_FD "Bad file descriptor"
 # define UNEXPECTED_TOKEN "syntax error near unexpected token `&\'"
-# define EXIT_NUMERIC_ERR "exit: -n: numeric argument required"
+# define EXIT_NUMERIC_ERR "exit \nexit: -n: numeric argument required"
 # define EXIT_MANY_ARGS "exit \nexit: too many arguments"
 # define COMMAND_NOT_FOUND "command not found"
 /*

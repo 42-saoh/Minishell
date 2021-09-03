@@ -39,14 +39,14 @@ void	builtin_set(t_info *info, int pipe[2])
 {
 	int	result;
 
-	if (!pipe && info->is_builtin == EXIT && info->exec_result != 254)
+	if (!pipe && info->is_builtin == EXIT && info->exec_result != EXIT_ERROR)
 	{
 		result = info->exec_result;
 		ft_free(info->input);
 		clear_all_data(info);
 		exit(result);
 	}
-	else if (info->is_builtin == EXIT && info->exec_result == 254)
+	else if (info->is_builtin == EXIT && info->exec_result == EXIT_ERROR)
 	{
 		info->exec_result = 1;
 		if (pipe)
