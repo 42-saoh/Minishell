@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2021-09-05T14:32:24.158Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36" etag="F2lFzYdMcsAv9F5hDasC" version="15.0.6" type="github">
+<mxfile host="app.diagrams.net" modified="2021-09-05T14:58:40.381Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36" etag="Z0R66lLKcZVc5v7aJLW4" version="15.0.6" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
-    <mxGraphModel dx="937" dy="877" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1312" dy="1228" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
@@ -1059,6 +1059,97 @@
             <Array as="points">
               <mxPoint x="3190" y="6060" />
               <mxPoint x="3190" y="9018" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CFQKUSGC-nJcGQjeF2Fv-16" value="int	init_command_info(t_info *info)" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="2710" y="9620" width="450" height="360" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CFQKUSGC-nJcGQjeF2Fv-17" value="&lt;div&gt;char&lt;span&gt;	&lt;/span&gt;*cmd;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;char&lt;span&gt;	&lt;/span&gt;**temp;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;int&lt;span&gt;		&lt;/span&gt;cmd_idx;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;temp = ft_split(info-&amp;gt;param[0], &#39;/&#39;);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;if (!temp)&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;return (error_occur_perror(SPLIT_ERR));&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;cmd_idx = 0;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;while (temp[cmd_idx])&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;cmd_idx++;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;info-&amp;gt;is_builtin = check_builtin(temp[cmd_idx - 1]);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;split_free(temp);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;if (info-&amp;gt;paths)&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;{&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;cmd = check_command(info-&amp;gt;paths, info-&amp;gt;param[0], &lt;span&gt;ft_strlen(info-&amp;gt;param[0]));&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;if (cmd)&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;{&lt;/div&gt;&lt;div&gt;&lt;span&gt;			&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;free(info-&amp;gt;param[0]);&lt;/div&gt;&lt;div&gt;&lt;span&gt;			&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;info-&amp;gt;param[0] = cmd;&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;}&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;}&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;return (1);&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="CFQKUSGC-nJcGQjeF2Fv-16">
+          <mxGeometry y="26" width="450" height="334" as="geometry" />
+        </mxCell>
+        <mxCell id="CFQKUSGC-nJcGQjeF2Fv-19" value="int	check_builtin(char *cmd)" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="3570" y="9640" width="210" height="260" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CFQKUSGC-nJcGQjeF2Fv-20" value="&lt;div&gt;&lt;span&gt;	&lt;/span&gt;if (ft_strcmp(cmd, &quot;echo&quot;) == 0)&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;return (ECHO);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;else if (ft_strcmp(cmd, &quot;cd&quot;) == 0)&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;return (CD);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;else if (ft_strcmp(cmd, &quot;pwd&quot;) == 0)&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;return (PWD);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;else if (ft_strcmp(cmd, &quot;export&quot;) == 0)&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;return (EXPORT);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;else if (ft_strcmp(cmd, &quot;unset&quot;) == 0)&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;return (UNSET);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;else if (ft_strcmp(cmd, &quot;env&quot;) == 0)&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;return (ENV);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;else if (ft_strcmp(cmd, &quot;exit&quot;) == 0)&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;return (EXIT);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;else&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;return (NOT_BUILTIN);&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="CFQKUSGC-nJcGQjeF2Fv-19">
+          <mxGeometry y="26" width="210" height="234" as="geometry" />
+        </mxCell>
+        <mxCell id="CFQKUSGC-nJcGQjeF2Fv-21" value="char	*check_command(char **paths, char *cmd, int len)" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="3512.5" y="9960" width="325" height="330" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CFQKUSGC-nJcGQjeF2Fv-22" value="&lt;div&gt;char&lt;span&gt;	&lt;/span&gt;*full_path;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;char&lt;span&gt;	&lt;/span&gt;*new_cmd;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;int&lt;span&gt;		&lt;/span&gt;i;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;full_path = 0;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;new_cmd = create_new_cmd(cmd, len);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;if (new_cmd)&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;{&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;i = 0;&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;while (paths[i])&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;{&lt;/div&gt;&lt;div&gt;&lt;span&gt;			&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;&lt;/span&gt;full_path = ft_strjoin(paths[i], new_cmd);&lt;/div&gt;&lt;div&gt;&lt;span&gt;			&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;if (!full_path || exec_file_check(full_path))&lt;/div&gt;&lt;div&gt;&lt;span&gt;				&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;break ;&lt;/div&gt;&lt;div&gt;&lt;span&gt;			&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;free(full_path);&lt;/div&gt;&lt;div&gt;&lt;span&gt;			&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;full_path = 0;&lt;/div&gt;&lt;div&gt;&lt;span&gt;			&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;i++;&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;}&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;free(new_cmd);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;}&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;return (full_path);&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="CFQKUSGC-nJcGQjeF2Fv-21">
+          <mxGeometry y="26" width="325" height="304" as="geometry" />
+        </mxCell>
+        <mxCell id="CFQKUSGC-nJcGQjeF2Fv-23" value="char	*create_new_cmd(char *cmd, int len)" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="4391.5" y="9995" width="290" height="165" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CFQKUSGC-nJcGQjeF2Fv-24" value="&lt;div&gt;char&lt;span&gt;	&lt;/span&gt;*new_cmd;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;new_cmd = (char *)malloc(sizeof(char) * (len + 2));&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;if (!new_cmd)&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;return (0);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;ft_bzero(new_cmd, len + 2);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;new_cmd[0] = &#39;/&#39;;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;ft_strlcpy(new_cmd + 1, cmd, len + 1);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;return (new_cmd);&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="CFQKUSGC-nJcGQjeF2Fv-23">
+          <mxGeometry y="26" width="290" height="134" as="geometry" />
+        </mxCell>
+        <mxCell id="CFQKUSGC-nJcGQjeF2Fv-25" value="int	exec_file_check(char *path)" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="4402.75" y="10220" width="238.5" height="130" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CFQKUSGC-nJcGQjeF2Fv-26" value="&lt;div&gt;struct stat&lt;span&gt;	&lt;/span&gt;sb;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;if (stat(path, &amp;amp;sb) == -1)&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;return (0);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;if (sb.st_mode &amp;amp; S_IXUSR)&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;return (1);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;return (0);&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="CFQKUSGC-nJcGQjeF2Fv-25">
+          <mxGeometry y="26" width="238.5" height="104" as="geometry" />
+        </mxCell>
+        <mxCell id="CFQKUSGC-nJcGQjeF2Fv-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="CFQKUSGC-nJcGQjeF2Fv-22" target="CFQKUSGC-nJcGQjeF2Fv-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CFQKUSGC-nJcGQjeF2Fv-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="CFQKUSGC-nJcGQjeF2Fv-22" target="CFQKUSGC-nJcGQjeF2Fv-26">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="4120" y="10170" />
+              <mxPoint x="4120" y="10298" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CFQKUSGC-nJcGQjeF2Fv-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="CFQKUSGC-nJcGQjeF2Fv-17" target="CFQKUSGC-nJcGQjeF2Fv-20">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="3365" y="9800" />
+              <mxPoint x="3365" y="9783" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CFQKUSGC-nJcGQjeF2Fv-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="CFQKUSGC-nJcGQjeF2Fv-17" target="CFQKUSGC-nJcGQjeF2Fv-22">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="3336" y="9870" />
+              <mxPoint x="3336" y="10138" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CFQKUSGC-nJcGQjeF2Fv-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="hcFAv_5k8Y_99JVzGGXi-1" target="CFQKUSGC-nJcGQjeF2Fv-17">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2470" y="4050" />
+              <mxPoint x="2470" y="9813" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CFQKUSGC-nJcGQjeF2Fv-33" value="int	set_connect_pipe(t_info *info, int seq)" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="2775" y="10430" width="280" height="160" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CFQKUSGC-nJcGQjeF2Fv-34" value="&lt;div&gt;if (seq &amp;gt; 0)&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;{&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;info-&amp;gt;pipe_in[0] = info-&amp;gt;pipe_out[0];&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;if (pipe(info-&amp;gt;pipe_out) == -1)&lt;/div&gt;&lt;div&gt;&lt;span&gt;			&lt;/span&gt;return (error_occur_perror(PIPE_ERR));&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;}&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;info-&amp;gt;connect_pipe[0] = info-&amp;gt;pipe_in[0];&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;info-&amp;gt;connect_pipe[1] = info-&amp;gt;pipe_out[1];&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;return (1);&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="CFQKUSGC-nJcGQjeF2Fv-33">
+          <mxGeometry y="26" width="280" height="134" as="geometry" />
+        </mxCell>
+        <mxCell id="CFQKUSGC-nJcGQjeF2Fv-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="hcFAv_5k8Y_99JVzGGXi-1" target="CFQKUSGC-nJcGQjeF2Fv-34">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2420" y="4080" />
+              <mxPoint x="2420" y="10523" />
             </Array>
           </mxGeometry>
         </mxCell>
