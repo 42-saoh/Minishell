@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2021-09-05T06:47:27.207Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36" etag="Y1vKbK3neu2dOepphitx" version="15.0.6" type="github">
+<mxfile host="app.diagrams.net" modified="2021-09-05T08:25:16.321Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36" etag="Uvp9Hiy_hEeiN88rjAe9" version="15.0.6" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
-    <mxGraphModel dx="5327" dy="5582" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="689" dy="722" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
@@ -652,6 +652,340 @@
             <Array as="points">
               <mxPoint x="5800" y="5563" />
               <mxPoint x="5800" y="4509" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-56" value="int	command_filter(t_info *info, char **content)" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="2720" y="5860" width="377" height="400" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-57" value="&lt;div&gt;char&lt;span&gt;	&lt;/span&gt;**temp;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;int&lt;span&gt;		&lt;/span&gt;len;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;int&lt;span&gt;		&lt;/span&gt;r;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;len = ft_strlen((char *)(*content));&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;if (!filter_input(info, content, len))&lt;/div&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;return (error_occur_perror(FILTER_INPUT_ERR));&lt;/div&gt;&lt;/blockquote&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;len = ft_strlen((char *)(*content));&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;r = make_param(info, *content, len);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;if (info-&amp;gt;param[1])&lt;/div&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;r = filter_asterisk(info, 1);&lt;/div&gt;&lt;/blockquote&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;if (info-&amp;gt;asterisk_check &amp;amp;&amp;amp; info-&amp;gt;envp_cnt &amp;gt; 2)&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;{&lt;/div&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;temp = (char **)malloc(sizeof(char *) * (info-&amp;gt;param_cnt + 1));&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;if (temp)&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;{&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;merge_sort(info-&amp;gt;param, temp, 1, info-&amp;gt;param_cnt - 1);&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;ft_free(temp);&lt;/div&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;}&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;else&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;r = 0;&lt;/div&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;}&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;ft_lstclear(&amp;amp;info-&amp;gt;param_list, content_not_rm);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;ft_lstclear(&amp;amp;info-&amp;gt;temp_list, ft_free);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;return (r);&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="hcFAv_5k8Y_99JVzGGXi-56">
+          <mxGeometry y="26" width="377" height="374" as="geometry" />
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-58" value="int	filter_input(t_info *info, char **input, int len)" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="3470" y="5860" width="474.5" height="370" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-59" value="&lt;div&gt;&lt;span&gt;	&lt;/span&gt;int&lt;span&gt;		&lt;/span&gt;s;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;int&lt;span&gt;		&lt;/span&gt;e;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;e = 0;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;while (e &amp;lt; len &amp;amp;&amp;amp; (*input)[e])&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;{&lt;/div&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;if (is_quotation((*input)[e]))&lt;/div&gt;&lt;div&gt;{&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;s = e++;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;while ((*input)[e] &amp;amp;&amp;amp; (*input)[e] != (*input)[s])&lt;/div&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;e++;&lt;/div&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;if (e &amp;lt; len &amp;amp;&amp;amp; (*input)[s] == (*input)[e] &amp;amp;&amp;amp;&amp;nbsp;&lt;span&gt;!quote_filter(info, input, s, &amp;amp;e))&lt;/span&gt;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;return (0);&lt;/div&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;}&lt;/div&gt;&lt;div&gt;else if ((*input)[e] == DOLLAR)&lt;/div&gt;&lt;div&gt;&lt;span&gt;{&lt;/span&gt;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;if (!replace_env(info, input, e, &amp;amp;e))&lt;/div&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;return (0);&lt;/div&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;len = ft_strlen(*input);&lt;/div&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;}&lt;/div&gt;&lt;div&gt;e++;&lt;/div&gt;&lt;/blockquote&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;}&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;return (1);&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="hcFAv_5k8Y_99JVzGGXi-58">
+          <mxGeometry y="26" width="474.5" height="344" as="geometry" />
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-60" value="int	quote_filter(t_info *info, char **input, int s, int *e)" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="4357" y="5930" width="330" height="230" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-61" value="&lt;div&gt;&lt;span&gt;	&lt;/span&gt;int&lt;span&gt;		&lt;/span&gt;dollar_idx;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;char&lt;span&gt;	&lt;/span&gt;is_db_q;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;is_db_q = (*input)[s];&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;if (is_db_q == DOUBLE_Q)&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;{&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;dollar_idx = exist_dollar(*input, s, *e);&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;if (dollar_idx)&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;{&lt;/div&gt;&lt;div&gt;&lt;span&gt;			&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;&lt;/span&gt;if (!replace_env(info, input, dollar_idx, e))&lt;/div&gt;&lt;div&gt;&lt;span&gt;				&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;return (0);&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;}&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;}&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;return (1);&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="hcFAv_5k8Y_99JVzGGXi-60">
+          <mxGeometry y="26" width="330" height="204" as="geometry" />
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-62" value="int	exist_dollar(char *input, int s, int e)" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="5251" y="5970" width="240" height="140" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-63" value="&lt;div&gt;while (input[s] &amp;amp;&amp;amp; s &amp;lt; e)&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;{&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;if (input[s] == DOLLAR)&lt;/div&gt;&lt;div&gt;&lt;span&gt;			&lt;/span&gt;return (s);&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;s++;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;}&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;return (0);&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="hcFAv_5k8Y_99JVzGGXi-62">
+          <mxGeometry y="26" width="240" height="114" as="geometry" />
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-64" value="int	replace_env(t_info *info, char **ptr, int s, int *next_idx)" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="4340" y="6310" width="410" height="330" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-65" value="&lt;div&gt;char&lt;span&gt;	&lt;/span&gt;*value;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;char&lt;span&gt;	&lt;/span&gt;*result;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;int&lt;span&gt;		&lt;/span&gt;need_malloc;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;need_malloc = 0;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;value = special_positional_param(info, *ptr + s + 1);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;if (value)&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;{&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;if ((*ptr)[s + 1] == &#39;?&#39; &amp;amp;&amp;amp; is_empty(*ptr + s + 2))&lt;/div&gt;&lt;div&gt;&lt;span&gt;			&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;need_malloc = 1;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;}&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;else&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;value = get_dollar_value(info-&amp;gt;envp, *ptr + s + 1);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;result = make_new_input(*ptr, s, next_idx, value);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;if (need_malloc)&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;ft_free(value);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;if (!result)&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;return (error_occur_perror(MAKE_NEW_INPUT_ERR));&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;free(*ptr);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;*ptr = result;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;return (1);&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="hcFAv_5k8Y_99JVzGGXi-64">
+          <mxGeometry y="26" width="410" height="304" as="geometry" />
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-66" value="char	*special_positional_param(t_info *info, char *input)" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="5181" y="6360" width="350" height="140" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-67" value="&lt;div&gt;if (input[0] == &#39;0&#39; &amp;amp;&amp;amp; is_empty(input + 1))&lt;/div&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;return (SHELL_NAME);&lt;/div&gt;&lt;/blockquote&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;else if (input[0] == &#39;#&#39; &amp;amp;&amp;amp; is_empty(input + 1))&lt;/div&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;return (&quot;0&quot;);&lt;/div&gt;&lt;/blockquote&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;else if (input[0] == &#39;?&#39; &amp;amp;&amp;amp; is_empty(input + 1))&lt;/div&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;return (ft_itoa(info-&amp;gt;exec_result));&lt;/div&gt;&lt;/blockquote&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;return (0);&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="hcFAv_5k8Y_99JVzGGXi-66">
+          <mxGeometry y="26" width="350" height="114" as="geometry" />
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-68" value="char	*get_dollar_value(char **envp, char *input)" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="5201" y="6580" width="290" height="360" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-69" value="&lt;div&gt;&lt;div&gt;int&lt;span&gt;	&lt;/span&gt;i;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;int&lt;span&gt;	&lt;/span&gt;exist;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;while (*envp)&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;{&lt;/div&gt;&lt;/div&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;&lt;div&gt;i = 0;&lt;/div&gt;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;&lt;div&gt;exist = 1;&lt;/div&gt;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;&lt;div&gt;while (pass_possible(input[i]))&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;{&lt;/div&gt;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;&lt;div&gt;if (!(*envp)[i] || (*envp)[i] != input[i])&lt;/div&gt;&lt;div&gt;&lt;span&gt;{&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;&lt;div&gt;exist = 0;&lt;/div&gt;&lt;/div&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;&lt;div&gt;break ;&lt;/div&gt;&lt;/div&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;&lt;div&gt;}&lt;/div&gt;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;&lt;div&gt;i++;&lt;/div&gt;&lt;/div&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;&lt;div&gt;}&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;if (exist &amp;amp;&amp;amp; (*envp)[i] != &#39;=&#39;)&lt;/div&gt;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;&lt;div&gt;exist = 0;&lt;/div&gt;&lt;/div&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;&lt;div&gt;if (exist)&lt;/div&gt;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;&lt;div&gt;return (*envp + i + 1);&lt;/div&gt;&lt;/div&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;&lt;div&gt;envp++;&lt;/div&gt;&lt;/div&gt;&lt;/blockquote&gt;&lt;div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;}&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;return (&quot;&quot;);&lt;/div&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="hcFAv_5k8Y_99JVzGGXi-68">
+          <mxGeometry y="26" width="290" height="334" as="geometry" />
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-70" value="int	pass_possible(char c)" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="6093" y="6688" width="180" height="170" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-71" value="&lt;div&gt;&lt;span&gt;	&lt;/span&gt;if (!c)&lt;/div&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;return (0);&lt;/div&gt;&lt;/blockquote&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;if (is_quotation(c))&lt;/div&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;return (0);&lt;/div&gt;&lt;/blockquote&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;if (c == &#39;|&#39;)&lt;/div&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;return (0);&lt;/div&gt;&lt;/blockquote&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;if (c == &#39; &#39;)&lt;/div&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;return (0);&lt;/div&gt;&lt;/blockquote&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;return (1);&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="hcFAv_5k8Y_99JVzGGXi-70">
+          <mxGeometry y="26" width="180" height="144" as="geometry" />
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-72" value="char	*make_new_input(char *input, int s, int *next_idx, char *value)" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="5201" y="6990" width="396" height="360" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-73" value="&lt;div&gt;char&lt;span&gt;	&lt;/span&gt;*front;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;char&lt;span&gt;	&lt;/span&gt;*back;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;char&lt;span&gt;	&lt;/span&gt;*join;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;char&lt;span&gt;	&lt;/span&gt;*result;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;result = 0;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;front = ft_substr(input, 0, s);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;if (!front)&lt;/div&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;return (0);&lt;/div&gt;&lt;/blockquote&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;join = ft_strjoin(front, value);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;free(front);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;if (!join)&lt;/div&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;return (0);&lt;/div&gt;&lt;/blockquote&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;*next_idx = ft_strlen(join);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;while (pass_possible(input[s]))&lt;/div&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;s++;&lt;/div&gt;&lt;/blockquote&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;back = ft_substr(input + s, 0, ft_strlen(input) - s);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;result = ft_strjoin(join, back);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;if (back)&lt;/div&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;free(back);&lt;/div&gt;&lt;/blockquote&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;free(join);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;return (result);&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="hcFAv_5k8Y_99JVzGGXi-72">
+          <mxGeometry y="26" width="396" height="334" as="geometry" />
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-74" value="int	remove_redirect(int s, int e, char **content)" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="4329" y="4500" width="460" height="330" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-75" value="&lt;div&gt;char&lt;span&gt;	&lt;/span&gt;*left;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;char&lt;span&gt;	&lt;/span&gt;*right;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;char&lt;span&gt;	&lt;/span&gt;*new_input;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;new_input = 0;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;left = ft_substr(*content, 0, s);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;if (left)&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;{&lt;/div&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;right = ft_substr(*content + e, 0, ft_strlen(*content) - e);&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;if (right)&lt;/div&gt;&lt;div&gt;&lt;span&gt;{&lt;/span&gt;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;new_input = ft_strjoin(left, right);&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;ft_free(right);&lt;/div&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;}&lt;/div&gt;&lt;div&gt;ft_free(left);&lt;/div&gt;&lt;/blockquote&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;}&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;if (!new_input)&lt;/div&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;return (0);&lt;/div&gt;&lt;/blockquote&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;ft_free(*content);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;*content = new_input;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;return (1);&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="hcFAv_5k8Y_99JVzGGXi-74">
+          <mxGeometry y="26" width="460" height="304" as="geometry" />
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-76" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" target="hcFAv_5k8Y_99JVzGGXi-75">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="3880" y="4370" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="3880" y="4370" />
+              <mxPoint x="4105" y="4370" />
+              <mxPoint x="4105" y="4678" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-80" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="hcFAv_5k8Y_99JVzGGXi-1" target="hcFAv_5k8Y_99JVzGGXi-57">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2510" y="4020" />
+              <mxPoint x="2510" y="6073" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-81" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="hcFAv_5k8Y_99JVzGGXi-57" target="hcFAv_5k8Y_99JVzGGXi-59">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="3284" y="5970" />
+              <mxPoint x="3284" y="6058" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-82" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="hcFAv_5k8Y_99JVzGGXi-59" target="hcFAv_5k8Y_99JVzGGXi-61">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-83" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" target="hcFAv_5k8Y_99JVzGGXi-65">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="3945" y="6130" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="3945" y="6130" />
+              <mxPoint x="4142" y="6130" />
+              <mxPoint x="4142" y="6488" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-84" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="hcFAv_5k8Y_99JVzGGXi-61" target="hcFAv_5k8Y_99JVzGGXi-63">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-85" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" target="hcFAv_5k8Y_99JVzGGXi-67">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="4750" y="6420" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="4750" y="6420" />
+              <mxPoint x="4965" y="6420" />
+              <mxPoint x="4965" y="6443" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-86" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" target="hcFAv_5k8Y_99JVzGGXi-69">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="4750" y="6520" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="4750" y="6520" />
+              <mxPoint x="4975" y="6520" />
+              <mxPoint x="4975" y="6773" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-87" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" target="hcFAv_5k8Y_99JVzGGXi-73">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="4750" y="6530" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="4940" y="6530" />
+              <mxPoint x="4940" y="7183" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-88" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="hcFAv_5k8Y_99JVzGGXi-69" target="hcFAv_5k8Y_99JVzGGXi-71">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="5790" y="6773" />
+              <mxPoint x="5790" y="6786" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-89" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" target="hcFAv_5k8Y_99JVzGGXi-64">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="4687" y="6090" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="4687" y="6090" />
+              <mxPoint x="4720" y="6090" />
+              <mxPoint x="4720" y="6209" />
+              <mxPoint x="4545" y="6209" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-91" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="hcFAv_5k8Y_99JVzGGXi-73" target="hcFAv_5k8Y_99JVzGGXi-71">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="5790" y="7183" />
+              <mxPoint x="5790" y="6786" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-92" value="int	make_param(t_info *info, char *input, int len)" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="3470" y="7500" width="310" height="340" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-93" value="&lt;div&gt;&lt;span&gt;	&lt;/span&gt;int&lt;span&gt;		&lt;/span&gt;i;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;int&lt;span&gt;		&lt;/span&gt;s;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;i = 0;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;jump_space(input, &amp;amp;i);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;s = i;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;while (i &amp;lt; len &amp;amp;&amp;amp; input[i])&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;{&lt;/div&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;if (i &amp;lt; len &amp;amp;&amp;amp; is_quotation(input[i]))&lt;/div&gt;&lt;div&gt;{&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;if (!append_temp_list(info, input, &amp;amp;i, &amp;amp;s))&lt;/div&gt;&lt;div&gt;&lt;span&gt;				&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;return (0);&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;}&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;else if (i &amp;lt; len &amp;amp;&amp;amp; input[i] == &#39; &#39;)&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;{&lt;/div&gt;&lt;div&gt;&lt;span&gt;			&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;if (!append_param_list(info, input, &amp;amp;i, &amp;amp;s))&lt;/div&gt;&lt;div&gt;&lt;span&gt;				&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;return (0);&lt;/div&gt;&lt;div&gt;&lt;span&gt;			&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;i--;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;}&lt;/span&gt;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;i++;&lt;/div&gt;&lt;/blockquote&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;}&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;return (last(info, input, i, s));&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="hcFAv_5k8Y_99JVzGGXi-92">
+          <mxGeometry y="26" width="310" height="314" as="geometry" />
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-95" value="void	jump_space(char *input, int *i)" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="4415.5" y="7510" width="243" height="70" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-96" value="&lt;div&gt;while (input[*i] &amp;amp;&amp;amp; input[*i] == &#39; &#39;)&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;*i += 1;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="hcFAv_5k8Y_99JVzGGXi-95">
+          <mxGeometry y="26" width="243" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-98" value="int	append_param_list(t_info *info, char *input, int *i, int *s)" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="4391.5" y="7990" width="340" height="360" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-99" value="&lt;div&gt;t_list&lt;span&gt;		&lt;/span&gt;*data;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;char&lt;span&gt;		&lt;/span&gt;*content;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;content = 0;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;data = 0;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;if (info-&amp;gt;temp_list)&lt;/div&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;data = list_to_string(info, input, i, s);&lt;/div&gt;&lt;/blockquote&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;if (!info-&amp;gt;temp_list &amp;amp;&amp;amp; *i != *s)&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;{&lt;/div&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;content = ft_substr(input + *s, 0, *i - *s);&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;if (content)&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;data = ft_lstnew(content);&lt;/div&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;}&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;if (*i != *s &amp;amp;&amp;amp; !data)&lt;/div&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;return (0);&lt;/div&gt;&lt;/blockquote&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;if (data)&lt;/div&gt;&lt;div&gt;&lt;span&gt;{&lt;/span&gt;&lt;/div&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;ft_lstadd_back(&amp;amp;info-&amp;gt;param_list, data);&lt;/div&gt;&lt;div&gt;info-&amp;gt;param_cnt++;&lt;/div&gt;&lt;div&gt;jump_space(input, i);&lt;/div&gt;&lt;div&gt;*s = *i;&lt;/div&gt;&lt;/blockquote&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;}&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;return (1);&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="hcFAv_5k8Y_99JVzGGXi-98">
+          <mxGeometry y="26" width="340" height="334" as="geometry" />
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-100" value="int	append_temp_list(t_info *info, char *input, int *i, int *s)" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="4400" y="7630" width="333" height="320" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-101" value="&lt;div&gt;&lt;span&gt;	&lt;/span&gt;t_strjoin&lt;span&gt;	&lt;/span&gt;temp;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;t_list&lt;span&gt;		&lt;/span&gt;*data;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;char&lt;span&gt;		&lt;/span&gt;c;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;ft_bzero(&amp;amp;temp, sizeof(t_strjoin));&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;c = input[*i];&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;temp.front_s = *s;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;temp.front_len = *i - *s;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;*i += 1;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;*s = *i;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;while (input[*i] &amp;amp;&amp;amp; input[*i] != c)&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;*i += 1;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;temp.back_s = *s;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;temp.back_len = *i - *s;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;*s = *i + 1;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;data = front_back_join(input, &amp;amp;temp);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;if (!data)&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;return (0);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;ft_lstadd_back(&amp;amp;info-&amp;gt;temp_list, data);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;return (1);&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="hcFAv_5k8Y_99JVzGGXi-100">
+          <mxGeometry y="26" width="333" height="284" as="geometry" />
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-102" value="t_list	*front_back_join(char *input, t_strjoin *temp)" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="5234" y="7650" width="400" height="300" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-103" value="&lt;div&gt;t_list&lt;span&gt;	&lt;/span&gt;*data;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;data = 0;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;if (!temp-&amp;gt;front)&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;temp-&amp;gt;front = ft_substr(input + temp-&amp;gt;front_s, 0, temp-&amp;gt;front_len);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;if (temp-&amp;gt;front)&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;{&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;temp-&amp;gt;back = ft_substr(input + temp-&amp;gt;back_s, 0, temp-&amp;gt;back_len);&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;if (temp-&amp;gt;back)&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;{&lt;/div&gt;&lt;div&gt;&lt;span&gt;			&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;temp-&amp;gt;content = ft_strjoin(temp-&amp;gt;front, temp-&amp;gt;back);&lt;/div&gt;&lt;div&gt;&lt;span&gt;			&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;ft_free(temp-&amp;gt;back);&lt;/div&gt;&lt;div&gt;&lt;span&gt;			&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;if (temp-&amp;gt;content)&lt;/div&gt;&lt;div&gt;&lt;span&gt;				&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;data = ft_lstnew(temp-&amp;gt;content);&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;}&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;ft_free(temp-&amp;gt;front);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;}&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;return (data);&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="hcFAv_5k8Y_99JVzGGXi-102">
+          <mxGeometry y="26" width="400" height="274" as="geometry" />
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-105" value="int	last(t_info *info, char *input, int i, int s)" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="4375" y="8400" width="380" height="260" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-106" value="&lt;div&gt;t_list&lt;span&gt;	&lt;/span&gt;*temp;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;if (!append_param_list(info, input, &amp;amp;i, &amp;amp;s))&lt;/div&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;return (0);&lt;/div&gt;&lt;/blockquote&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;info-&amp;gt;param = (char **)malloc(sizeof(char *) * (info-&amp;gt;param_cnt + 1));&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;if (!info-&amp;gt;param)&lt;/div&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;return (0);&lt;/div&gt;&lt;/blockquote&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;info-&amp;gt;param[info-&amp;gt;param_cnt] = 0;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;i = 0;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;temp = info-&amp;gt;param_list;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;while (temp &amp;amp;&amp;amp; i &amp;lt; info-&amp;gt;param_cnt)&lt;/div&gt;&lt;div&gt;&lt;span&gt;{&lt;/span&gt;&lt;/div&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;info-&amp;gt;param[i++] = (char *)temp-&amp;gt;content;&lt;/div&gt;&lt;div&gt;temp = temp-&amp;gt;next;&lt;/div&gt;&lt;/blockquote&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;}&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;return (1);&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="hcFAv_5k8Y_99JVzGGXi-105">
+          <mxGeometry y="26" width="380" height="234" as="geometry" />
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-107" value="t_list	*list_to_string(t_info *info, char *input, int *i, int *s)" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="5250.5" y="8040" width="330" height="230" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-108" value="&lt;div&gt;t_list&lt;span&gt;		&lt;/span&gt;*data;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;t_strjoin&lt;span&gt;	&lt;/span&gt;temp;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;ft_bzero(&amp;amp;temp, sizeof(t_strjoin));&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;data = 0;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;if (info-&amp;gt;temp_list)&lt;/div&gt;&lt;div&gt;&lt;span&gt;{&lt;/span&gt;&lt;/div&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;temp.front = get_list_to_str(info-&amp;gt;temp_list);&lt;/div&gt;&lt;div&gt;ft_lstclear(&amp;amp;info-&amp;gt;temp_list, ft_free);&lt;/div&gt;&lt;div&gt;temp.back_s = *s;&lt;/div&gt;&lt;div&gt;temp.back_len = *i - *s;&lt;/div&gt;&lt;div&gt;data = front_back_join(input, &amp;amp;temp);&lt;/div&gt;&lt;/blockquote&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;}&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;return (data);&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="hcFAv_5k8Y_99JVzGGXi-107">
+          <mxGeometry y="26" width="330" height="204" as="geometry" />
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-109" value="char	*get_list_to_str(t_list *list)" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="6056.5" y="8040" width="350" height="350" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-110" value="&lt;div&gt;t_list&lt;span&gt;	&lt;/span&gt;*temp;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;char&lt;span&gt;	&lt;/span&gt;*str;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;int&lt;span&gt;		&lt;/span&gt;len;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;int&lt;span&gt;		&lt;/span&gt;i;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;int&lt;span&gt;		&lt;/span&gt;j;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;len = get_list_str_len(list);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;str = (char *)malloc(sizeof(char *) * (len + 1));&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;if (str)&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;{&lt;/div&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;str[len] = 0;&lt;/div&gt;&lt;div&gt;i = 0;&lt;/div&gt;&lt;div&gt;temp = list;&lt;/div&gt;&lt;div&gt;while (temp)&lt;/div&gt;&lt;div&gt;{&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;j = 0;&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;while (((char *)(temp-&amp;gt;content))[j])&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;str[i++] = ((char *)(temp-&amp;gt;content))[j++];&lt;/div&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;temp = temp-&amp;gt;next;&lt;/div&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;}&lt;/div&gt;&lt;/blockquote&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;}&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;return (str);&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="hcFAv_5k8Y_99JVzGGXi-109">
+          <mxGeometry y="26" width="350" height="324" as="geometry" />
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-111" value="int	get_list_str_len(t_list *list)" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="6870" y="8115" width="250" height="200" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-112" value="&lt;div&gt;t_list&lt;span&gt;	&lt;/span&gt;*temp;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;int&lt;span&gt;		&lt;/span&gt;len;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;temp = list;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;len = 0;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;while (temp)&lt;/div&gt;&lt;div&gt;&lt;span&gt;{&lt;/span&gt;&lt;/div&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px ; border: none ; padding: 0px&quot;&gt;&lt;div&gt;len += ft_strlen((char *)temp-&amp;gt;content);&lt;/div&gt;&lt;div&gt;temp = temp-&amp;gt;next;&lt;/div&gt;&lt;/blockquote&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;}&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;return (len);&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="hcFAv_5k8Y_99JVzGGXi-111">
+          <mxGeometry y="26" width="250" height="174" as="geometry" />
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-114" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="hcFAv_5k8Y_99JVzGGXi-93" target="hcFAv_5k8Y_99JVzGGXi-96">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="4098" y="7590" />
+              <mxPoint x="4098" y="7558" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-115" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="hcFAv_5k8Y_99JVzGGXi-93" target="hcFAv_5k8Y_99JVzGGXi-101">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-116" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" target="hcFAv_5k8Y_99JVzGGXi-99">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="3790" y="7750" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="3780" y="7750" />
+              <mxPoint x="4030" y="7750" />
+              <mxPoint x="4030" y="8183" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-117" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.969;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="hcFAv_5k8Y_99JVzGGXi-93" target="hcFAv_5k8Y_99JVzGGXi-106">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="3780" y="7760" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="3950" y="7830" />
+              <mxPoint x="3950" y="8543" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-118" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="hcFAv_5k8Y_99JVzGGXi-101" target="hcFAv_5k8Y_99JVzGGXi-103">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-119" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="hcFAv_5k8Y_99JVzGGXi-99" target="hcFAv_5k8Y_99JVzGGXi-108">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="4991" y="8120" />
+              <mxPoint x="4991" y="8168" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-122" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="hcFAv_5k8Y_99JVzGGXi-99" target="hcFAv_5k8Y_99JVzGGXi-95">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="4850" y="8300" />
+              <mxPoint x="4850" y="7490" />
+              <mxPoint x="4537" y="7490" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-123" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="hcFAv_5k8Y_99JVzGGXi-108" target="hcFAv_5k8Y_99JVzGGXi-110">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-124" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="hcFAv_5k8Y_99JVzGGXi-110" target="hcFAv_5k8Y_99JVzGGXi-112">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-125" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="hcFAv_5k8Y_99JVzGGXi-108" target="hcFAv_5k8Y_99JVzGGXi-102">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="5440" y="7560" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="5750" y="8219" />
+              <mxPoint x="5750" y="7560" />
+              <mxPoint x="5434" y="7560" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-127" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="hcFAv_5k8Y_99JVzGGXi-106" target="hcFAv_5k8Y_99JVzGGXi-99">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="4560" y="8370" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="4800" y="8543" />
+              <mxPoint x="4800" y="8370" />
+              <mxPoint x="4561" y="8370" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hcFAv_5k8Y_99JVzGGXi-128" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="hcFAv_5k8Y_99JVzGGXi-57" target="hcFAv_5k8Y_99JVzGGXi-93">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="3200" y="6020" />
+              <mxPoint x="3200" y="7683" />
             </Array>
           </mxGeometry>
         </mxCell>
