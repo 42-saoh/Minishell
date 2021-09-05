@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2021-09-05T04:12:22.623Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36" etag="rAzh3qFVmAJ9kknvVizm" version="15.0.6" type="github">
+<mxfile host="app.diagrams.net" modified="2021-09-05T04:22:12.414Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36" etag="nRWI8-F-ia7KsCF9rB8M" version="15.0.6" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
-    <mxGraphModel dx="503" dy="512" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="416" dy="423" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
@@ -21,7 +21,7 @@
           <mxGeometry y="26" width="460" height="864" as="geometry" />
         </mxCell>
         <mxCell id="u2uQaywFyPR_KE_2P75B-4" value="int    main(int argc, char *argv[], char *envp[])" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="930" y="30" width="310" height="360" as="geometry">
+          <mxGeometry x="1086" y="115" width="310" height="360" as="geometry">
             <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -29,7 +29,7 @@
           <mxGeometry y="26" width="310" height="334" as="geometry" />
         </mxCell>
         <mxCell id="u2uQaywFyPR_KE_2P75B-6" value="int	init_envp_and_signal(t_info *info, int argc, char *argv[], char *envp[])" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="1300" y="30" width="420" height="220" as="geometry">
+          <mxGeometry x="1858" y="113" width="420" height="220" as="geometry">
             <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -37,7 +37,7 @@
           <mxGeometry y="26" width="420" height="194" as="geometry" />
         </mxCell>
         <mxCell id="u2uQaywFyPR_KE_2P75B-8" value="char	**init_path(char *envp[])" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="1770" y="30" width="310" height="360" as="geometry">
+          <mxGeometry x="2740" y="43" width="310" height="360" as="geometry">
             <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -45,7 +45,7 @@
           <mxGeometry y="26" width="310" height="334" as="geometry" />
         </mxCell>
         <mxCell id="u2uQaywFyPR_KE_2P75B-10" value="int	init_envp_file(char *envp[])" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="1770" y="405" width="400" height="265" as="geometry">
+          <mxGeometry x="2695" y="446" width="400" height="265" as="geometry">
             <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -53,20 +53,36 @@
           <mxGeometry y="26" width="400" height="234" as="geometry" />
         </mxCell>
         <mxCell id="u2uQaywFyPR_KE_2P75B-12" value="int	copy_envp(t_info *info)" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="1770" y="690" width="180" height="100" as="geometry">
+          <mxGeometry x="2805" y="790" width="180" height="100" as="geometry">
             <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="u2uQaywFyPR_KE_2P75B-13" value="&lt;div&gt;clear_envp_info(info);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;if (!count_envp_len(info))&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;return (0);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;return (file_to_envp(info));&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="u2uQaywFyPR_KE_2P75B-12">
+        <mxCell id="u2uQaywFyPR_KE_2P75B-13" value="&lt;div&gt;clear_envp_info(info);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;if (!count_envp_len(info))&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;return (0);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;return (file_to_envp(info));&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="u2uQaywFyPR_KE_2P75B-12">
           <mxGeometry y="26" width="180" height="74" as="geometry" />
         </mxCell>
         <mxCell id="u2uQaywFyPR_KE_2P75B-14" value="void	clear_envp_info(t_info *info)" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="2240" y="680" width="310" height="160" as="geometry">
+          <mxGeometry x="3567" y="770" width="310" height="160" as="geometry">
             <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="u2uQaywFyPR_KE_2P75B-15" value="&lt;div&gt;int&lt;span&gt;	&lt;/span&gt;i;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;if (!info-&amp;gt;envp)&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;return ;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;i = 0;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;while (info-&amp;gt;envp[i])&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;ft_free(info-&amp;gt;envp[i++]);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;ft_free(info-&amp;gt;envp);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;info-&amp;gt;envp_cnt = 0;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="u2uQaywFyPR_KE_2P75B-14">
           <mxGeometry y="26" width="310" height="134" as="geometry" />
+        </mxCell>
+        <mxCell id="u2uQaywFyPR_KE_2P75B-18" value="int	count_envp_len(t_info *info)" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="3567" y="1040" width="293" height="250" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="u2uQaywFyPR_KE_2P75B-19" value="&lt;div&gt;int&lt;span&gt;		&lt;/span&gt;fd;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;char&lt;span&gt;	&lt;/span&gt;*line;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;fd = open(ENV_FILE, O_RDONLY);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;if (fd == -1)&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;return (error_occur_perror(FILE_OPEN_ERR));&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;while (get_next_line(fd, &amp;amp;line) &amp;gt; 0)&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;{&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;info-&amp;gt;envp_cnt++;&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;ft_free(line);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;}&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;info-&amp;gt;envp_cnt++;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;ft_free(line);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;ft_close(fd);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;return (1);&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="u2uQaywFyPR_KE_2P75B-18">
+          <mxGeometry y="26" width="293" height="224" as="geometry" />
+        </mxCell>
+        <mxCell id="u2uQaywFyPR_KE_2P75B-20" value="int	file_to_envp(t_info *info)" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="3567" y="1350" width="360" height="420" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="u2uQaywFyPR_KE_2P75B-21" value="&lt;div&gt;int&lt;span&gt;		&lt;/span&gt;fd;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;int&lt;span&gt;		&lt;/span&gt;idx;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;char&lt;span&gt;	&lt;/span&gt;*line;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;info-&amp;gt;envp = (char **)malloc(sizeof(char *) * (info-&amp;gt;envp_cnt + 1));&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;if (!info-&amp;gt;envp)&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;return (0);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;info-&amp;gt;envp[info-&amp;gt;envp_cnt] = 0;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;fd = open(ENV_FILE, O_RDONLY);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;if (fd == -1)&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;return (error_occur_perror(FILE_OPEN_ERR));&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;idx = 0;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;while (get_next_line(fd, &amp;amp;line) &amp;gt; 0 &amp;amp;&amp;amp; idx &amp;lt; info-&amp;gt;envp_cnt)&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;{&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;info-&amp;gt;envp[idx] = line;&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;if (!info-&amp;gt;envp[idx])&lt;/div&gt;&lt;div&gt;&lt;span&gt;			&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;return (0);&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;idx++;&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;}&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;info-&amp;gt;envp[idx] = ft_strdup(line);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;if (!info-&amp;gt;envp[idx])&lt;/div&gt;&lt;div&gt;&lt;span&gt;		&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;return (0);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;ft_free(line);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;ft_close(fd);&lt;/div&gt;&lt;div&gt;&lt;span&gt;	&lt;/span&gt;return (1);&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="u2uQaywFyPR_KE_2P75B-20">
+          <mxGeometry y="26" width="360" height="394" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
