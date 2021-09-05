@@ -27,7 +27,7 @@ void	builtin_pwd(t_info *info)
 						info->param[1][2] != 0))
 			{
 				stderr_print("pwd", info->param[1], "invalid option");
-				exit(EXEC_FAIL);
+				exit(1);
 			}
 		}
 	}

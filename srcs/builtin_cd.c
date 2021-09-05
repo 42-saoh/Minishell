@@ -30,7 +30,7 @@ void	get_root_dir_sib(char **envp)
 	if (!(*envp))
 	{
 		error_occur_perror("Home is not finded");
-		exit(EXEC_FAIL);
+		exit(1);
 	}
 	a = ft_strdup(*envp + 5);
 	i = chdir(a);
@@ -38,7 +38,7 @@ void	get_root_dir_sib(char **envp)
 	{
 		stderr_print("cd", a, strerror(errno));
 		free(a);
-		exit(EXEC_FAIL);
+		exit(1);
 	}
 	free(a);
 }
@@ -56,7 +56,7 @@ void	builtin_cd_sib(t_info *info)
 		if (i)
 		{
 			stderr_print("cd", info->param[1], strerror(errno));
-			exit(EXEC_FAIL);
+			exit(1);
 		}
 	}
 	exit(0);
