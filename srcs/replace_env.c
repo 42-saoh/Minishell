@@ -1,16 +1,5 @@
 #include "../includes/minishell.h"
 
-char	*special_positional_param(t_info *info, char *input)
-{
-	if (input[0] == '0')
-		return (SHELL_NAME);
-	else if (input[0] == '#')
-		return ("0");
-	else if (input[0] == '?')
-		return (ft_itoa(info->exec_result));
-	return (0);
-}
-
 char	*get_dollar_value(char **envp, char *input)
 {
 	int	i;
@@ -69,23 +58,20 @@ int	replace_env(t_info *info, char **ptr, int s, int *next_idx)
 {
 	char	*value;
 	char	*result;
-	int		need_malloc;
+	int		is_positional;
 
-	need_malloc = 0;
-	value = special_positional_param(info, *ptr + s + 1);
-	if (value)
+	is_positional = special_positional_param(info, ptr, s, next_idx);
+	if (is_positional == -1)
+		return (0);
+	if (!is_positional)
 	{
-		if ((*ptr)[s + 1] == '?')
-			need_malloc = 1;
-	}
-	else
 		value = get_dollar_value(info->envp, *ptr + s + 1);
-	result = make_new_input(*ptr, s, next_idx, value);
-	if (need_malloc)
-		ft_free(value);
-	if (!result)
-		return (error_occur_perror(MAKE_NEW_INPUT_ERR));
-	free(*ptr);
-	*ptr = result;
+		result = make_new_input(*ptr, s, next_idx, value);
+		if (!result)
+			return (error_occur_perror(MAKE_NEW_INPUT_ERR));
+		free(*ptr);
+		*ptr = result;
+	}
 	return (1);
 }
+
