@@ -1,6 +1,6 @@
 NAME	= minishell
 
-CC		= gcc
+CC		= gcc -fsanitize=address
 CFLAGS	= -Wall -Wextra -Werror
 
 SRC_DIR		= ./srcs/
@@ -22,7 +22,7 @@ SRC 	=	main.c error.c utils.c check.c init.c \
 			builtin_env.c builtin_unset.c builtin_export.c export_print.c\
 			export_add_var.c export_file_merge.c datafile_to_temp.c\
 			temp_to_datafile.c remove_var.c filter_asterisk.c\
-			list_to_string.c free_utils.c\
+			list_to_string.c free_utils.c status_macro.c special_positional_param.c\
 
 OBJ_FILES = $(SRC:.c=.o)
 OBJS	= $(addprefix $(OBJ_DIR), $(OBJ_FILES))

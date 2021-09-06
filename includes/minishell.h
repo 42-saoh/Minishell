@@ -6,7 +6,7 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 15:50:59 by taesan            #+#    #+#             */
-/*   Updated: 2021/09/03 19:45:03 by taesan           ###   ########.fr       */
+/*   Updated: 2021/09/06 16:14:33 by taesan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,5 +180,9 @@ void	content_not_rm(void *param);
 */
 int		exit_status(int status);
 int		term_status(int status);
+/*
+	special_positional_param
+*/
+int	special_positional_param(t_info *info, char **ptr, int s, int *next_idx);
 
 #endif
