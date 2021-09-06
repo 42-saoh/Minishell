@@ -19,6 +19,24 @@ int	is_double_symbol(int symbol)
 	return (0);
 }
 
+int	pass_possible_2(char c, int *e)
+{
+	if (!c)
+		return (0);
+	if (is_quotation(c))
+		return (0);
+	if (c == '|')
+		return (0);
+	if (c == ' ')
+		return (0);
+	if (c == '$')
+	{
+		*e = *e - 1;
+		return (0);
+	}
+	return (1);
+}
+
 void	jump_space(char *input, int *i)
 {
 	while (input[*i] && input[*i] == ' ')

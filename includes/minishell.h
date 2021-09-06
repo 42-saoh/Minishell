@@ -39,6 +39,7 @@ int		export_errror(char *param);
 */
 int		is_quotation(char c);
 int		pass_possible(char c);
+int		pass_possible_2(char c, int *e);
 int		is_empty(char *temp);
 int		is_redirect(char c);
 int		is_double_symbol(int symbol);

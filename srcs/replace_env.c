@@ -2,11 +2,11 @@
 
 char	*special_positional_param(t_info *info, char *input)
 {
-	if (input[0] == '0' && is_empty(input + 1))
+	if (input[0] == '0')
 		return (SHELL_NAME);
-	else if (input[0] == '#' && is_empty(input + 1))
+	else if (input[0] == '#')
 		return ("0");
-	else if (input[0] == '?' && is_empty(input + 1))
+	else if (input[0] == '?')
 		return (ft_itoa(info->exec_result));
 	return (0);
 }
@@ -54,7 +54,8 @@ char	*make_new_input(char *input, int s, int *next_idx, char *value)
 	if (!join)
 		return (0);
 	*next_idx = ft_strlen(join);
-	while (pass_possible(input[s]))
+	s++;
+	while (pass_possible_2(input[s], next_idx))
 		s++;
 	back = ft_substr(input + s, 0, ft_strlen(input) - s);
 	result = ft_strjoin(join, back);
@@ -74,7 +75,7 @@ int	replace_env(t_info *info, char **ptr, int s, int *next_idx)
 	value = special_positional_param(info, *ptr + s + 1);
 	if (value)
 	{
-		if ((*ptr)[s + 1] == '?' && is_empty(*ptr + s + 2))
+		if ((*ptr)[s + 1] == '?')
 			need_malloc = 1;
 	}
 	else
