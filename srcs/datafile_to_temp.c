@@ -6,16 +6,12 @@
 /*   By: taesan <taesan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 03:45:01 by taesan            #+#    #+#             */
-/*   Updated: 2021/08/31 20:32:59 by taesan           ###   ########.fr       */
+/*   Updated: 2021/09/06 16:41:55 by taekang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-/*
-	ft_strcmp랑 동일한 방식으로 return 되도록 해야 함.
-	같은 경우 0 return 되도록
-*/
 int	env_file_cmp(const char *line, const char *key)
 {
 	int	i;

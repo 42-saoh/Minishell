@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   replace_env.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: taekang <taekang@student.42seoul.kr>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/06 16:39:04 by taekang           #+#    #+#             */
+/*   Updated: 2021/09/06 16:39:37 by taekang          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/minishell.h"
 
 char	*get_dollar_value(char **envp, char *input)
@@ -74,4 +86,3 @@ int	replace_env(t_info *info, char **ptr, int s, int *next_idx)
 	}
 	return (1);
 }
-
