@@ -2,4 +2,25 @@
 
 - Wellcome
 - You go to the appropriate folder for your OS and make.
-- 
+- subject
+  - Not interpret unclosed quotes or unspecified special characters like \ or;
+  - Show a prompt when waiting for a new command
+  - Have a working History
+  - Builtins:
+    - echo with option -n
+    - cd with only a relative or absolute path
+    - pwd with no options
+    - export with no options
+    - unset with no options
+    - env with no options or arguments
+    - exit with no options
+  - ’ inhibit all interpretation of a sequence of characters.
+  - " inhibit all interpretation of a sequence of characters except for $
+  - Redirections
+  - Pipes
+  - Signal:
+    - ctrl-C print a new prompt on a newline.
+    - ctrl-D exit the shell.
+    - ctrl-\ do nothing.
+  - &&, || with parenthesis for priorities.
+  - Anything not asked is not required.
